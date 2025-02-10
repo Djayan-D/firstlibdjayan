@@ -7,7 +7,6 @@
 #' @param df Un `data.frame` contenant les données des communes, avec la colonne `Code.de.la.commune` utilisée
 #' pour vérifier si plusieurs communes sont présentes dans le `data.frame`.
 #' @return Un `data.frame` auquel la classe "commune" est ajoutée s'il contient une seule commune.
-#' @throws Error si le `data.frame` contient plusieurs communes (c'est-à-dire plusieurs valeurs distinctes pour `Code.de.la.commune`).
 #' @export
 
 creer_commune <- function(df) {

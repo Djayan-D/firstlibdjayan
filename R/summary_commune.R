@@ -13,7 +13,6 @@
 #' - `nombre_elus` : Le nombre d'élus dans la commune,
 #' - `distribution_ages_elus` : Les quantiles de la distribution des âges des élus,
 #' - `elu_plus_age` : Les informations de l'élu le plus âgé.
-#' @throws Error si l'objet `x` n'est pas de la classe "commune".
 #' @export
 
 summary.commune <- function(x) {
