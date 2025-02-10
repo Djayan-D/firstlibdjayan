@@ -18,7 +18,12 @@ compter_nombre_d_adjoints <- function(df) {
 
   # Appliquer les transformations
 
-  df$Libellé.de.la.fonction |>
+  nombre_adjoints <- df$Libellé.de.la.fonction |>
     str_detect("adjoint") |> # Détecte les cellules où la fonction contient le mot "adjoint"
     sum() # Compte le nombre total d'adjoints
+
+
+  # Retourner le nombre d'adjoints
+
+  return(nombre_adjoints)
 }
