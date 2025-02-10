@@ -22,4 +22,9 @@ compter_nombre_d_elus <- function(df) {
     select(Nom.de.l.élu, Prénom.de.l.élu, Date.de.naissance) |> # Sélectionne les colonnes du triplet
     distinct() |> # Supprie les doublons
     nrow() # Compte le nombre d'élus
+
+
+  # Retourner le nombre d'élus
+
+  return(nombre_elus)
 }
