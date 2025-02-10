@@ -12,7 +12,6 @@
 #' - `Q75` : 75% (troisième quartile)
 #' - `Q100` : 100% (maximum)
 #' @importFrom lubridate interval today as.period
-#' @export
 
 calcul_distribution_age <- function(df) {
   # Vérifier que le DataFrame respecte la structure minimale

@@ -12,7 +12,6 @@
 #' - `age` : L'âge de l'élu en années
 #' @importFrom dplyr arrange slice_head mutate
 #' @importFrom lubridate interval today as.period
-#' @export
 
 trouver_l_elu_le_plus_age <- function(df) {
   # Vérifier que le DataFrame respecte la structure minimale

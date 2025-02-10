@@ -9,7 +9,6 @@
 #' @return Un objet `ggplot` représentant un graphique en barres horizontal du nombre d'élus par code professionnel.
 #' @importFrom dplyr count filter arrange
 #' @importFrom ggplot2 ggplot aes geom_bar geom_text labs theme_minimal
-#' @export
 
 plot_code_professions <- function(df) {
   # Vérifier que le DataFrame respecte la structure minimale

@@ -6,7 +6,6 @@
 #'
 #' @param df La `data.frame` à vérifier.
 #' @return NULL Si le schéma est valide, sinon un message d'avertissement indiquant les colonnes manquantes.
-#' @export
 
 validate_schema <- function(df) {
   # Schéma minimal pour faire tourner l'ensemble des fonctions du package

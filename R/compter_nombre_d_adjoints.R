@@ -8,7 +8,6 @@
 #' `Libellé.de.la.fonction` qui sera utilisée pour rechercher le terme "adjoint".
 #' @return Un entier représentant le nombre d'adjoints dans le `data.frame`.
 #' @importFrom stringr str_detect
-#' @export
 
 compter_nombre_d_adjoints <- function(df) {
   # Vérifier que le DataFrame respecte la structure minimale

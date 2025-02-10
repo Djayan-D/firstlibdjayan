@@ -12,7 +12,6 @@
 #' - `age` : L'âge de l'élu le plus jeune en années.
 #' @importFrom dplyr arrange slice_tail mutate
 #' @importFrom lubridate today interval
-#' @export
 
 trouver_l_elu_le_plus_jeune <- function(df) {
   # Vérifier que le DataFrame respecte la structure minimale

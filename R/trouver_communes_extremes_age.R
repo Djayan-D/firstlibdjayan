@@ -13,7 +13,6 @@
 #' - `commune_plus_agee` : La commune avec la moyenne d'âge la plus élevée, incluant sa distribution d'âges.
 #' @importFrom dplyr group_by mutate slice_min slice_max ungroup filter
 #' @importFrom lubridate today interval
-#' @export
 
 trouver_communes_extremes_age <- function(df) {
   # Vérifier que le DataFrame respecte la structure minimale
