@@ -8,7 +8,6 @@
 #' `Prénom.de.l.élu` et `Date.de.naissance` utilisées pour déterminer l'unicité de chaque élu.
 #' @return Un entier représentant le nombre d'élus uniques dans le `data.frame`.
 #' @importFrom dplyr select distinct
-#' @export
 
 compter_nombre_d_elus <- function(df) {
   # Vérifier que le DataFrame respecte la structure minimale
