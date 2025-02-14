@@ -29,6 +29,6 @@ Suggests:
     rmarkdown
 Config/testthat/edition: 3
 RoxygenNote: 7.3.2
-VignetteBuilder: knitr
+VignetteBuilder: quarto
 URL: https://github.com/Djayan-D/firstlibdjayan
 BugReports: https://github.com/Djayan-D/firstlibdjayan/issues
