@@ -7,9 +7,9 @@
 generer_rapport(commune, departement, output)
 }
 \arguments{
-\item{commune}{Un caractère représentant le nom de la commune pour laquelle le rapport sera généré.}
+\item{commune}{Le code (ex : INSEE) associé à la commune pour laquelle le rapport sera généré.}
 
-\item{departement}{Un caractère représentant le nom du département pour lequel le rapport sera généré.}
+\item{departement}{Le code (ex : INSEE) associé au département pour lequel le rapport sera généré.}
 
 \item{output}{Un caractère spécifiant le chemin du fichier de sortie (par exemple, "rapport_nantes.pdf").}
 }
@@ -20,5 +20,5 @@ Aucun. La fonction génère un fichier de rapport au format spécifié (par déf
 Cette fonction génère un rapport au format PDF à partir d'un fichier Quarto (.qmd) en utilisant les paramètres de la commune et du département fournis.
 }
 \examples{
-generer_rapport("Nantes", "Loire-Atlantique", "rapport_nantes.pdf")
+generer_rapport("44109", "Loire-44", "rapport_Nantes_et_Loire_Atlantique.pdf")
 }

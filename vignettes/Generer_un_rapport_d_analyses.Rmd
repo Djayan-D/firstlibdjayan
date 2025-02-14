@@ -19,6 +19,7 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(firstlibdjayan)
+library(dplyr)
 ```
 
 ---
@@ -58,18 +59,40 @@ La fonction `summary.commune()` prend un objet de type `commune` (un `data.frame
 
 # Création d'un exemple fictif de données pour la commune
 commune_data <- data.frame(
-  Libellé.de.la.commune = "Nantes",
-  Age = c(45, 56, 34, 70, 62),
-  Nom = c("Dupont", "Martin", "Lemoine", "Durand", "Lemoine")
+  Code.du.département = rep(45, 10),
+  Libellé.du.département = rep("Loiret", 10),
+  Code.de.la.commune = rep(45141, 10),
+  Libellé.de.la.commune = rep("Faverelles", 10),
+  Nom.de.l.élu = c("CHAUX", "COLLE", "DAUBRY", "EUGENE", "GOIRAND", 
+                  "LECUYER", "LETEUR", "MARET", "MARIE-LOUISE", "PIERROT"),
+  Prénom.de.l.élu = c("Annie", "Sylvain", "Christiane", "Jacques", "Dominique", 
+                     "Frédérique", "Manuel", "Frédérick", "Joëlle", "Pascal"),
+  Date.de.naissance = as.Date(c("1954-09-30", "1982-10-22", "1952-11-26", "1951-07-14", 
+                                "1962-04-20", "1963-03-25", "1965-12-15", "1975-11-08", 
+                                "1964-08-04", "1966-04-01")),
+  Age = c(75, 37, 71, 74, 23, 48, 12, 52, 85, 38),
+  Code.de.la.catégorie.socio.professionnelle = c(18, 3, 7, 5, 3, 4, 2, 1, 13, 11),
+  Libellé.de.la.fonction = c(NA, NA, "2ème adjoint au Maire", "Maire", NA, NA, "1er adjoint au Maire", NA, NA, NA),
+  Date.de.mise.en.place = as.Date(c("2020-05-18", "2020-05-18", "2020-05-23", "2020-05-23", "2020-05-18", 
+                                   "2020-05-18", "2020-05-23", "2020-05-18", "2020-05-18", "2020-05-18")),
+  Code.pays = rep("FR", 10),
+  stringsAsFactors = FALSE
 )
 
+
+# Attribuer la classe commune
+
+commune_data <- creer_commune(commune_data)
+
+
 # Résumé de la commune
-summary.commune(commune_data)
+
+summary(commune_data)
 ```
 
 Le résumé pour cette commune peut inclure des informations telles que :
 
-- Nom de la commune : Nantes
+- Nom de la commune : Faverelles
 - Nombre d'élus : 5
 - Distribution des âges des élus : 45, 56, 34, 70, 62
 - L'élu le plus âgé : Durand (70 ans)
@@ -85,15 +108,34 @@ La fonction `summary.departement()` fonctionne de manière similaire mais pour u
 
 # Création d'un exemple fictif de données pour le département
 departement_data <- data.frame(
-  Libellé.du.département = "Loire-Atlantique",
-  Code.de.la.commune = c("44109", "44001", "44110"),
-  Age = c(45, 56, 34, 70, 62),
-  Nom = c("Dupont", "Martin", "Lemoine", "Durand", "Lemoine")
+  Code.du.département = rep(45, 10),
+  Libellé.du.département = rep("Loiret", 10),
+  Code.de.la.commune = rep(45141, 10),
+  Libellé.de.la.commune = rep("Faverelles", 10),
+  Nom.de.l.élu = c("CHAUX", "COLLE", "DAUBRY", "EUGENE", "GOIRAND", 
+                  "LECUYER", "LETEUR", "MARET", "MARIE-LOUISE", "PIERROT"),
+  Prénom.de.l.élu = c("Annie", "Sylvain", "Christiane", "Jacques", "Dominique", 
+                     "Frédérique", "Manuel", "Frédérick", "Joëlle", "Pascal"),
+  Date.de.naissance = as.Date(c("1954-09-30", "1982-10-22", "1952-11-26", "1951-07-14", 
+                                "1962-04-20", "1963-03-25", "1965-12-15", "1975-11-08", 
+                                "1964-08-04", "1966-04-01")),
+  Age = c(75, 37, 71, 74, 23, 48, 12, 52, 85, 38),
+  Code.de.la.catégorie.socio.professionnelle = c(18, 3, 7, 5, 3, 4, 2, 1, 13, 11),
+  Libellé.de.la.fonction = c(NA, NA, "2ème adjoint au Maire", "Maire", NA, NA, "1er adjoint au Maire", NA, NA, NA),
+  Date.de.mise.en.place = as.Date(c("2020-05-18", "2020-05-18", "2020-05-23", "2020-05-23", "2020-05-18", 
+                                   "2020-05-18", "2020-05-23", "2020-05-18", "2020-05-18", "2020-05-18")),
+  Code.pays = rep("FR", 10),
+  stringsAsFactors = FALSE
 )
 
-# Résumé du département
-summary.departement(departement_data)
 
+# Attribuer la classe département
+
+departement_data <- creer_departement(departement_data)
+
+
+# Résumé du département
+summary(departement_data)
 ```
 
 Le résumé pour ce département pourrait inclure des informations comme :
@@ -115,9 +157,7 @@ La fonction `generer_rapport()` génère un rapport au format PDF en utilisant u
 # Exemple d'utilisation de generer_rapport
 # Supposons que nous voulons générer un rapport pour Nantes et Loire-Atlantique
 
-generer_rapport(code_commune = "44109", 
-                code_departement = "44", 
-                output = "rapport_nantes.pdf")
+generer_rapport("44109", "44", "rapport_nantes_et_Loire_Atlantique.pdf")
 
 ```
 
