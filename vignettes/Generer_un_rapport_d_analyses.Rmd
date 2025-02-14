@@ -1,0 +1,23 @@
+---
+---
+title: "Générer un rapport d'analyses"
+author: "DAËRON Djayan"
+format: html # Ou pdf si tu préfères
+editor: visual
+vignette: >
+  %\VignetteIndexEntry{Générer un rapport d'analyses}
+  %\VignetteEngine{quarto::html_vignette}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(firstlibdjayan)
+```
