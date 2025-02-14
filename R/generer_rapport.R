@@ -12,18 +12,23 @@
 #' @export
 #'
 #' @examples
-#' generer_rapport("44109", "Loire-44", "rapport_Nantes_et_Loire_Atlantique.pdf")
+#' generer_rapport("44109", "44", "rapport_Nantes_et_Loire_Atlantique.pdf")
 
 generer_rapport <- function(commune, departement, output) {
   # Localiser le fichier .qmd dans le dossier inst
+
   qmd_path <- system.file("rapport.qmd", package = "firstlibdjayan")
+
 
   # Générer le rapport à l'aide de Quarto
   quarto::quarto_render(input = qmd_path,
                         output_file = output,
-                        params = list(code_commune = commune, code_departement = departement))
+                        execute_params = list(code_commune = "commune",
+                                              code_departement = "departement"))
+
 
   # Renvoyer un message pour confirmer la génération
+
   message("Le rapport a été généré avec succès.")
 }
 
