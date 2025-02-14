@@ -157,7 +157,9 @@ La fonction `generer_rapport()` génère un rapport au format PDF en utilisant u
 # Exemple d'utilisation de generer_rapport
 # Supposons que nous voulons générer un rapport pour Nantes et Loire-Atlantique
 
-generer_rapport("44109", "44", "rapport_nantes_et_Loire_Atlantique.pdf")
+generer_rapport(commune = "44109", 
+                departement = "44", 
+                output = "rapport_nantes_et_Loire_Atlantique.pdf")
 
 ```
 

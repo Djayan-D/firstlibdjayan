@@ -20,5 +20,5 @@ Aucun. La fonction génère un fichier de rapport au format spécifié (par déf
 Cette fonction génère un rapport au format PDF à partir d'un fichier Quarto (.qmd) en utilisant les paramètres de la commune et du département fournis.
 }
 \examples{
-generer_rapport("44109", "Loire-44", "rapport_Nantes_et_Loire_Atlantique.pdf")
+generer_rapport("44109", "44", "rapport_Nantes_et_Loire_Atlantique.pdf")
 }
