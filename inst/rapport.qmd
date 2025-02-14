@@ -1,0 +1,53 @@
+---
+title: "Rapport"
+author: "Djayan DAËRON"
+params:
+  code_commune: "44109"   # Code de la commune (par exemple, Nantes)
+  code_departement: "44"  # Code du département (par exemple, Loire-Atlantique)
+output: html_document
+---
+
+# Chargement des packages
+```{r}
+library(dplyr)
+```
+
+# Installation et chargement de la bibliothèque
+```{r}
+remotes::install_github("Djayan-D/firstlibdjayan")
+library(firstlibdjayan)
+```
+
+# Chargement des données
+```{r}
+data <- elus_sample
+```
+
+# Conversion du type de données
+```{r}
+data$Date.de.naissance <- as.Date(data$Date.de.naissance)
+```
+
+# Filtrage des données par commune et département
+```{r}
+df_commune <- data |> 
+  filter(Code.de.la.commune == params$code_commune)
+
+df_departement <- data |> 
+  filter(Code.du.département == params$code_departement)
+```
+
+# Création des jeux de données pour la commune et le département
+```{r}
+df_commune <- creer_commune(df_commune)
+df_departement <- creer_departement(df_departement)
+```
+
+# Analyse des données
+```{r}
+summary(df_commune)
+plot(df_commune)
+
+summary(df_departement)
+plot(df_departement)
+```
