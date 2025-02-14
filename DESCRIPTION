@@ -22,7 +22,8 @@ Imports:
     dplyr,
     ggplot2,
     lubridate,
-    stringr
+    stringr,
+    quarto
 Suggests: 
     testthat (>= 3.0.0),
     knitr,
@@ -30,5 +31,5 @@ Suggests:
 Config/testthat/edition: 3
 RoxygenNote: 7.3.2
 VignetteBuilder: quarto
-URL: https://github.com/Djayan-D/firstlibdjayan
+URL: https://github.com/Djayan-D/firstlibdjayan, https://djayan-d.github.io/firstlibdjayan/
 BugReports: https://github.com/Djayan-D/firstlibdjayan/issues

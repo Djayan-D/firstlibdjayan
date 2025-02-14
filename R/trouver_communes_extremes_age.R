@@ -11,7 +11,7 @@
 #' @return Une liste contenant deux sous-listes :
 #' - `commune_plus_jeune` : La commune avec la moyenne d'âge la plus faible, incluant sa distribution d'âges,
 #' - `commune_plus_agee` : La commune avec la moyenne d'âge la plus élevée, incluant sa distribution d'âges.
-#' @importFrom dplyr group_by mutate slice_min slice_max ungroup filter
+#' @importFrom dplyr group_by mutate slice_min slice_max ungroup filter pull
 #' @importFrom lubridate today interval
 
 trouver_communes_extremes_age <- function(df) {
