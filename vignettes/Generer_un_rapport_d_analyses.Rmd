@@ -1,5 +1,4 @@
 ---
----
 title: "Générer un rapport d'analyses"
 author: "DAËRON Djayan"
 format: html # Ou pdf si tu préfères
@@ -21,3 +20,112 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(firstlibdjayan)
 ```
+
+---
+title: "Générer un rapport d'analyses"
+author: "DAËRON Djayan"
+format: pdf
+editor: visual
+execute:
+  echo: true  # Affiche le code dans le rapport
+  warning: false  # Masque les avertissements
+  message: false  # Masque les messages
+  collapse: true  # Fusionne code et sortie
+  comment: "#>"  # Préfixe les sorties avec #>
+vignette: >
+  %\VignetteIndexEntry{Générer un rapport d'analyses}
+  %\VignetteEngine{quarto::html_vignette}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Introduction
+
+Dans cette vignette, nous allons explorer l'utilisation des fonctions suivantes :
+
+- `summary.commune()` : Cette fonction génère un résumé des informations pour une commune donnée.
+- `summary.departement()` : Cette fonction génère un résumé des informations pour un département donné.
+- `generer_rapport()` : Cette fonction génère un rapport au format PDF en utilisant un fichier Quarto, avec des paramètres pour la commune et le département.
+
+Nous allons démontrer ces fonctions en utilisant des exemples concrets.
+
+# 1. Résumé des informations d'une commune
+
+La fonction `summary.commune()` prend un objet de type `commune` (un `data.frame` contenant les informations des élus d'une commune) et génère un résumé de ces informations, incluant le nom de la commune, le nombre d'élus, la distribution des âges des élus et l'élu le plus âgé.
+
+```{r, echo = TRUE}
+# Exemple d'utilisation de summary.commune
+# Supposons que 'commune_data' est un data.frame représentant une commune
+
+# Création d'un exemple fictif de données pour la commune
+commune_data <- data.frame(
+  Libellé.de.la.commune = "Nantes",
+  Age = c(45, 56, 34, 70, 62),
+  Nom = c("Dupont", "Martin", "Lemoine", "Durand", "Lemoine")
+)
+
+# Résumé de la commune
+summary.commune(commune_data)
+```
+
+Le résumé pour cette commune peut inclure des informations telles que :
+
+- Nom de la commune : Nantes
+- Nombre d'élus : 5
+- Distribution des âges des élus : 45, 56, 34, 70, 62
+- L'élu le plus âgé : Durand (70 ans)
+
+
+# 2. Résumé des informations d'un département
+
+La fonction `summary.departement()` fonctionne de manière similaire mais pour un département entier. Elle prend un objet de type `departement` (un `data.frame` contenant les informations des communes et des élus d'un département) et retourne des statistiques globales sur le département, telles que le nombre de communes, le nombre d'élus, et la distribution des âges des élus.
+
+```{r, echo = TRUE}
+# Exemple d'utilisation de summary.departement
+# Supposons que 'departement_data' est un data.frame représentant un département
+
+# Création d'un exemple fictif de données pour le département
+departement_data <- data.frame(
+  Libellé.du.département = "Loire-Atlantique",
+  Code.de.la.commune = c("44109", "44001", "44110"),
+  Age = c(45, 56, 34, 70, 62),
+  Nom = c("Dupont", "Martin", "Lemoine", "Durand", "Lemoine")
+)
+
+# Résumé du département
+summary.departement(departement_data)
+
+```
+
+Le résumé pour ce département pourrait inclure des informations comme :
+
+- Nom du département : Loire-Atlantique
+- Nombre de communes : 3
+- Nombre d'élus : 5
+- Distribution des âges des élus : 45, 56, 34, 70, 62
+- L'élu le plus âgé : Durand (70 ans)
+- La commune avec la moyenne d'âge la plus basse : Nantes
+- La commune avec la moyenne d'âge la plus élevée : Saint-Nazaire
+
+
+# 3. Générer un rapport d'analyses
+
+La fonction `generer_rapport()` génère un rapport au format PDF en utilisant un fichier Quarto `.qmd`. Elle prend en entrée les codes de la commune et du département, et génère un fichier PDF avec les informations correspondantes.
+
+```{r, echo = TRUE}
+# Exemple d'utilisation de generer_rapport
+# Supposons que nous voulons générer un rapport pour Nantes et Loire-Atlantique
+
+generer_rapport(code_commune = "44109", 
+                code_departement = "44", 
+                output = "rapport_nantes.pdf")
+
+```
+
+Cette fonction crée un fichier PDF appelé `rapport_nantes.pdf` qui inclut des analyses sur la commune de Nantes et le département de Loire-Atlantique. Les données peuvent être ajustées pour correspondre à des valeurs réelles provenant de vos jeux de données.
+
+
+# Conclusion
+
+Nous avons montré comment utiliser les fonctions `summary.commune()`, `summary.departement()`, et `generer_rapport()` pour générer des rapports d'analyses détaillés. Ces fonctions peuvent être adaptées à d'autres communes et départements pour créer des rapports personnalisés.
+
+N'hésitez pas à adapter ces fonctions en fonction de vos propres données pour générer des rapports complets et personnalisés.
