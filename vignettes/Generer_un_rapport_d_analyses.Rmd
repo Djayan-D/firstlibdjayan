@@ -1,11 +1,11 @@
 ---
 title: "Générer un rapport d'analyses"
 author: "DAËRON Djayan"
-format: html # Ou pdf si tu préfères
+format: html
 editor: visual
 vignette: >
   %\VignetteIndexEntry{Générer un rapport d'analyses}
-  %\VignetteEngine{quarto::html_vignette}
+  %\VignetteEngine{quarto::html}
   %\VignetteEncoding{UTF-8}
 ---
 
@@ -21,23 +21,6 @@ knitr::opts_chunk$set(
 library(firstlibdjayan)
 library(dplyr)
 ```
-
----
-title: "Générer un rapport d'analyses"
-author: "DAËRON Djayan"
-format: pdf
-editor: visual
-execute:
-  echo: true  # Affiche le code dans le rapport
-  warning: false  # Masque les avertissements
-  message: false  # Masque les messages
-  collapse: true  # Fusionne code et sortie
-  comment: "#>"  # Préfixe les sorties avec #>
-vignette: >
-  %\VignetteIndexEntry{Générer un rapport d'analyses}
-  %\VignetteEngine{quarto::html_vignette}
-  %\VignetteEncoding{UTF-8}
----
 
 # Introduction
 
@@ -157,13 +140,13 @@ La fonction `generer_rapport()` génère un rapport au format PDF en utilisant u
 # Exemple d'utilisation de generer_rapport
 # Supposons que nous voulons générer un rapport pour Nantes et Loire-Atlantique
 
-generer_rapport(commune = "44109", 
-                departement = "44", 
-                output = "rapport_nantes_et_Loire_Atlantique.pdf")
+generer_rapport(commune = 44109, 
+                departement = 44, 
+                output = "rapport_nantes_et_loire_atlantique.html")
 
 ```
 
-Cette fonction crée un fichier PDF appelé `rapport_nantes.pdf` qui inclut des analyses sur la commune de Nantes et le département de Loire-Atlantique. Les données peuvent être ajustées pour correspondre à des valeurs réelles provenant de vos jeux de données.
+Cette fonction crée un fichier PDF appelé `rapport_nantes_et_loire_atlantique.html` qui inclut des analyses sur la commune de Nantes et le département de Loire-Atlantique. Les données peuvent être ajustées pour correspondre à des valeurs réelles provenant de vos jeux de données.
 
 
 # Conclusion
