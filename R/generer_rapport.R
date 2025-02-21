@@ -14,15 +14,7 @@
 #' @examples
 #' generer_rapport(44109, 44, "rapport_Nantes_et_Loire_Atlantique.html")
 
-generer_rapport <- function(commune, departement, output, df = NULL) {
-  # Charger la base de données par défaut si df n'est pas fourni
-
-  if (is.null(df)) {
-    df <- firstlibdjayan::elus_sample
-    df$Date.de.naissance <- as.Date(df$Date.de.naissance, format = "%d/%m/%Y") #sinon le format pas défaut n'est pas bon
-  }
-
-
+generer_rapport <- function(commune, departement, output, df = elus_sample) {
   # Localiser le fichier .qmd dans le dossier inst
 
   qmd_path <- system.file("rapport.qmd", package = "firstlibdjayan")
