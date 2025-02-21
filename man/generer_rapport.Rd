@@ -4,21 +4,21 @@
 \alias{generer_rapport}
 \title{Générer un rapport à partir d'un fichier Quarto}
 \usage{
-generer_rapport(commune, departement, output)
+generer_rapport(commune, departement, output, df = NULL)
 }
 \arguments{
 \item{commune}{Le code (ex : INSEE) associé à la commune pour laquelle le rapport sera généré.}
 
 \item{departement}{Le code (ex : INSEE) associé au département pour lequel le rapport sera généré.}
 
-\item{output}{Un caractère spécifiant le chemin du fichier de sortie (par exemple, "rapport_nantes.pdf").}
+\item{output}{Un caractère spécifiant le chemin du fichier de sortie (par exemple, "rapport_nantes.html").}
 }
 \value{
-Aucun. La fonction génère un fichier de rapport au format spécifié (par défaut PDF).
+Aucun. La fonction génère un fichier de rapport au format spécifié (par défaut html).
 }
 \description{
 Cette fonction génère un rapport au format PDF à partir d'un fichier Quarto (.qmd) en utilisant les paramètres de la commune et du département fournis.
 }
 \examples{
-generer_rapport(44109, 44, "rapport_Nantes_et_Loire_Atlantique.pdf")
+generer_rapport(44109, 44, "rapport_Nantes_et_Loire_Atlantique.html")
 }
