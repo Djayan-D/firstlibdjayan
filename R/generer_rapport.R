@@ -16,7 +16,9 @@
 
 generer_rapport <- function(commune, departement, output, df = elus_sample) {
   # Déterminer le chemin du fichier Quarto
+
   qmd_path <- system.file("rapport.qmd", package = "firstlibdjayan")
+
 
   # Vérifier si df est "elus_sample"
 
@@ -27,7 +29,9 @@ generer_rapport <- function(commune, departement, output, df = elus_sample) {
     dataframe_param <- "temp_dataframe.RData"
   }
 
+
   # Exécuter le rendu du rapport avec Quarto
+
   quarto::quarto_render(
     input = qmd_path,
     output_format = "html",
@@ -39,9 +43,11 @@ generer_rapport <- function(commune, departement, output, df = elus_sample) {
     )
   )
 
-  # Supprimer le fichier temporaire après le rendu, si nécessaire
+
+  # Supprimer le fichier temporaire après le rendu
+
   if (!identical(df, elus_sample)) {
-    file.remove("temp_dataframe.RData")
+    file.remove("data/temp_dataframe.RData")
   }
 
   message("Le rapport a été généré avec succès.")
