@@ -23,7 +23,7 @@ generer_rapport <- function(commune, departement, output, df = elus_sample) {
   if (identical(df, elus_sample)) {
     dataframe_param <- "elus_sample"  # Nom directement pour Quarto
   } else {
-    save(df, file = "temp_dataframe.RData")  # Sauvegarde temporaire
+    save(df, file = "data/temp_dataframe.RData")  # Sauvegarde temporaire
     dataframe_param <- "temp_dataframe.RData"
   }
 
