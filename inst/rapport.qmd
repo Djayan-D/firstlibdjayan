@@ -5,7 +5,7 @@ format: html
 params:
   code_commune: 44109   # Code de la commune (par exemple, Nantes)
   code_departement: 44  # Code du département (par exemple, Loire-Atlantique)
-  dataframe: departement_data
+  dataframe: "data/elus_sample.rda"
 ---
 
 
@@ -22,7 +22,11 @@ library(firstlibdjayan)
 
 # Chargement des données
 ```{r}
-data <- get(params$dataframe)
+env <- new.env()
+
+load(params$dataframe, envir = env)
+
+data <- get(df_name, envir = env)
 
 if (params$dataframe == "elus_sample") {
   data$Date.de.naissance <- as.Date(data$Date.de.naissance, format = "%d/%m/%Y") #bon format

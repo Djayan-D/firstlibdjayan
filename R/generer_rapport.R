@@ -15,18 +15,26 @@
 #' generer_rapport(44109, 44, "rapport_Nantes_et_Loire_Atlantique.html")
 
 generer_rapport <- function(commune, departement, output, df = elus_sample) {
+  # Vérifier si df est un dataframe
+
+  if (!is.data.frame(df)) {
+    stop("Le paramètre 'df' doit être un dataframe.")
+  }
+
+
   # Déterminer le chemin du fichier Quarto
 
   qmd_path <- system.file("rapport.qmd", package = "firstlibdjayan")
 
 
-  # Vérifier si df est "elus_sample"
+  # Faire une sauvegarde temporaire si df n'est pas "elus_sample"
 
   if (identical(df, elus_sample)) {
-    dataframe_param <- "elus_sample"  # Nom directement pour Quarto
-  } else {
-    save(df, file = "data/temp_dataframe.RData")  # Sauvegarde temporaire
-    dataframe_param <- "temp_dataframe.RData"
+
+    save_path <- "data/elus_sample.rda"} else {
+
+    save_path <- paste0("data/temp_", deparse(substitute(df)), ".rda")
+    save(df, file = save_path)
   }
 
 
@@ -39,7 +47,7 @@ generer_rapport <- function(commune, departement, output, df = elus_sample) {
     execute_params = list(
       code_commune = commune,
       code_departement = departement,
-      dataframe_path = dataframe_param
+      dataframe = save_path
     )
   )
 
@@ -47,7 +55,7 @@ generer_rapport <- function(commune, departement, output, df = elus_sample) {
   # Supprimer le fichier temporaire après le rendu
 
   if (!identical(df, elus_sample)) {
-    file.remove("data/temp_dataframe.RData")
+    file.remove(save_path)
   }
 
   message("Le rapport a été généré avec succès.")
