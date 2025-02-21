@@ -5,6 +5,7 @@ format: html
 params:
   code_commune: 44109   # Code de la commune (par exemple, Nantes)
   code_departement: 44  # Code du département (par exemple, Loire-Atlantique)
+  dataframe: NULL
 ---
 
 
@@ -21,12 +22,7 @@ library(firstlibdjayan)
 
 # Chargement des données
 ```{r}
-data <- elus_sample
-```
-
-# Conversion du type de données
-```{r}
-data$Date.de.naissance <- as.Date(data$Date.de.naissance)
+data <- as.data.frame(params$dataframe)
 ```
 
 # Filtrage des données par commune et département

@@ -9,57 +9,68 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
+  collapse = TRUE,     # Permet de regrouper plusieurs lignes de code
+  comment = "#>",      # Utilisation du symbole "#>" pour commenter le code dans les chunks
+  warning = FALSE,     # Empêche l'affichage des warnings
+  message = FALSE      # Empêche l'affichage des messages
 )
 ```
 
 ```{r setup}
-library(firstlibdjayan)
-library(dplyr)
+suppressMessages(library(firstlibdjayan))
+suppressMessages(library(dplyr))
 ```
 
 # Introduction
 
-Dans cette vignette, nous allons explorer l'utilisation des fonctions suivantes :
+Dans cette vignette, nous allons explorer l'utilisation de plusieurs fonctions utiles qui permettent d'analyser et de générer des rapports à partir de données relatives aux communes et aux départements. Nous allons démontrer ces fonctions avec des exemples pratiques et des données fictives pour vous montrer leur efficacité et leur facilité d'utilisation.
 
-- `summary.commune()` : Cette fonction génère un résumé des informations pour une commune donnée.
-- `summary.departement()` : Cette fonction génère un résumé des informations pour un département donné.
-- `generer_rapport()` : Cette fonction génère un rapport au format PDF en utilisant un fichier Quarto, avec des paramètres pour la commune et le département.
+Les fonctions que nous allons aborder sont :
 
-Nous allons démontrer ces fonctions en utilisant des exemples concrets.
+- **`summary.commune()`** : Cette fonction génère un résumé détaillé des informations relatives à une commune donnée. Elle permet de connaître des statistiques sur les élus de la commune, telles que leur âge moyen, la distribution des âges et l'élu le plus âgé, entre autres informations utiles pour une analyse locale.
+
+- **`summary.departement()`** : De manière similaire à `summary.commune()`, cette fonction génère un résumé pour un département entier. Elle permet d'obtenir une vue d'ensemble des statistiques relatives à toutes les communes du département, y compris la répartition des âges des élus, le nombre de communes et le nombre total d'élus.
+
+- **`generer_rapport()`** : Cette fonction plus avancée permet de générer un rapport au format PDF en utilisant un fichier Quarto. Elle prend en entrée les informations sur la commune et le département, et génère un rapport structuré contenant les analyses réalisées avec les deux premières fonctions.
+
+Nous allons démontrer l'utilisation de ces fonctions à travers des exemples concrets, en travaillant avec des données fictives et en générant un rapport complet pour une commune et un département spécifiques.
+
 
 # 1. Résumé des informations d'une commune
 
-La fonction `summary.commune()` prend un objet de type `commune` (un `data.frame` contenant les informations des élus d'une commune) et génère un résumé de ces informations, incluant le nom de la commune, le nombre d'élus, la distribution des âges des élus et l'élu le plus âgé.
+La fonction `summary.commune()` permet de générer un résumé des informations pour une commune donnée. Elle prend en entrée un objet de type `commune` (un `data.frame` contenant les informations des élus d'une commune) et génère un résumé incluant :
 
-```{r, echo = TRUE}
-# Exemple d'utilisation de summary.commune
-# Supposons que 'commune_data' est un data.frame représentant une commune
+- Le nom de la commune
+- Le nombre d'élus
+- La distribution des âges des élus
+- L'élu le plus âgé
 
-# Création d'un exemple fictif de données pour la commune
+### Exemple d'utilisation de `summary.commune`
+
+```{r}
+# Création d'un data.frame pour la commune de Gotham City
+
 commune_data <- data.frame(
-  Code.du.département = rep(45, 10),
-  Libellé.du.département = rep("Loiret", 10),
-  Code.de.la.commune = rep(45141, 10),
-  Libellé.de.la.commune = rep("Faverelles", 10),
-  Nom.de.l.élu = c("CHAUX", "COLLE", "DAUBRY", "EUGENE", "GOIRAND", 
-                  "LECUYER", "LETEUR", "MARET", "MARIE-LOUISE", "PIERROT"),
-  Prénom.de.l.élu = c("Annie", "Sylvain", "Christiane", "Jacques", "Dominique", 
-                     "Frédérique", "Manuel", "Frédérick", "Joëlle", "Pascal"),
-  Date.de.naissance = as.Date(c("1954-09-30", "1982-10-22", "1952-11-26", "1951-07-14", 
-                                "1962-04-20", "1963-03-25", "1965-12-15", "1975-11-08", 
-                                "1964-08-04", "1966-04-01")),
-  Age = c(75, 37, 71, 74, 23, 48, 12, 52, 85, 38),
-  Code.de.la.catégorie.socio.professionnelle = c(18, 3, 7, 5, 3, 4, 2, 1, 13, 11),
-  Libellé.de.la.fonction = c(NA, NA, "2ème adjoint au Maire", "Maire", NA, NA, "1er adjoint au Maire", NA, NA, NA),
-  Date.de.mise.en.place = as.Date(c("2020-05-18", "2020-05-18", "2020-05-23", "2020-05-23", "2020-05-18", 
-                                   "2020-05-18", "2020-05-23", "2020-05-18", "2020-05-18", "2020-05-18")),
-  Code.pays = rep("FR", 10),
-  stringsAsFactors = FALSE
+  Code.du.département = rep(23, 10),
+  Libellé.du.département = rep("Creuse", 10),
+  Code.de.la.commune = rep(23666, 10),
+  Libellé.de.la.commune = rep("Gotham City", 10),
+  Nom.de.l.élu = c("EINSTEIN", "POTTER", "MUSK", "MONROE", "HOLMES", 
+                   "BONAPARTE", "MACRON", "ZINEDINE", "WAYNE", "WILLIAMS"),
+  Prénom.de.l.élu = c("Albert", "Harry", "Elon", "Marilyn", "Sherlock", 
+                      "Napoléon", "Emmanuel", "Zidane", "Bruce", "Serena"),
+  Date.de.naissance = as.Date(c("14/03/1879", "31/07/1980", "28/06/1971",
+                                "01/06/1926", "06/01/1854", "15/08/1769", 
+                                "04/09/1981", "06/07/1907", "19/02/1911",
+                                "26/09/1981"),
+                              format = "%d/%m/%Y"),
+  Code.de.la.catégorie.socio.professionnelle = c(2310, 321, 372, 2330, 321, 
+                                                 3110, 3530, 4120, 456, 4120),
+  Libellé.de.la.fonction = c("", "Maire", "1er adjoint au Maire", "", "", "", 
+                             "", "2e adjoint au Maire", "3e adjoint au Maire", 
+                             "")
 )
 
 
@@ -73,84 +84,127 @@ commune_data <- creer_commune(commune_data)
 summary(commune_data)
 ```
 
-Le résumé pour cette commune peut inclure des informations telles que :
+### Résumé pour la commune de Gotham City  
 
-- Nom de la commune : Faverelles
-- Nombre d'élus : 5
-- Distribution des âges des élus : 45, 56, 34, 70, 62
-- L'élu le plus âgé : Durand (70 ans)
+Le résumé des informations pour la commune de **Gotham City** est généré dynamiquement et peut évoluer en fonction de la date d'exécution. Voici les principaux résultats :  
+
+- **Nom de la commune :** Gotham City  
+- **Nombre d'élus :** 10  
+- **Distribution des âges des élus :**  
+    - **Âge minimum (Q0) :** 43 ans  
+    - **Premier quartile (Q25) :** 46,25 ans  
+    - **Médiane (Q50) :** 106 ans  
+    - **Troisième quartile (Q75) :** 138 ans  
+    - **Âge maximum (Q100) :** 255 ans  
+- **L'élu le plus âgé :** Napoléon Bonaparte, **255 ans** (au moment de l'exécution)  
+
+L'âge des élus est calculé en fonction de la date d'exécution du programme, ce qui signifie que les valeurs évolueront naturellement avec le temps. Cependant, la liste des élus et leurs fonctions restent fixes (à moins qu'un coup d'État ne survienne à Gotham...).
+
+
+
 
 
 # 2. Résumé des informations d'un département
 
-La fonction `summary.departement()` fonctionne de manière similaire mais pour un département entier. Elle prend un objet de type `departement` (un `data.frame` contenant les informations des communes et des élus d'un département) et retourne des statistiques globales sur le département, telles que le nombre de communes, le nombre d'élus, et la distribution des âges des élus.
+La fonction `summary.departement()` permet de générer un résumé des informations pour un département donné. Elle prend en entrée un objet de type `departement` (un `data.frame` contenant les informations des communes et des élus d'un département) et génère un résumé incluant :
 
-```{r, echo = TRUE}
-# Exemple d'utilisation de summary.departement
-# Supposons que 'departement_data' est un data.frame représentant un département
+- Le nom du département
+- Le nombre de communes
+- Le nombre total d'élus
+- La distribution des âges des élus
+- L'élu le plus âgé
+- La commune avec la moyenne d'âge la plus basse
+- La commune avec la moyenne d'âge la plus élevée
 
-# Création d'un exemple fictif de données pour le département
+---
+
+### Exemple d'utilisation de `summary.departement()`
+
+```{r}
+# Création d'un data.frame pour le département de Mordor
+
 departement_data <- data.frame(
-  Code.du.département = rep(45, 10),
-  Libellé.du.département = rep("Loiret", 10),
-  Code.de.la.commune = rep(45141, 10),
-  Libellé.de.la.commune = rep("Faverelles", 10),
-  Nom.de.l.élu = c("CHAUX", "COLLE", "DAUBRY", "EUGENE", "GOIRAND", 
-                  "LECUYER", "LETEUR", "MARET", "MARIE-LOUISE", "PIERROT"),
-  Prénom.de.l.élu = c("Annie", "Sylvain", "Christiane", "Jacques", "Dominique", 
-                     "Frédérique", "Manuel", "Frédérick", "Joëlle", "Pascal"),
-  Date.de.naissance = as.Date(c("1954-09-30", "1982-10-22", "1952-11-26", "1951-07-14", 
-                                "1962-04-20", "1963-03-25", "1965-12-15", "1975-11-08", 
-                                "1964-08-04", "1966-04-01")),
-  Age = c(75, 37, 71, 74, 23, 48, 12, 52, 85, 38),
-  Code.de.la.catégorie.socio.professionnelle = c(18, 3, 7, 5, 3, 4, 2, 1, 13, 11),
-  Libellé.de.la.fonction = c(NA, NA, "2ème adjoint au Maire", "Maire", NA, NA, "1er adjoint au Maire", NA, NA, NA),
-  Date.de.mise.en.place = as.Date(c("2020-05-18", "2020-05-18", "2020-05-23", "2020-05-23", "2020-05-18", 
-                                   "2020-05-18", "2020-05-23", "2020-05-18", "2020-05-18", "2020-05-18")),
-  Code.pays = rep("FR", 10),
-  stringsAsFactors = FALSE
+  Code.du.département = rep(99, 10),
+  Libellé.du.département = rep("Mordor", 10),
+  Code.de.la.commune = c(rep(99901,2), rep(99902,3), rep(99903,5)),
+  Libellé.de.la.commune = c(rep("Metropolis",2), rep("Hogwarts",3), rep("Wakanda",5)),
+  Nom.de.l.élu = c("DICAPRIO", "CHURCHILL", "LE GRIS", "JORDAN", "SARTRE", 
+                   "LIONEL", "PAN", "BOND", "DE GAULLE", "CHANEL"),
+  Prénom.de.l.élu = c("Leonardo", "Winston", "Gandalf", "Michael", "Jean-Paul", 
+                      "Lionel", "Peter", "James", "Charles", "Coco"),
+  Date.de.naissance = as.Date(c("11/11/1974", "30/11/1874", "01/01/1000", "17/02/1963",
+                                "21/06/1905", "24/06/1987", "10/12/1990", "13/04/1962",
+                                "22/11/1890", "19/08/1883"),
+                              format = "%d/%m/%Y"),
+  Code.de.la.catégorie.socio.professionnelle = c(2, 1, 7, 3, 7, 2, 7, 7, 1, 2),
+  Libellé.de.la.fonction = c("Maire", "1er adjoint au Maire", "", "2e adjoint au Maire",
+                             "", "", "", "3e adjoint au Maire", "", "")
 )
 
 
-# Attribuer la classe département
+# Attribuer la classe "departement"
 
 departement_data <- creer_departement(departement_data)
 
 
 # Résumé du département
+
 summary(departement_data)
 ```
 
-Le résumé pour ce département pourrait inclure des informations comme :
+### Résumé pour le département de Mordor  
 
-- Nom du département : Loire-Atlantique
-- Nombre de communes : 3
-- Nombre d'élus : 5
-- Distribution des âges des élus : 45, 56, 34, 70, 62
-- L'élu le plus âgé : Durand (70 ans)
-- La commune avec la moyenne d'âge la plus basse : Nantes
-- La commune avec la moyenne d'âge la plus élevée : Saint-Nazaire
+Le résumé des informations pour le département de **Mordor** est généré dynamiquement et peut évoluer en fonction de la date d'exécution. Voici les principaux résultats :  
 
+- **Nom du département :** Mordor  
+- **Nombre de communes :** 3  
+- **Nombre d'élus :** 10  
+- **Distribution des âges des élus :**  
+    - **Âge minimum (Q0) :** 34 ans  
+    - **Premier quartile (Q25) :** 53 ans  
+    - **Médiane (Q50) :** 90,5 ans  
+    - **Troisième quartile (Q75) :** 139,25 ans  
+    - **Âge maximum (Q100) :** 1025 ans  
+- **L'élu le plus âgé :** LE GRIS, **1025 ans**
+- **L'élu le plus jeune :** PAN, **34 ans**
+- **La commune avec la moyenne d'âge la plus basse :** Wakanda  
+  - **Distribution des âges des élus :**  
+      - **Âge minimum (Q0) :** 34 ans  
+      - **Premier quartile (Q25) :** 37 ans  
+      - **Médiane (Q50) :** 62 ans  
+      - **Troisième quartile (Q75) :** 134 ans  
+      - **Âge maximum (Q100) :** 141 ans  
+
+- **La commune avec la moyenne d'âge la plus élevée :** Hogwarts  
+  - **Distribution des âges des élus :**  
+      - **Âge minimum (Q0) :** 62 ans  
+      - **Premier quartile (Q25) :** 90,5 ans  
+      - **Médiane (Q50) :** 119 ans  
+      - **Troisième quartile (Q75) :** 572 ans  
+      - **Âge maximum (Q100) :** 1025 ans
+
+Les âges des élus sont calculés en fonction de la date d'exécution du programme, ce qui signifie que les valeurs évolueront naturellement avec le temps. Cependant, la liste des élus et leurs fonctions restent fixes (à moins qu'un incident ne survienne dans le Mordor...).
 
 # 3. Générer un rapport d'analyses
 
-La fonction `generer_rapport()` génère un rapport au format PDF en utilisant un fichier Quarto `.qmd`. Elle prend en entrée les codes de la commune et du département, et génère un fichier PDF avec les informations correspondantes.
+La fonction `generer_rapport()` permet de générer un rapport au format **HTML** en utilisant un fichier Quarto `.qmd`. Elle prend en entrée les codes de la commune et du département, ainsi qu'un `data.frame` contenant les données à utiliser. Si aucun `data.frame` n'est précisé, celui par défaut sera utilisé.
 
-```{r, echo = TRUE}
+### Exemple d'utilisation de `generer_rapport`
+
+```{r}
 # Exemple d'utilisation de generer_rapport
-# Supposons que nous voulons générer un rapport pour Nantes et Loire-Atlantique
+# Supposons que nous voulons générer un rapport pour Gotham City (commune) et Mordor (département)
 
-generer_rapport(commune = 44109, 
-                departement = 44, 
-                output = "rapport_nantes_et_loire_atlantique.html")
+# Utilisation du df de base
+generer_rapport(commune = 23666, 
+                departement = 23, 
+                output = "rapport_gotham_city_mordor.html")
 
-```
+# Si un data.frame spécifique est souhaité, on peut le préciser
+generer_rapport(commune = 23666, 
+                departement = 23, 
+                df = commune_data, 
+                output = "rapport_gotham_city_mordor_df_specifie.html")
 
-Cette fonction crée un fichier PDF appelé `rapport_nantes_et_loire_atlantique.html` qui inclut des analyses sur la commune de Nantes et le département de Loire-Atlantique. Les données peuvent être ajustées pour correspondre à des valeurs réelles provenant de vos jeux de données.
 
 
-# Conclusion
-
-Nous avons montré comment utiliser les fonctions `summary.commune()`, `summary.departement()`, et `generer_rapport()` pour générer des rapports d'analyses détaillés. Ces fonctions peuvent être adaptées à d'autres communes et départements pour créer des rapports personnalisés.
-
-N'hésitez pas à adapter ces fonctions en fonction de vos propres données pour générer des rapports complets et personnalisés.

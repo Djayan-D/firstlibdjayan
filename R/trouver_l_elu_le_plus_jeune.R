@@ -11,12 +11,19 @@
 #' - `prénom` : Le prénom de l'élu le plus jeune,
 #' - `age` : L'âge de l'élu le plus jeune en années.
 #' @importFrom dplyr arrange slice_tail mutate
-#' @importFrom lubridate today interval
+#' @importFrom lubridate today interval is.Date
 
 trouver_l_elu_le_plus_jeune <- function(df) {
   # Vérifier que le DataFrame respecte la structure minimale
 
   validate_schema(df)
+
+
+  # Vérifier que la colonne Date.de.naissance est bien en type "Date"
+
+  if (!all(lubridate::is.Date(df$Date.de.naissance))) {
+    stop("Le format des dates de naissance n'est pas correct. Veuillez vous assurer que la colonne 'Date.de.naissance' est de type 'Date'.")
+  }
 
 
   # Extraire l'individu le plus jeune

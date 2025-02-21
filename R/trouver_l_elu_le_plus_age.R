@@ -11,12 +11,19 @@
 #' - `prénom` : Le prénom de l'élu
 #' - `age` : L'âge de l'élu en années
 #' @importFrom dplyr arrange slice_head mutate
-#' @importFrom lubridate interval today as.period
+#' @importFrom lubridate interval today as.period is.Date
 
 trouver_l_elu_le_plus_age <- function(df) {
   # Vérifier que le DataFrame respecte la structure minimale
 
   validate_schema(df)
+
+
+  # Vérifier que la colonne Date.de.naissance est bien en type "Date"
+
+  if (!all(lubridate::is.Date(df$Date.de.naissance))) {
+    stop("Le format des dates de naissance n'est pas correct. Veuillez vous assurer que la colonne 'Date.de.naissance' est de type 'Date'.")
+  }
 
 
   # Extraire l'individu le plus âgé

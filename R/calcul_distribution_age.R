@@ -19,6 +19,13 @@ calcul_distribution_age <- function(df) {
   validate_schema(df)
 
 
+  # Vérifier que la colonne "Date.de.naissance" est bien de type Date
+
+  if (!inherits(df$Date.de.naissance, "Date")) {
+    stop("Erreur : La colonne 'Date.de.naissance' doit être de type Date.")
+  }
+
+
   # Calculer les âges en années
 
   ages <- as.period(interval(df$Date.de.naissance, today()),
