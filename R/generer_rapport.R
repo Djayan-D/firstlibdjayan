@@ -15,22 +15,37 @@
 #' generer_rapport(44109, 44, "rapport_Nantes_et_Loire_Atlantique.html")
 
 generer_rapport <- function(commune, departement, output, df = elus_sample) {
-  # Localiser le fichier .qmd dans le dossier inst
-
+  # Déterminer le chemin du fichier Quarto
   qmd_path <- system.file("rapport.qmd", package = "firstlibdjayan")
 
+  # Vérifier si df est "elus_sample"
 
-  # Générer le rapport à l'aide de Quarto
+  if (identical(df, elus_sample)) {
+    dataframe_param <- "elus_sample"  # Nom directement pour Quarto
+  } else {
+    save(df, file = "temp_dataframe.RData")  # Sauvegarde temporaire
+    dataframe_param <- "temp_dataframe.RData"
+  }
 
-  quarto::quarto_render(input = qmd_path,
-                        output_format = "html",
-                        output_file = output,
-                        execute_params = list(code_commune = commune,
-                                              code_departement = departement,
-                                              dataframe = df))
+  # Exécuter le rendu du rapport avec Quarto
+  quarto::quarto_render(
+    input = qmd_path,
+    output_format = "html",
+    output_file = output,
+    execute_params = list(
+      code_commune = commune,
+      code_departement = departement,
+      dataframe_path = dataframe_param
+    )
+  )
 
-  # Renvoyer un message pour confirmer la génération
+  # Supprimer le fichier temporaire après le rendu, si nécessaire
+  if (!identical(df, elus_sample)) {
+    file.remove("temp_dataframe.RData")
+  }
+
   message("Le rapport a été généré avec succès.")
 }
+
 
 
