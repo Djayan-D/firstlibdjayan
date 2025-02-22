@@ -22,20 +22,26 @@ generer_rapport <- function(commune, departement, output, df = elus_sample) {
   }
 
 
+  # Vérifier si df est identique à elus_sample
+
+  if (identical(df, elus_sample)) {
+    df_name <- "elus_sample"
+    # Si c'est elus_sample, on suppose qu'il est déjà accessible dans le package
+    save_path <- file.path("data", "elus_sample.rds")
+  } else {
+    df_name <- deparse(substitute(df))
+    # Utiliser tempdir() pour un fichier temporaire accessible lors du rendu
+    save_path <- file.path(tempdir(), paste0("temp_", df_name, ".rds"))
+    saveRDS(df, file = save_path)
+  }
+
+
+
+
+
   # Déterminer le chemin du fichier Quarto
 
   qmd_path <- system.file("rapport.qmd", package = "firstlibdjayan")
-
-
-  # Faire une sauvegarde temporaire si df n'est pas "elus_sample"
-
-  if (identical(df, elus_sample)) {
-
-    save_path <- "data/elus_sample.rda"} else {
-
-    save_path <- paste0("data/temp_", deparse(substitute(df)), ".rda")
-    save(df, file = save_path)
-  }
 
 
   # Exécuter le rendu du rapport avec Quarto
@@ -47,16 +53,10 @@ generer_rapport <- function(commune, departement, output, df = elus_sample) {
     execute_params = list(
       code_commune = commune,
       code_departement = departement,
-      dataframe = save_path
+      dataframe_name = df_name,
+      dataframe_path = save_path
     )
   )
-
-
-  # Supprimer le fichier temporaire après le rendu
-
-  if (!identical(df, elus_sample)) {
-    file.remove(save_path)
-  }
 
   message("Le rapport a été généré avec succès.")
 }

@@ -5,7 +5,8 @@ format: html
 params:
   code_commune: 44109   # Code de la commune (par exemple, Nantes)
   code_departement: 44  # Code du département (par exemple, Loire-Atlantique)
-  dataframe: "data/elus_sample.rda"
+  dataframe_name: NULL
+  dataframe_path: NULL
 ---
 
 
@@ -21,16 +22,17 @@ library(firstlibdjayan)
 ```
 
 # Chargement des données
-```{r}
-env <- new.env()
+```{r setup, include=FALSE}
+# Charger le fichier temporaire si ce n'est pas "elus_sample"
 
-load(params$dataframe, envir = env)
-
-data <- get(df_name, envir = env)
-
-if (params$dataframe == "elus_sample") {
-  data$Date.de.naissance <- as.Date(data$Date.de.naissance, format = "%d/%m/%Y") #bon format
-  }
+if (params$dataframe_name == "elus_sample") {
+  data <- elus_sample  # Utilise directement elus_sample
+  
+  data$Date.de.naissance <- as.Date(data$Date.de.naissance, format = "%d/%m/%Y")
+} else {
+  # Charge le fichier sauvegardé en utilisant le chemin passé en paramètre
+  data <- readRDS(normalizePath(params$dataframe_path, mustWork = TRUE))
+}
 ```
 
 # Filtrage des données par commune et département
