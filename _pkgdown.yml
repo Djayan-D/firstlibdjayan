@@ -2,3 +2,21 @@ url: https://djayan-d.github.io/firstlibdjayan/
 template:
   bootstrap: 5
 
+navbar:
+  title: "FirstLibDjayan"
+  menu:
+    - text: "Home"
+      href: "index.html"
+    - text: "Functions"
+      href: "reference/index.html"
+    - text: "Articles"
+      href: "articles/index.html"
+    - text: "Vignette"
+      href: "vignettes/Generer_un_rapport_d_analyses.html"
+
+
+navbar:
+  logo:
+    text: "FirstLibDjayan"
+    href: "index.html"
+    image: "inst/www/logo_djayan.png"
