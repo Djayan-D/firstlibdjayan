@@ -3,20 +3,16 @@ template:
   bootstrap: 5
 
 navbar:
-  title: "FirstLibDjayan"
+  title: "FirstLibDjayan"  # Titre de ton site
+  logo:
+    text: "FirstLibDjayan"  # Texte alternatif pour le logo
+    href: "index.html"  # Lien de la page d'accueil
   menu:
-    logo:
-      text: "FirstLibDjayan"
+    - text: "Home"  # Lien vers la page d'accueil
       href: "index.html"
-    - text: "Home"
-      href: "index.html"
-    - text: "Functions"
+    - text: "Functions"  # Lien vers la page des fonctions
       href: "reference/index.html"
-    - text: "Articles"
+    - text: "Articles"  # Lien vers la page des articles
       href: "articles/index.html"
-    - text: "Vignette"
+    - text: "Vignette"  # Lien vers la vignette
       href: "vignettes/Generer_un_rapport_d_analyses.html"
-
-
-
-
