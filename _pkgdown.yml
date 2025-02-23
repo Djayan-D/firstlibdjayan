@@ -2,7 +2,3 @@ url: https://djayan-d.github.io/firstlibdjayan/
 template:
   bootstrap: 5
 
-articles:
-  - title: "Tutoriels"
-    contents:
-      - Generer_un_rapport_d_analyses
