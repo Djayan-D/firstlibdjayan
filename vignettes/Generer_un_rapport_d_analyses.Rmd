@@ -192,7 +192,7 @@ La fonction `generer_rapport()` permet de générer un rapport au format **HTML*
 ### Exemple d'utilisation de `generer_rapport`
 
 ```{r}
-# Exemple d'utilisation de generer_rapport
+# Exemple d'utilisation de generer_rapport 
 # Supposons que nous voulons générer un rapport pour Gotham City (commune) et Mordor (département)
 
 # Utilisation du df de base
