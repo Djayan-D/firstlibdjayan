@@ -16,3 +16,10 @@ navbar:
       href: "articles/index.html"
     - text: "Vignette"  # Lien vers la vignette
       href: "vignettes/Generer_un_rapport_d_analyses.html"
+
+
+  # Couleur du fond de la navbar
+  background: "#000F22"
+
+  # Couleur des liens dans la navbar
+  text_color: "#ffffff"
