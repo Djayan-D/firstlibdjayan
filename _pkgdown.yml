@@ -5,6 +5,9 @@ template:
 navbar:
   title: "FirstLibDjayan"
   menu:
+    logo:
+      text: "FirstLibDjayan"
+      href: "index.html"
     - text: "Home"
       href: "index.html"
     - text: "Functions"
@@ -15,8 +18,5 @@ navbar:
       href: "vignettes/Generer_un_rapport_d_analyses.html"
 
 
-navbar:
-  logo:
-    text: "FirstLibDjayan"
-    href: "index.html"
-    image: "inst/www/logo_djayan.png"
+
+
