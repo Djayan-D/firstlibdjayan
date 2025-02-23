@@ -2,3 +2,24 @@ url: https://djayan-d.github.io/firstlibdjayan/
 template:
   bootstrap: 5
 
+navbar:
+  title: "FirstLibDjayan"  # Titre de ton site
+  logo:
+    text: "FirstLibDjayan"  # Texte alternatif pour le logo
+    href: "index.html"  # Lien de la page d'accueil
+  menu:
+    - text: "Home"  # Lien vers la page d'accueil
+      href: "index.html"
+    - text: "Functions"  # Lien vers la page des fonctions
+      href: "reference/index.html"
+    - text: "Articles"  # Lien vers la page des articles
+      href: "articles/index.html"
+    - text: "Vignette"  # Lien vers la vignette
+      href: "vignettes/Generer_un_rapport_d_analyses.html"
+
+
+  # Couleur du fond de la navbar
+  background: "#000F22"
+
+  # Couleur des liens dans la navbar
+  text_color: "#ffffff"
