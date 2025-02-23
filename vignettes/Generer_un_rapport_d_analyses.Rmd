@@ -9,22 +9,36 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+<<<<<<< HEAD
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,     # Permet de regrouper plusieurs lignes de code
   comment = "#>",      # Utilisation du symbole "#>" pour commenter le code dans les chunks
   warning = FALSE,     # Empêche l'affichage des warnings
   message = FALSE      # Empêche l'affichage des messages
+=======
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+>>>>>>> gh-pages
 )
 ```
 
 ```{r setup}
+<<<<<<< HEAD
 suppressMessages(library(firstlibdjayan))
 suppressMessages(library(dplyr))
+=======
+library(firstlibdjayan)
+library(dplyr)
+>>>>>>> gh-pages
 ```
 
 # Introduction
 
+<<<<<<< HEAD
 Dans cette vignette, nous allons explorer l'utilisation de plusieurs fonctions utiles qui permettent d'analyser et de générer des rapports à partir de données relatives aux communes et aux départements. Nous allons démontrer ces fonctions avec des exemples pratiques et des données fictives pour vous montrer leur efficacité et leur facilité d'utilisation.
 
 Les fonctions que nous allons aborder sont :
@@ -71,6 +85,44 @@ commune_data <- data.frame(
   Libellé.de.la.fonction = c("", "Maire", "1er adjoint au Maire", "", "", "", 
                              "", "2e adjoint au Maire", "3e adjoint au Maire", 
                              "")
+=======
+Dans cette vignette, nous allons explorer l'utilisation des fonctions suivantes :
+
+- `summary.commune()` : Cette fonction génère un résumé des informations pour une commune donnée.
+- `summary.departement()` : Cette fonction génère un résumé des informations pour un département donné.
+- `generer_rapport()` : Cette fonction génère un rapport au format PDF en utilisant un fichier Quarto, avec des paramètres pour la commune et le département.
+
+Nous allons démontrer ces fonctions en utilisant des exemples concrets.
+
+# 1. Résumé des informations d'une commune
+
+La fonction `summary.commune()` prend un objet de type `commune` (un `data.frame` contenant les informations des élus d'une commune) et génère un résumé de ces informations, incluant le nom de la commune, le nombre d'élus, la distribution des âges des élus et l'élu le plus âgé.
+
+```{r, echo = TRUE}
+# Exemple d'utilisation de summary.commune
+# Supposons que 'commune_data' est un data.frame représentant une commune
+
+# Création d'un exemple fictif de données pour la commune
+commune_data <- data.frame(
+  Code.du.département = rep(45, 10),
+  Libellé.du.département = rep("Loiret", 10),
+  Code.de.la.commune = rep(45141, 10),
+  Libellé.de.la.commune = rep("Faverelles", 10),
+  Nom.de.l.élu = c("CHAUX", "COLLE", "DAUBRY", "EUGENE", "GOIRAND", 
+                  "LECUYER", "LETEUR", "MARET", "MARIE-LOUISE", "PIERROT"),
+  Prénom.de.l.élu = c("Annie", "Sylvain", "Christiane", "Jacques", "Dominique", 
+                     "Frédérique", "Manuel", "Frédérick", "Joëlle", "Pascal"),
+  Date.de.naissance = as.Date(c("1954-09-30", "1982-10-22", "1952-11-26", "1951-07-14", 
+                                "1962-04-20", "1963-03-25", "1965-12-15", "1975-11-08", 
+                                "1964-08-04", "1966-04-01")),
+  Age = c(75, 37, 71, 74, 23, 48, 12, 52, 85, 38),
+  Code.de.la.catégorie.socio.professionnelle = c(18, 3, 7, 5, 3, 4, 2, 1, 13, 11),
+  Libellé.de.la.fonction = c(NA, NA, "2ème adjoint au Maire", "Maire", NA, NA, "1er adjoint au Maire", NA, NA, NA),
+  Date.de.mise.en.place = as.Date(c("2020-05-18", "2020-05-18", "2020-05-23", "2020-05-23", "2020-05-18", 
+                                   "2020-05-18", "2020-05-23", "2020-05-18", "2020-05-18", "2020-05-18")),
+  Code.pays = rep("FR", 10),
+  stringsAsFactors = FALSE
+>>>>>>> gh-pages
 )
 
 
@@ -84,6 +136,7 @@ commune_data <- creer_commune(commune_data)
 summary(commune_data)
 ```
 
+<<<<<<< HEAD
 ### Résumé pour la commune de Gotham City  
 
 Le résumé des informations pour la commune de **Gotham City** est généré dynamiquement et peut évoluer en fonction de la date d'exécution. Voici les principaux résultats :  
@@ -102,10 +155,19 @@ L'âge des élus est calculé en fonction de la date d'exécution du programme, 
 
 
 
+=======
+Le résumé pour cette commune peut inclure des informations telles que :
+
+- Nom de la commune : Faverelles
+- Nombre d'élus : 5
+- Distribution des âges des élus : 45, 56, 34, 70, 62
+- L'élu le plus âgé : Durand (70 ans)
+>>>>>>> gh-pages
 
 
 # 2. Résumé des informations d'un département
 
+<<<<<<< HEAD
 La fonction `summary.departement()` permet de générer un résumé des informations pour un département donné. Elle prend en entrée un objet de type `departement` (un `data.frame` contenant les informations des communes et des élus d'un département) et génère un résumé incluant :
 
 - Le nom du département
@@ -143,11 +205,44 @@ departement_data <- data.frame(
 
 
 # Attribuer la classe "departement"
+=======
+La fonction `summary.departement()` fonctionne de manière similaire mais pour un département entier. Elle prend un objet de type `departement` (un `data.frame` contenant les informations des communes et des élus d'un département) et retourne des statistiques globales sur le département, telles que le nombre de communes, le nombre d'élus, et la distribution des âges des élus.
+
+```{r, echo = TRUE}
+# Exemple d'utilisation de summary.departement
+# Supposons que 'departement_data' est un data.frame représentant un département
+
+# Création d'un exemple fictif de données pour le département
+departement_data <- data.frame(
+  Code.du.département = rep(45, 10),
+  Libellé.du.département = rep("Loiret", 10),
+  Code.de.la.commune = rep(45141, 10),
+  Libellé.de.la.commune = rep("Faverelles", 10),
+  Nom.de.l.élu = c("CHAUX", "COLLE", "DAUBRY", "EUGENE", "GOIRAND", 
+                  "LECUYER", "LETEUR", "MARET", "MARIE-LOUISE", "PIERROT"),
+  Prénom.de.l.élu = c("Annie", "Sylvain", "Christiane", "Jacques", "Dominique", 
+                     "Frédérique", "Manuel", "Frédérick", "Joëlle", "Pascal"),
+  Date.de.naissance = as.Date(c("1954-09-30", "1982-10-22", "1952-11-26", "1951-07-14", 
+                                "1962-04-20", "1963-03-25", "1965-12-15", "1975-11-08", 
+                                "1964-08-04", "1966-04-01")),
+  Age = c(75, 37, 71, 74, 23, 48, 12, 52, 85, 38),
+  Code.de.la.catégorie.socio.professionnelle = c(18, 3, 7, 5, 3, 4, 2, 1, 13, 11),
+  Libellé.de.la.fonction = c(NA, NA, "2ème adjoint au Maire", "Maire", NA, NA, "1er adjoint au Maire", NA, NA, NA),
+  Date.de.mise.en.place = as.Date(c("2020-05-18", "2020-05-18", "2020-05-23", "2020-05-23", "2020-05-18", 
+                                   "2020-05-18", "2020-05-23", "2020-05-18", "2020-05-18", "2020-05-18")),
+  Code.pays = rep("FR", 10),
+  stringsAsFactors = FALSE
+)
+
+
+# Attribuer la classe département
+>>>>>>> gh-pages
 
 departement_data <- creer_departement(departement_data)
 
 
 # Résumé du département
+<<<<<<< HEAD
 
 summary(departement_data)
 ```
@@ -224,3 +319,41 @@ generer_rapport(commune = 99901,
                 df = departement_data,
                 output = "rapport_gotham_city_mordor_df_specifie.html")
 ```
+=======
+summary(departement_data)
+```
+
+Le résumé pour ce département pourrait inclure des informations comme :
+
+- Nom du département : Loire-Atlantique
+- Nombre de communes : 3
+- Nombre d'élus : 5
+- Distribution des âges des élus : 45, 56, 34, 70, 62
+- L'élu le plus âgé : Durand (70 ans)
+- La commune avec la moyenne d'âge la plus basse : Nantes
+- La commune avec la moyenne d'âge la plus élevée : Saint-Nazaire
+
+
+# 3. Générer un rapport d'analyses
+
+La fonction `generer_rapport()` génère un rapport au format PDF en utilisant un fichier Quarto `.qmd`. Elle prend en entrée les codes de la commune et du département, et génère un fichier PDF avec les informations correspondantes.
+
+```{r, echo = TRUE}
+# Exemple d'utilisation de generer_rapport
+# Supposons que nous voulons générer un rapport pour Nantes et Loire-Atlantique
+
+generer_rapport(commune = 44109, 
+                departement = 44, 
+                output = "rapport_nantes_et_loire_atlantique.html")
+
+```
+
+Cette fonction crée un fichier PDF appelé `rapport_nantes_et_loire_atlantique.html` qui inclut des analyses sur la commune de Nantes et le département de Loire-Atlantique. Les données peuvent être ajustées pour correspondre à des valeurs réelles provenant de vos jeux de données.
+
+
+# Conclusion
+
+Nous avons montré comment utiliser les fonctions `summary.commune()`, `summary.departement()`, et `generer_rapport()` pour générer des rapports d'analyses détaillés. Ces fonctions peuvent être adaptées à d'autres communes et départements pour créer des rapports personnalisés.
+
+N'hésitez pas à adapter ces fonctions en fonction de vos propres données pour générer des rapports complets et personnalisés.
+>>>>>>> gh-pages

@@ -67,6 +67,7 @@ Djayan</h4>
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<<<<<<< HEAD
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/Djayan-D/firstlibdjayan" class="external-link">firstlibdjayan</a></span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
@@ -102,10 +103,43 @@ réalisées avec les deux premières fonctions.</p></li>
 exemples concrets, en travaillant avec des données fictives et en
 générant un rapport complet pour une commune et un département
 spécifiques.</p>
+=======
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/Djayan-D/firstlibdjayan" class="external-link">firstlibdjayan</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: package 'dplyr' was built under R version 4.3.3</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     filter, lag</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span></code></pre></div>
+<div class="section level2">
+<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
+<p>Dans cette vignette, nous allons explorer l’utilisation des fonctions
+suivantes :</p>
+<ul>
+<li>
+<code><a href="../reference/summary.commune.html">summary.commune()</a></code> : Cette fonction génère un résumé des
+informations pour une commune donnée.</li>
+<li>
+<code><a href="../reference/summary.departement.html">summary.departement()</a></code> : Cette fonction génère un résumé
+des informations pour un département donné.</li>
+<li>
+<code><a href="../reference/generer_rapport.html">generer_rapport()</a></code> : Cette fonction génère un rapport au
+format PDF en utilisant un fichier Quarto, avec des paramètres pour la
+commune et le département.</li>
+</ul>
+<p>Nous allons démontrer ces fonctions en utilisant des exemples
+concrets.</p>
+>>>>>>> gh-pages
 </div>
 <div class="section level2">
 <h2 id="résumé-des-informations-dune-commune">1. Résumé des informations d’une commune<a class="anchor" aria-label="anchor" href="#r%C3%A9sum%C3%A9-des-informations-dune-commune"></a>
 </h2>
+<<<<<<< HEAD
 <p>La fonction <code><a href="../reference/summary.commune.html">summary.commune()</a></code> permet de générer un
 résumé des informations pour une commune donnée. Elle prend en entrée un
 objet de type <code>commune</code> (un <code>data.frame</code> contenant
@@ -142,6 +176,37 @@ les informations des élus d’une commune) et génère un résumé incluant
 <span>  Libellé.de.la.fonction <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"Maire"</span>, <span class="st">"1er adjoint au Maire"</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="st">""</span>, </span>
 <span>                             <span class="st">""</span>, <span class="st">"2e adjoint au Maire"</span>, <span class="st">"3e adjoint au Maire"</span>, </span>
 <span>                             <span class="st">""</span><span class="op">)</span></span>
+=======
+<p>La fonction <code><a href="../reference/summary.commune.html">summary.commune()</a></code> prend un objet de type
+<code>commune</code> (un <code>data.frame</code> contenant les
+informations des élus d’une commune) et génère un résumé de ces
+informations, incluant le nom de la commune, le nombre d’élus, la
+distribution des âges des élus et l’élu le plus âgé.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Exemple d'utilisation de summary.commune</span></span>
+<span><span class="co"># Supposons que 'commune_data' est un data.frame représentant une commune</span></span>
+<span></span>
+<span><span class="co"># Création d'un exemple fictif de données pour la commune</span></span>
+<span><span class="va">commune_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<span>  Code.du.département <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">45</span>, <span class="fl">10</span><span class="op">)</span>,</span>
+<span>  Libellé.du.département <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"Loiret"</span>, <span class="fl">10</span><span class="op">)</span>,</span>
+<span>  Code.de.la.commune <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">45141</span>, <span class="fl">10</span><span class="op">)</span>,</span>
+<span>  Libellé.de.la.commune <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"Faverelles"</span>, <span class="fl">10</span><span class="op">)</span>,</span>
+<span>  Nom.de.l.élu <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"CHAUX"</span>, <span class="st">"COLLE"</span>, <span class="st">"DAUBRY"</span>, <span class="st">"EUGENE"</span>, <span class="st">"GOIRAND"</span>, </span>
+<span>                  <span class="st">"LECUYER"</span>, <span class="st">"LETEUR"</span>, <span class="st">"MARET"</span>, <span class="st">"MARIE-LOUISE"</span>, <span class="st">"PIERROT"</span><span class="op">)</span>,</span>
+<span>  Prénom.de.l.élu <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Annie"</span>, <span class="st">"Sylvain"</span>, <span class="st">"Christiane"</span>, <span class="st">"Jacques"</span>, <span class="st">"Dominique"</span>, </span>
+<span>                     <span class="st">"Frédérique"</span>, <span class="st">"Manuel"</span>, <span class="st">"Frédérick"</span>, <span class="st">"Joëlle"</span>, <span class="st">"Pascal"</span><span class="op">)</span>,</span>
+<span>  Date.de.naissance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"1954-09-30"</span>, <span class="st">"1982-10-22"</span>, <span class="st">"1952-11-26"</span>, <span class="st">"1951-07-14"</span>, </span>
+<span>                                <span class="st">"1962-04-20"</span>, <span class="st">"1963-03-25"</span>, <span class="st">"1965-12-15"</span>, <span class="st">"1975-11-08"</span>, </span>
+<span>                                <span class="st">"1964-08-04"</span>, <span class="st">"1966-04-01"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  Age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">75</span>, <span class="fl">37</span>, <span class="fl">71</span>, <span class="fl">74</span>, <span class="fl">23</span>, <span class="fl">48</span>, <span class="fl">12</span>, <span class="fl">52</span>, <span class="fl">85</span>, <span class="fl">38</span><span class="op">)</span>,</span>
+<span>  Code.de.la.catégorie.socio.professionnelle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">18</span>, <span class="fl">3</span>, <span class="fl">7</span>, <span class="fl">5</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">2</span>, <span class="fl">1</span>, <span class="fl">13</span>, <span class="fl">11</span><span class="op">)</span>,</span>
+<span>  Libellé.de.la.fonction <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">"2ème adjoint au Maire"</span>, <span class="st">"Maire"</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">"1er adjoint au Maire"</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span><span class="op">)</span>,</span>
+<span>  Date.de.mise.en.place <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"2020-05-18"</span>, <span class="st">"2020-05-18"</span>, <span class="st">"2020-05-23"</span>, <span class="st">"2020-05-23"</span>, <span class="st">"2020-05-18"</span>, </span>
+<span>                                   <span class="st">"2020-05-18"</span>, <span class="st">"2020-05-23"</span>, <span class="st">"2020-05-18"</span>, <span class="st">"2020-05-18"</span>, <span class="st">"2020-05-18"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  Code.pays <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"FR"</span>, <span class="fl">10</span><span class="op">)</span>,</span>
+<span>  stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span></span>
+>>>>>>> gh-pages
 <span><span class="op">)</span></span>
 <span></span>
 <span></span>
@@ -154,13 +219,18 @@ les informations des élus d’une commune) et génère un résumé incluant
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">commune_data</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $nom_commune</span></span>
+<<<<<<< HEAD
 <span><span class="co">#&gt; [1] "Gotham City"</span></span>
+=======
+<span><span class="co">#&gt; [1] "Faverelles"</span></span>
+>>>>>>> gh-pages
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $nombre_elus</span></span>
 <span><span class="co">#&gt; [1] 10</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $distribution_ages_elus</span></span>
 <span><span class="co">#&gt; $distribution_ages_elus$Q0</span></span>
+<<<<<<< HEAD
 <span><span class="co">#&gt; [1] 43</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $distribution_ages_elus$Q25</span></span>
@@ -174,10 +244,26 @@ les informations des élus d’une commune) et génère un résumé incluant
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $distribution_ages_elus$Q100</span></span>
 <span><span class="co">#&gt; [1] 255</span></span>
+=======
+<span><span class="co">#&gt; [1] 42</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $distribution_ages_elus$Q25</span></span>
+<span><span class="co">#&gt; [1] 58.25</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $distribution_ages_elus$Q50</span></span>
+<span><span class="co">#&gt; [1] 60.5</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $distribution_ages_elus$Q75</span></span>
+<span><span class="co">#&gt; [1] 68</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $distribution_ages_elus$Q100</span></span>
+<span><span class="co">#&gt; [1] 73</span></span>
+>>>>>>> gh-pages
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $elu_plus_age</span></span>
 <span><span class="co">#&gt; $elu_plus_age$nom</span></span>
+<<<<<<< HEAD
 <span><span class="co">#&gt; [1] "BONAPARTE"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $elu_plus_age$prénom</span></span>
@@ -228,10 +314,28 @@ programme, ce qui signifie que les valeurs évolueront naturellement avec
 le temps. Cependant, la liste des élus et leurs fonctions restent fixes
 (à moins qu’un coup d’État ne survienne à Gotham…).</p>
 </div>
+=======
+<span><span class="co">#&gt; [1] "EUGENE"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $elu_plus_age$prénom</span></span>
+<span><span class="co">#&gt; [1] "Jacques"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $elu_plus_age$age</span></span>
+<span><span class="co">#&gt; [1] 73</span></span></code></pre></div>
+<p>Le résumé pour cette commune peut inclure des informations telles que
+:</p>
+<ul>
+<li>Nom de la commune : Faverelles</li>
+<li>Nombre d’élus : 5</li>
+<li>Distribution des âges des élus : 45, 56, 34, 70, 62</li>
+<li>L’élu le plus âgé : Durand (70 ans)</li>
+</ul>
+>>>>>>> gh-pages
 </div>
 <div class="section level2">
 <h2 id="résumé-des-informations-dun-département">2. Résumé des informations d’un département<a class="anchor" aria-label="anchor" href="#r%C3%A9sum%C3%A9-des-informations-dun-d%C3%A9partement"></a>
 </h2>
+<<<<<<< HEAD
 <p>La fonction <code><a href="../reference/summary.departement.html">summary.departement()</a></code> permet de générer un
 résumé des informations pour un département donné. Elle prend en entrée
 un objet de type <code>departement</code> (un <code>data.frame</code>
@@ -273,11 +377,48 @@ génère un résumé incluant :</p>
 <span></span>
 <span></span>
 <span><span class="co"># Attribuer la classe "departement"</span></span>
+=======
+<p>La fonction <code><a href="../reference/summary.departement.html">summary.departement()</a></code> fonctionne de manière
+similaire mais pour un département entier. Elle prend un objet de type
+<code>departement</code> (un <code>data.frame</code> contenant les
+informations des communes et des élus d’un département) et retourne des
+statistiques globales sur le département, telles que le nombre de
+communes, le nombre d’élus, et la distribution des âges des élus.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Exemple d'utilisation de summary.departement</span></span>
+<span><span class="co"># Supposons que 'departement_data' est un data.frame représentant un département</span></span>
+<span></span>
+<span><span class="co"># Création d'un exemple fictif de données pour le département</span></span>
+<span><span class="va">departement_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<span>  Code.du.département <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">45</span>, <span class="fl">10</span><span class="op">)</span>,</span>
+<span>  Libellé.du.département <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"Loiret"</span>, <span class="fl">10</span><span class="op">)</span>,</span>
+<span>  Code.de.la.commune <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">45141</span>, <span class="fl">10</span><span class="op">)</span>,</span>
+<span>  Libellé.de.la.commune <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"Faverelles"</span>, <span class="fl">10</span><span class="op">)</span>,</span>
+<span>  Nom.de.l.élu <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"CHAUX"</span>, <span class="st">"COLLE"</span>, <span class="st">"DAUBRY"</span>, <span class="st">"EUGENE"</span>, <span class="st">"GOIRAND"</span>, </span>
+<span>                  <span class="st">"LECUYER"</span>, <span class="st">"LETEUR"</span>, <span class="st">"MARET"</span>, <span class="st">"MARIE-LOUISE"</span>, <span class="st">"PIERROT"</span><span class="op">)</span>,</span>
+<span>  Prénom.de.l.élu <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Annie"</span>, <span class="st">"Sylvain"</span>, <span class="st">"Christiane"</span>, <span class="st">"Jacques"</span>, <span class="st">"Dominique"</span>, </span>
+<span>                     <span class="st">"Frédérique"</span>, <span class="st">"Manuel"</span>, <span class="st">"Frédérick"</span>, <span class="st">"Joëlle"</span>, <span class="st">"Pascal"</span><span class="op">)</span>,</span>
+<span>  Date.de.naissance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"1954-09-30"</span>, <span class="st">"1982-10-22"</span>, <span class="st">"1952-11-26"</span>, <span class="st">"1951-07-14"</span>, </span>
+<span>                                <span class="st">"1962-04-20"</span>, <span class="st">"1963-03-25"</span>, <span class="st">"1965-12-15"</span>, <span class="st">"1975-11-08"</span>, </span>
+<span>                                <span class="st">"1964-08-04"</span>, <span class="st">"1966-04-01"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  Age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">75</span>, <span class="fl">37</span>, <span class="fl">71</span>, <span class="fl">74</span>, <span class="fl">23</span>, <span class="fl">48</span>, <span class="fl">12</span>, <span class="fl">52</span>, <span class="fl">85</span>, <span class="fl">38</span><span class="op">)</span>,</span>
+<span>  Code.de.la.catégorie.socio.professionnelle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">18</span>, <span class="fl">3</span>, <span class="fl">7</span>, <span class="fl">5</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">2</span>, <span class="fl">1</span>, <span class="fl">13</span>, <span class="fl">11</span><span class="op">)</span>,</span>
+<span>  Libellé.de.la.fonction <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">"2ème adjoint au Maire"</span>, <span class="st">"Maire"</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">"1er adjoint au Maire"</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span><span class="op">)</span>,</span>
+<span>  Date.de.mise.en.place <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"2020-05-18"</span>, <span class="st">"2020-05-18"</span>, <span class="st">"2020-05-23"</span>, <span class="st">"2020-05-23"</span>, <span class="st">"2020-05-18"</span>, </span>
+<span>                                   <span class="st">"2020-05-18"</span>, <span class="st">"2020-05-23"</span>, <span class="st">"2020-05-18"</span>, <span class="st">"2020-05-18"</span>, <span class="st">"2020-05-18"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  Code.pays <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"FR"</span>, <span class="fl">10</span><span class="op">)</span>,</span>
+<span>  stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="co"># Attribuer la classe département</span></span>
+>>>>>>> gh-pages
 <span></span>
 <span><span class="va">departement_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/creer_departement.html">creer_departement</a></span><span class="op">(</span><span class="va">departement_data</span><span class="op">)</span></span>
 <span></span>
 <span></span>
 <span><span class="co"># Résumé du département</span></span>
+<<<<<<< HEAD
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">departement_data</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $nom_departement</span></span>
@@ -285,12 +426,21 @@ génère un résumé incluant :</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $nombre_communes</span></span>
 <span><span class="co">#&gt; [1] 3</span></span>
+=======
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">departement_data</span><span class="op">)</span></span>
+<span><span class="co">#&gt; $nom_departement</span></span>
+<span><span class="co">#&gt; [1] "Loiret"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $nombre_communes</span></span>
+<span><span class="co">#&gt; [1] 1</span></span>
+>>>>>>> gh-pages
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $nombre_elus</span></span>
 <span><span class="co">#&gt; [1] 10</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $distribution_age_elus</span></span>
 <span><span class="co">#&gt; $distribution_age_elus$Q0</span></span>
+<<<<<<< HEAD
 <span><span class="co">#&gt; [1] 34</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $distribution_age_elus$Q25</span></span>
@@ -304,26 +454,56 @@ génère un résumé incluant :</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $distribution_age_elus$Q100</span></span>
 <span><span class="co">#&gt; [1] 1025</span></span>
+=======
+<span><span class="co">#&gt; [1] 42</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $distribution_age_elus$Q25</span></span>
+<span><span class="co">#&gt; [1] 58.25</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $distribution_age_elus$Q50</span></span>
+<span><span class="co">#&gt; [1] 60.5</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $distribution_age_elus$Q75</span></span>
+<span><span class="co">#&gt; [1] 68</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $distribution_age_elus$Q100</span></span>
+<span><span class="co">#&gt; [1] 73</span></span>
+>>>>>>> gh-pages
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $elu_plus_age</span></span>
 <span><span class="co">#&gt; $elu_plus_age$nom</span></span>
+<<<<<<< HEAD
 <span><span class="co">#&gt; [1] "LE GRIS"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $elu_plus_age$age</span></span>
 <span><span class="co">#&gt; [1] 1025</span></span>
+=======
+<span><span class="co">#&gt; [1] "EUGENE"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $elu_plus_age$age</span></span>
+<span><span class="co">#&gt; [1] 73</span></span>
+>>>>>>> gh-pages
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $elu_plus_jeune</span></span>
 <span><span class="co">#&gt; $elu_plus_jeune$nom</span></span>
+<<<<<<< HEAD
 <span><span class="co">#&gt; [1] "PAN"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $elu_plus_jeune$age</span></span>
 <span><span class="co">#&gt; [1] 34</span></span>
+=======
+<span><span class="co">#&gt; [1] "COLLE"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $elu_plus_jeune$age</span></span>
+<span><span class="co">#&gt; [1] 42</span></span>
+>>>>>>> gh-pages
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $commune_plus_jeune</span></span>
 <span><span class="co">#&gt; $commune_plus_jeune$nom</span></span>
+<<<<<<< HEAD
 <span><span class="co">#&gt; [1] "Wakanda"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $commune_plus_jeune$distribution_ages</span></span>
@@ -341,11 +521,31 @@ génère un résumé incluant :</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $commune_plus_jeune$distribution_ages$Q100</span></span>
 <span><span class="co">#&gt; [1] 141</span></span>
+=======
+<span><span class="co">#&gt; [1] "Faverelles"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $commune_plus_jeune$distribution_ages</span></span>
+<span><span class="co">#&gt; $commune_plus_jeune$distribution_ages$Q0</span></span>
+<span><span class="co">#&gt; [1] 42</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $commune_plus_jeune$distribution_ages$Q25</span></span>
+<span><span class="co">#&gt; [1] 58.25</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $commune_plus_jeune$distribution_ages$Q50</span></span>
+<span><span class="co">#&gt; [1] 60.5</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $commune_plus_jeune$distribution_ages$Q75</span></span>
+<span><span class="co">#&gt; [1] 68</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $commune_plus_jeune$distribution_ages$Q100</span></span>
+<span><span class="co">#&gt; [1] 73</span></span>
+>>>>>>> gh-pages
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $commune_plus_agee</span></span>
 <span><span class="co">#&gt; $commune_plus_agee$nom</span></span>
+<<<<<<< HEAD
 <span><span class="co">#&gt; [1] "Hogwarts"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $commune_plus_agee$distribution_ages</span></span>
@@ -464,10 +664,41 @@ programme, ce qui signifie que les valeurs évolueront naturellement avec
 le temps. Cependant, la liste des élus et leurs fonctions restent fixes
 (à moins qu’un incident ne survienne dans le Mordor…).</p>
 </div>
+=======
+<span><span class="co">#&gt; [1] "Faverelles"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $commune_plus_agee$distribution_ages</span></span>
+<span><span class="co">#&gt; $commune_plus_agee$distribution_ages$Q0</span></span>
+<span><span class="co">#&gt; [1] 42</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $commune_plus_agee$distribution_ages$Q25</span></span>
+<span><span class="co">#&gt; [1] 58.25</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $commune_plus_agee$distribution_ages$Q50</span></span>
+<span><span class="co">#&gt; [1] 60.5</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $commune_plus_agee$distribution_ages$Q75</span></span>
+<span><span class="co">#&gt; [1] 68</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $commune_plus_agee$distribution_ages$Q100</span></span>
+<span><span class="co">#&gt; [1] 73</span></span></code></pre></div>
+<p>Le résumé pour ce département pourrait inclure des informations comme
+:</p>
+<ul>
+<li>Nom du département : Loire-Atlantique</li>
+<li>Nombre de communes : 3</li>
+<li>Nombre d’élus : 5</li>
+<li>Distribution des âges des élus : 45, 56, 34, 70, 62</li>
+<li>L’élu le plus âgé : Durand (70 ans)</li>
+<li>La commune avec la moyenne d’âge la plus basse : Nantes</li>
+<li>La commune avec la moyenne d’âge la plus élevée : Saint-Nazaire</li>
+</ul>
+>>>>>>> gh-pages
 </div>
 <div class="section level2">
 <h2 id="générer-un-rapport-danalyses">3. Générer un rapport d’analyses<a class="anchor" aria-label="anchor" href="#g%C3%A9n%C3%A9rer-un-rapport-danalyses"></a>
 </h2>
+<<<<<<< HEAD
 <p>La fonction <code><a href="../reference/generer_rapport.html">generer_rapport()</a></code> permet de générer un
 rapport au format <strong>HTML</strong> en utilisant un fichier Quarto
 <code>.qmd</code>. Elle prend en entrée les codes de la commune et du
@@ -492,6 +723,26 @@ défaut sera utilisé.</p>
 <span><span class="co"><span style="color: #BB0000;">#&gt; output file: rapport.knit.md</span></span></span>
 <span><span class="co"><span style="color: #BB0000;">#&gt; </span></span></span>
 <span><span class="co"><span style="color: #BB0000;">#&gt; pandoc --output ..\..\..\..\..\..\Desktop\firstlibdjayan\vignettes\rapport_Nantes_Loire_Atlantique.html</span></span></span>
+=======
+<p>La fonction <code><a href="../reference/generer_rapport.html">generer_rapport()</a></code> génère un rapport au
+format PDF en utilisant un fichier Quarto <code>.qmd</code>. Elle prend
+en entrée les codes de la commune et du département, et génère un
+fichier PDF avec les informations correspondantes.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Exemple d'utilisation de generer_rapport</span></span>
+<span><span class="co"># Supposons que nous voulons générer un rapport pour Nantes et Loire-Atlantique</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/generer_rapport.html">generer_rapport</a></span><span class="op">(</span>commune <span class="op">=</span> <span class="fl">44109</span>, </span>
+<span>                departement <span class="op">=</span> <span class="fl">44</span>, </span>
+<span>                output <span class="op">=</span> <span class="st">"rapport_nantes_et_loire_atlantique.html"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co"><span style="color: #BB0000;">#&gt; </span></span></span>
+<span><span class="co"><span style="color: #BB0000;">#&gt; processing file: rapport.qmd</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">#&gt;   |                                                            |                                                    |   0%  |                                                            |...                                                 |   7%                    |                                                            |.......                                             |  13% [unnamed-chunk-1]  |                                                            |..........                                          |  20%                    |                                                            |..............                                      |  27% [unnamed-chunk-2]  |                                                            |.................                                   |  33%                    |                                                            |.....................                               |  40% [unnamed-chunk-3]  |                                                            |........................                            |  47%                    |                                                            |............................                        |  53% [unnamed-chunk-4]  |                                                            |...............................                     |  60%                    |                                                            |...................................                 |  67% [unnamed-chunk-5]  |                                                            |......................................              |  73%                    |                                                            |..........................................          |  80% [unnamed-chunk-6]  |                                                            |.............................................       |  87%                    |                                                            |.................................................   |  93% [unnamed-chunk-7]  |                                                            |....................................................| 100%                                                                                                                              </span></span></span>
+<span><span class="co"><span style="color: #BB0000;">#&gt; output file: rapport.knit.md</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">#&gt; </span></span></span>
+<span><span class="co"><span style="color: #BB0000;">#&gt; pandoc --output ..\..\..\..\..\..\Desktop\firstlibdjayan\vignettes\rapport_nantes_et_loire_atlantique.html</span></span></span>
+>>>>>>> gh-pages
 <span><span class="co"><span style="color: #BB0000;">#&gt;   to: html</span></span></span>
 <span><span class="co"><span style="color: #BB0000;">#&gt;   standalone: true</span></span></span>
 <span><span class="co"><span style="color: #BB0000;">#&gt;   section-divs: true</span></span></span>
@@ -507,6 +758,7 @@ défaut sera utilisé.</p>
 <span><span class="co"><span style="color: #BB0000;">#&gt;   title: Rapport</span></span></span>
 <span><span class="co"><span style="color: #BB0000;">#&gt;   author: Djayan DAËRON</span></span></span>
 <span><span class="co"><span style="color: #BB0000;">#&gt;   </span></span></span>
+<<<<<<< HEAD
 <span><span class="co"><span style="color: #BB0000;">#&gt; Output created: ..\..\..\..\..\..\Desktop\firstlibdjayan\vignettes\rapport_Nantes_Loire_Atlantique.html</span></span></span>
 <span><span class="co"><span style="color: #BB0000;">#&gt; </span></span></span>
 <span><span class="co"><span style="color: #BB0000;">#&gt; </span></span></span>
@@ -560,6 +812,28 @@ défaut sera utilisé.</p>
 <span><span class="co"><span style="color: #BB0000;">#&gt; </span></span></span>
 <span><span class="co"><span style="color: #BB0000;">#&gt; </span></span></span></code></pre></div>
 </div>
+=======
+<span><span class="co"><span style="color: #BB0000;">#&gt; Output created: ..\..\..\..\..\..\Desktop\firstlibdjayan\vignettes\rapport_nantes_et_loire_atlantique.html</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">#&gt; </span></span></span>
+<span><span class="co"><span style="color: #BB0000;">#&gt; </span></span></span>
+<span><span class="co">#&gt; Le rapport a été généré avec succès.</span></span></code></pre></div>
+<p>Cette fonction crée un fichier PDF appelé
+<code>rapport_nantes_et_loire_atlantique.html</code> qui inclut des
+analyses sur la commune de Nantes et le département de Loire-Atlantique.
+Les données peuvent être ajustées pour correspondre à des valeurs
+réelles provenant de vos jeux de données.</p>
+</div>
+<div class="section level2">
+<h2 id="conclusion">Conclusion<a class="anchor" aria-label="anchor" href="#conclusion"></a>
+</h2>
+<p>Nous avons montré comment utiliser les fonctions
+<code><a href="../reference/summary.commune.html">summary.commune()</a></code>, <code><a href="../reference/summary.departement.html">summary.departement()</a></code>, et
+<code><a href="../reference/generer_rapport.html">generer_rapport()</a></code> pour générer des rapports d’analyses
+détaillés. Ces fonctions peuvent être adaptées à d’autres communes et
+départements pour créer des rapports personnalisés.</p>
+<p>N’hésitez pas à adapter ces fonctions en fonction de vos propres
+données pour générer des rapports complets et personnalisés.</p>
+>>>>>>> gh-pages
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>

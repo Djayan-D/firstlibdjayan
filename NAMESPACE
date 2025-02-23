@@ -29,6 +29,9 @@ importFrom(ggplot2,labs)
 importFrom(ggplot2,theme_minimal)
 importFrom(lubridate,as.period)
 importFrom(lubridate,interval)
+<<<<<<< HEAD
 importFrom(lubridate,is.Date)
+=======
+>>>>>>> gh-pages
 importFrom(lubridate,today)
 importFrom(stringr,str_detect)
