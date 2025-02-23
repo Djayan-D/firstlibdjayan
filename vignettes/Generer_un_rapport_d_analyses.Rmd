@@ -200,27 +200,27 @@ generer_rapport(commune = 44109,
                 departement = 44, 
                 output = "rapport_Nantes_Loire_Atlantique.html")
 
-# departement_data <- data.frame(
-#   Code.du.département = rep(99, 10),
-#   Libellé.du.département = rep("Mordor", 10),
-#   Code.de.la.commune = c(rep(99901,2), rep(99902,3), rep(99903,5)),
-#   Libellé.de.la.commune = c(rep("Metropolis",2), rep("Hogwarts",3), rep("Wakanda",5)),
-#   Nom.de.l.élu = c("DICAPRIO", "CHURCHILL", "LE GRIS", "JORDAN", "SARTRE", 
-#                    "LIONEL", "PAN", "BOND", "DE GAULLE", "CHANEL"),
-#   Prénom.de.l.élu = c("Leonardo", "Winston", "Gandalf", "Michael", "Jean-Paul", 
-#                       "Lionel", "Peter", "James", "Charles", "Coco"),
-#   Date.de.naissance = as.Date(c("11/11/1974", "30/11/1874", "01/01/1000", "17/02/1963",
-#                                 "21/06/1905", "24/06/1987", "10/12/1990", "13/04/1962",
-#                                 "22/11/1890", "19/08/1883"),
-#                               format = "%d/%m/%Y"),
-#   Code.de.la.catégorie.socio.professionnelle = c(2, 1, 7, 3, 7, 2, 7, 7, 1, 2),
-#   Libellé.de.la.fonction = c("Maire", "1er adjoint au Maire", "", "2e adjoint au Maire",
-#                              "", "", "", "3e adjoint au Maire", "", "")
-# )
-# 
-# # Si un data.frame spécifique est souhaité, on peut le préciser
-# generer_rapport(commune = 99901, 
-#                 departement = 99, 
-#                 df = departement_data, 
-#                 output = "rapport_gotham_city_mordor_df_specifie.html")
+departement_data <- data.frame(
+  Code.du.département = rep(99, 10),
+  Libellé.du.département = rep("Mordor", 10),
+  Code.de.la.commune = c(rep(99901,2), rep(99902,3), rep(99903,5)),
+  Libellé.de.la.commune = c(rep("Metropolis",2), rep("Hogwarts",3), rep("Wakanda",5)),
+  Nom.de.l.élu = c("DICAPRIO", "CHURCHILL", "LE GRIS", "JORDAN", "SARTRE",
+                   "LIONEL", "PAN", "BOND", "DE GAULLE", "CHANEL"),
+  Prénom.de.l.élu = c("Leonardo", "Winston", "Gandalf", "Michael", "Jean-Paul",
+                      "Lionel", "Peter", "James", "Charles", "Coco"),
+  Date.de.naissance = as.Date(c("11/11/1974", "30/11/1874", "01/01/1000", "17/02/1963",
+                                "21/06/1905", "24/06/1987", "10/12/1990", "13/04/1962",
+                                "22/11/1890", "19/08/1883"),
+                              format = "%d/%m/%Y"),
+  Code.de.la.catégorie.socio.professionnelle = c(2, 1, 7, 3, 7, 2, 7, 7, 1, 2),
+  Libellé.de.la.fonction = c("Maire", "1er adjoint au Maire", "", "2e adjoint au Maire",
+                             "", "", "", "3e adjoint au Maire", "", "")
+)
+
+# Si un data.frame spécifique est souhaité, on peut le préciser
+generer_rapport(commune = 99901,
+                departement = 99,
+                df = departement_data,
+                output = "rapport_gotham_city_mordor_df_specifie.html")
 ```
