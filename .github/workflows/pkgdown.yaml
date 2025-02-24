@@ -28,10 +28,12 @@ jobs:
       - uses: r-lib/actions/setup-pandoc@v2
 
       - name: Install dependencies
-        run: |
-          install.packages("firstlibdjayan")
-          install.packages("dplyr")
-          install.packages("quarto")
+          run: |
+            R -e "install.packages('remotes')"
+            R -e "remotes::install_github('ton_compte/firstlibdjayan')"
+            R -e "install.packages('dplyr')"
+            R -e "install.packages('quarto')"
+
 
 
       - name: Check Quarto installation

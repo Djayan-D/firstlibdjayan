@@ -3,6 +3,6 @@ url: https://djayan-d.github.io/firstlibdjayan/
 template:
   bootstrap: 5
   params:
-    bootswatch: flatly  # Optionnel, applique un thème moderne
+    bootswatch: flatly
   assets:
     - inst/pkgdown/pkgdown.css  # Ajout du fichier CSS personnalisé
