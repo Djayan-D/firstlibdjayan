@@ -4,5 +4,6 @@ template:
   bootstrap: 5
   params:
     bootswatch: flatly
+    logo: "www/logo_djayan.png"
   assets:
     - inst/pkgdown/pkgdown.css  # Ajout du fichier CSS personnalisé
