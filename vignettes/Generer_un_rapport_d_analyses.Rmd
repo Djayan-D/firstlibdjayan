@@ -15,6 +15,7 @@ knitr::opts_chunk$set(
   comment = "#>",      # Utilisation du symbole "#>" pour commenter le code dans les chunks
   warning = FALSE,     # Empêche l'affichage des warnings
   message = FALSE      # Empêche l'affichage des messages
+)
 ```
 
 ```{r setup}
