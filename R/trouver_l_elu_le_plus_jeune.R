@@ -11,11 +11,9 @@
 #' - `prénom` : Le prénom de l'élu le plus jeune,
 #' - `age` : L'âge de l'élu le plus jeune en années.
 #' @importFrom dplyr arrange slice_tail mutate
-<<<<<<< HEAD
+
 #' @importFrom lubridate today interval is.Date
-=======
-#' @importFrom lubridate today interval
->>>>>>> gh-pages
+
 
 trouver_l_elu_le_plus_jeune <- function(df) {
   # Vérifier que le DataFrame respecte la structure minimale
@@ -23,7 +21,7 @@ trouver_l_elu_le_plus_jeune <- function(df) {
   validate_schema(df)
 
 
-<<<<<<< HEAD
+
   # Vérifier que la colonne Date.de.naissance est bien en type "Date"
 
   if (!all(lubridate::is.Date(df$Date.de.naissance))) {
@@ -31,8 +29,7 @@ trouver_l_elu_le_plus_jeune <- function(df) {
   }
 
 
-=======
->>>>>>> gh-pages
+
   # Extraire l'individu le plus jeune
 
   elu_le_plus_jeune <- df |>

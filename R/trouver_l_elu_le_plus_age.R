@@ -11,11 +11,9 @@
 #' - `prénom` : Le prénom de l'élu
 #' - `age` : L'âge de l'élu en années
 #' @importFrom dplyr arrange slice_head mutate
-<<<<<<< HEAD
+
 #' @importFrom lubridate interval today as.period is.Date
-=======
-#' @importFrom lubridate interval today as.period
->>>>>>> gh-pages
+
 
 trouver_l_elu_le_plus_age <- function(df) {
   # Vérifier que le DataFrame respecte la structure minimale
@@ -23,7 +21,7 @@ trouver_l_elu_le_plus_age <- function(df) {
   validate_schema(df)
 
 
-<<<<<<< HEAD
+
   # Vérifier que la colonne Date.de.naissance est bien en type "Date"
 
   if (!all(lubridate::is.Date(df$Date.de.naissance))) {
@@ -31,8 +29,7 @@ trouver_l_elu_le_plus_age <- function(df) {
   }
 
 
-=======
->>>>>>> gh-pages
+
   # Extraire l'individu le plus âgé
 
   elu_le_plus_age <- df |>
