@@ -22,7 +22,7 @@ library(firstlibdjayan)
 ```
 
 # Chargement des données
-<<<<<<< HEAD
+
 ```{r setup, include=FALSE}
 # Charger le fichier temporaire si ce n'est pas "elus_sample"
 
