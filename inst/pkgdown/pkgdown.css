@@ -6,11 +6,12 @@
   --bs-dark-text: #333333; /* Texte sombre pour améliorer la lisibilité */
 }
 
-/* Personnalisation de la taille du logo dans la navbar */
+/* Vérification du logo */
 .navbar-brand img {
-  max-height: 40px;  /* Ajuste la taille du logo */
-  margin-right: 10px;  /* Marge à droite du logo pour éviter qu'il touche le texte */
+  border: 2px solid red;  /* Bordure rouge pour visualiser le logo */
+  max-height: 100px;  /* Augmenter la taille pour le débogage */
 }
+
 
 /* Changer la couleur de la barre de navigation */
 .navbar {
