@@ -27,10 +27,12 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@v2
 
-      - name: Install Quarto
+      - name: Install dependencies
         run: |
-          wget https://quarto.org/download/latest/quarto-linux-amd64.deb
-          sudo dpkg -i quarto-linux-amd64.deb
+          install.packages("firstlibdjayan")
+          install.packages("dplyr")
+          install.packages("quarto")
+
 
       - name: Check Quarto installation
         run: quarto --version  # Vérifie si Quarto est installé correctement
