@@ -5,11 +5,8 @@ format: html
 params:
   code_commune: 44109   # Code de la commune (par exemple, Nantes)
   code_departement: 44  # Code du département (par exemple, Loire-Atlantique)
-<<<<<<< HEAD
   dataframe_name: NULL
   dataframe_path: NULL
-=======
->>>>>>> gh-pages
 ---
 
 
@@ -37,15 +34,6 @@ if (params$dataframe_name == "elus_sample") {
   # Charge le fichier sauvegardé en utilisant le chemin passé en paramètre
   data <- readRDS(normalizePath(params$dataframe_path, mustWork = TRUE))
 }
-=======
-```{r}
-data <- elus_sample
-```
-
-# Conversion du type de données
-```{r}
-data$Date.de.naissance <- as.Date(data$Date.de.naissance)
->>>>>>> gh-pages
 ```
 
 # Filtrage des données par commune et département
