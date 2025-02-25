@@ -3,19 +3,19 @@ title: "Rapport"
 author: "Djayan DAËRON"
 params:
   code_commune: 44109   # Code de la commune (par exemple, Nantes)
-  code_departement: 44  # Code du département (par exemple, Loire-Atlantique)
+  code_departement: 44  # Code du départment (par exemple, Loire-Atlantique)
   dataframe_name: NULL
   dataframe_path: NULL
 ---
 
 
 # Chargement des packages
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(dplyr)
 ```
 
 # Installation et chargement de la bibliothèque
-```{r}
+```{r message=FALSE, warning=FALSE}
 remotes::install_github("Djayan-D/firstlibdjayan")
 library(firstlibdjayan)
 ```

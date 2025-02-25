@@ -18,9 +18,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-suppressMessages(library(firstlibdjayan))
-suppressMessages(library(dplyr))
+```{r message=FALSE, warning=FALSE}
+library(firstlibdjayan)
+library(dplyr)
 ```
 
 # Introduction
