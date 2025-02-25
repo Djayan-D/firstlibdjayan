@@ -3,5 +3,6 @@
 .RData
 .Ruserdata
 inst/doc
-.pdf
-.html
+/*.pdf
+/*.html
+
