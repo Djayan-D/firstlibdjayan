@@ -1,7 +1,6 @@
 ---
 title: "Rapport"
 author: "Djayan DAËRON"
-format: html
 params:
   code_commune: 44109   # Code de la commune (par exemple, Nantes)
   code_departement: 44  # Code du département (par exemple, Loire-Atlantique)
