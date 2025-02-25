@@ -7,18 +7,44 @@
 generer_rapport(commune, departement, output, df = elus_sample)
 }
 \arguments{
-\item{commune}{Le code (ex : INSEE) associé à la commune pour laquelle le rapport sera généré.}
+\item{commune}{Un entier ou une chaîne de caractères représentant le code INSEE de la commune concernée.}
 
-\item{departement}{Le code (ex : INSEE) associé au département pour lequel le rapport sera généré.}
+\item{departement}{Un entier ou une chaîne de caractères représentant le code INSEE du département concerné.}
 
-\item{output}{Un caractère spécifiant le chemin du fichier de sortie (par exemple, "rapport_nantes.html").}
+\item{output}{Une chaîne de caractères spécifiant le chemin et le nom du fichier de sortie.
+Le format du fichier doit être précisé en ajoutant ".html" ou ".pdf" à la fin
+(par exemple, "rapport_nantes.html" ou "rapport_nantes.pdf").}
+
+\item{df}{(optionnel) Un dataframe contenant les données nécessaires pour générer le rapport.
+Par défaut, la fonction utilise `elus_sample`, qui est inclus dans le package.}
 }
 \value{
-Aucun. La fonction génère un fichier de rapport au format spécifié (par défaut html).
+Aucun. La fonction génère un fichier de rapport au format HTML ou PDF
+dans le chemin spécifié par `output`.
 }
 \description{
-Cette fonction génère un rapport au format PDF à partir d'un fichier Quarto (.qmd) en utilisant les paramètres de la commune et du département fournis.
+Cette fonction permet de générer un rapport au format HTML ou PDF
+à partir d'un fichier Quarto (.qmd). Elle utilise les informations d'une commune et d'un département
+fournis en paramètres, ainsi qu'un dataframe optionnel contenant des données pour enrichir le rapport.
+}
+\details{
+- Si le dataframe utilisé est \code{elus_sample} ou qu'aucun n'est précisé,
+  les codes commune et département doivent correspondre à ceux présents dans \code{elus_sample}.
+
+- Si un autre dataframe est utilisé, il doit respecter une structure minimale
+  pour garantir le bon fonctionnement de la fonction. Voir les warnings en cas
+  d'incompatibilité ou consulter la documentation
+  sur \href{https://djayan-d.github.io/firstlibdjayan/}{le site du package}.
+
+- La fonction utilise \code{quarto::quarto_render()} pour générer le rapport au format spécifié.
 }
 \examples{
+# Générer un rapport pour Nantes (44109) et la Loire-Atlantique (44) en HTML
 generer_rapport(44109, 44, "rapport_Nantes_et_Loire_Atlantique.html")
+
+# Générer un rapport pour Nantes en PDF
+generer_rapport(44109, 44, "rapport_Nantes_et_Loire_Atlantique.pdf")
+
+# Voir la documentation pour la structure attendue du dataframe
+# https://djayan-d.github.io/firstlibdjayan/
 }

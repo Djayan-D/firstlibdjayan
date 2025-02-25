@@ -16,10 +16,15 @@
 #' dans le chemin spécifié par `output`.
 #'
 #' @details
-#' - Si `df` est identique à `elus_sample`, les codes commune et département doivent correspondre à ceux présents dans `elus_sample`.
-#' - Si un autre dataframe est utilisé, il doit respecter une structure minimale pour garantir le bon fonctionnement de la fonction.
-#' - Voir les warnings en cas d'incompatibilité ou consulter la documentation sur [le site du package](https://djayan-d.github.io/firstlibdjayan/).
-#' - La fonction utilise `quarto::quarto_render()` pour générer le rapport au format spécifié.
+#' - Si le dataframe utilisé est \code{elus_sample} ou qu'aucun n'est précisé,
+#'   les codes commune et département doivent correspondre à ceux présents dans \code{elus_sample}.
+#'
+#' - Si un autre dataframe est utilisé, il doit respecter une structure minimale
+#'   pour garantir le bon fonctionnement de la fonction. Voir les warnings en cas
+#'   d'incompatibilité ou consulter la documentation
+#'   sur \href{https://djayan-d.github.io/firstlibdjayan/}{le site du package}.
+#'
+#' - La fonction utilise \code{quarto::quarto_render()} pour générer le rapport au format spécifié.
 #'
 #' @import quarto
 #' @export
