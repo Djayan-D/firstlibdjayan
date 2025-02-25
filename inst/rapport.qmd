@@ -16,7 +16,7 @@ library(dplyr)
 
 # Installation et chargement de la bibliothèque
 ```{r message=FALSE, warning=FALSE}
-remotes::install_github("Djayan-D/firstlibdjayan")
+remotes::install_github("Djayan-D/firstlibdjayan", quiet = TRUE)
 library(firstlibdjayan)
 ```
 
