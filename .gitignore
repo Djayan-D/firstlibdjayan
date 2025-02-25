@@ -3,7 +3,5 @@
 .RData
 .Ruserdata
 inst/doc
-<<<<<<< HEAD
-=======
-docs
->>>>>>> gh-pages
+.pdf
+.html
