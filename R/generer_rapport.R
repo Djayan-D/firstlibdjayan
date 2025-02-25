@@ -69,7 +69,7 @@ generer_rapport <- function(commune, departement, output, df = elus_sample) {
 
   quarto::quarto_render(
     input = qmd_path,
-    output_format = "pdf",
+    output_format = tools::file_ext(output),
     output_file = output,
     execute_params = list(
       code_commune = commune,
