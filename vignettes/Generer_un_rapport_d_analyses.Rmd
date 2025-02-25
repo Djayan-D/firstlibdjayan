@@ -189,7 +189,7 @@ La fonction `generer_rapport()` permet de générer un rapport au format **HTML*
 
 ### Exemple d'utilisation de `generer_rapport`
 
-```{r}
+```{r eval = FALSE}
 # Exemple d'utilisation de generer_rapport 
 # Supposons que nous voulons générer un rapport pour Gotham City (commune) et Mordor (département)
 
