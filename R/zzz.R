@@ -4,8 +4,13 @@
 # Cette fonction installe donc automatiquement TinyTeX si besoin et demande un redémarrage de R.
 .onLoad <- function(libname, pkgname) {
   if (!tinytex::is_tinytex()) {
-    message("📄 TinyTeX n'est pas installé. Installation en cours... ⏳")
+    message("📄 TinyTeX (distribution LaTeX minimale) n'est pas installé. Installation en cours... ⏳")
     tinytex::install_tinytex()
-    message("✅ Installation terminée. Veuillez redémarrer R pour finaliser la configuration.")
+    message(
+      "✅ Installation terminée.\n",
+      "ℹ️ TinyTeX est requis pour générer des rapports PDF avec Quarto.\n",
+      "🔄 Veuillez redémarrer R pour que la configuration soit prise en compte."
+    )
   }
 }
+
