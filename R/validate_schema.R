@@ -4,9 +4,11 @@
 #' Si certaines colonnes sont manquantes, elle émet un avertissement, mais ne bloque pas l'exécution du programme.
 #'
 #' @param df Un `data.frame` contenant les données à vérifier.
+#'
 #' @return NULL si le schéma est valide, sinon un avertissement indiquant les colonnes manquantes.
 #'
 #' @noRd
+
 
 validate_schema <- function(df) {
   # Vérifier si l'objet est bien un data.frame

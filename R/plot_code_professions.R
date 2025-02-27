@@ -5,6 +5,7 @@
 #'
 #' @param df Un `data.frame` contenant les données des élus, avec la colonne `Code.de.la.catégorie.socio.professionnelle` utilisée
 #' pour calculer la répartition.
+#'
 #' @return Un objet `ggplot` représentant un graphique en barres horizontales du nombre d'élus par code professionnel.
 #'
 #' @importFrom dplyr count filter arrange
