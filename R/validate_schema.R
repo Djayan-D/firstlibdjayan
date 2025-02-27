@@ -1,14 +1,22 @@
 #' Vérifier le schéma des données
 #'
-#' Cette fonction vérifie si une `data.frame` contient toutes les colonnes nécessaires au bon fonctionnement des fonctions du package.
-#' Si certaines colonnes sont manquantes, la fonction retourne un avertissement.
-#' L'avertissement est utilisé car toutes les fonctions du package ne nécessitent pas toutes les colonnes. Cela permet de continuer l'exécution des fonctions, même en cas de colonnes manquantes.
+#' Cette fonction vérifie si un `data.frame` contient toutes les colonnes nécessaires au bon fonctionnement des fonctions du package.
+#' Si certaines colonnes sont manquantes, elle émet un avertissement, mais ne bloque pas l'exécution du programme.
 #'
-#' @param df La `data.frame` à vérifier.
-#' @return NULL Si le schéma est valide, sinon un message d'avertissement indiquant les colonnes manquantes.
+#' @param df Un `data.frame` contenant les données à vérifier.
+#' @return NULL si le schéma est valide, sinon un avertissement indiquant les colonnes manquantes.
+#'
+#' @noRd
 
 validate_schema <- function(df) {
-  # Schéma minimal pour faire tourner l'ensemble des fonctions du package
+  # Vérifier si l'objet est bien un data.frame
+
+  if (!is.data.frame(df)) {
+    stop("❌ Erreur : L'objet fourni n'est pas un data.frame.")
+  }
+
+
+  # Schéma minimal requis
 
   schema <- c(
     "Code.du.département",
@@ -23,18 +31,22 @@ validate_schema <- function(df) {
   )
 
 
-  # Vérifier s'il manque des colonnes
+  # Identifier les colonnes manquantes
 
   missing_cols <- setdiff(schema, colnames(df))
 
 
-  # Ajouter un avertissement s'il manque des colonnes (laisse tourner la fonction)
+  # Afficher un avertissement si certaines colonnes sont manquantes
 
   if (length(missing_cols) > 0) {
-    warning(paste(
-      "Attention ! Certaines colonnes nécessaires au bon fonctionnement du package sont manquantes :",
-      paste(missing_cols, collapse = ", "),
-      ". Cela est susceptible d'entraîner des erreurs dans l'exécution de certaines fonctions, mais l'exécution du package peut continuer."
-    ))
+    warning(
+      paste0(
+        "⚠️ Attention : Certaines colonnes essentielles sont absentes :\n",
+        "   → ", paste(missing_cols, collapse = ", "), "\n",
+        "Cela peut entraîner des erreurs dans certaines fonctions du package."
+      )
+    )
   }
+
+  return(NULL)  # Retour explicite
 }
