@@ -1,48 +1,67 @@
-#' Trouver les communes avec les âges extrêmes
+#' Trouve les communes avec les âges extrêmes
 #'
-#' Cette fonction permet d'identifier les communes ayant la moyenne d'âge la plus faible et la plus élevée parmi les élus.
-#' Elle calcule la moyenne d'âge pour chaque commune, puis retourne une liste contenant les informations suivantes pour
-#' les communes avec les âges les plus jeunes et les plus âgés :
-#' - Le nom de la commune,
-#' - La distribution des âges des élus.
+#' Cette fonction identifie les communes ayant la moyenne d'âge la plus faible et la plus élevée parmi les élus.
+#' Elle calcule la moyenne d'âge pour chaque commune et retourne une liste contenant les informations suivantes :
+#' \itemize{
+#'   \item `commune_plus_jeune` : La commune avec la moyenne d'âge la plus faible, incluant sa distribution d'âges.
+#'   \item `commune_plus_agee` : La commune avec la moyenne d'âge la plus élevée, incluant sa distribution d'âges.
+#' }
 #'
-#' @param df Un `data.frame` contenant les informations des élus, avec la colonne `Date.de.naissance` utilisée pour calculer
-#' la moyenne d'âge par commune.
-#' @return Une liste contenant deux sous-listes :
-#' - `commune_plus_jeune` : La commune avec la moyenne d'âge la plus faible, incluant sa distribution d'âges,
-#' - `commune_plus_agee` : La commune avec la moyenne d'âge la plus élevée, incluant sa distribution d'âges.
-#' @importFrom dplyr group_by mutate slice_min slice_max ungroup filter pull
-#' @importFrom lubridate today interval
+#' @param df Un `data.frame` contenant les informations des élus, avec les colonnes suivantes :
+#'   - `Libellé.de.la.commune` : Nom de la commune.
+#'   - `Date.de.naissance` : Date de naissance des élus (au format Date).
+#'
+#' @return Une liste avec les communes ayant les âges extrêmes et leur distribution d'âges.
+#'
+#' @importFrom dplyr group_by summarise slice_min slice_max ungroup filter
+#' @importFrom lubridate today interval time_length
+#'
+#' @examples
+#' col_exemple <- data.frame(
+#'   Libellé.de.la.commune = c("Commune A", "Commune A", "Commune B", "Commune B", "Commune C"),
+#'   Date.de.naissance = as.Date(c("1960-05-14", "1985-09-23", "1990-12-10", "2000-07-05", "1975-03-30"))
+#' )
+#'
+#' trouver_communes_extremes_age(col_exemple)
+#' # Résultat attendu : Liste avec les communes les plus jeunes et les plus âgées
+#'
+#' @noRd
+
 
 trouver_communes_extremes_age <- function(df) {
-  # Vérifier que le DataFrame respecte la structure minimale
+  # Vérifier la présence des colonnes requises
 
-  validate_schema(df)
+  required_cols <- c("Libellé.de.la.commune", "Date.de.naissance")
+
+  if (!all(required_cols %in% colnames(df))) {
+    stop("❌ Le data.frame doit contenir les colonnes : ", paste(required_cols, collapse = ", "))
+  }
+
+  if (!inherits(df$Date.de.naissance, "Date")) {
+    stop("❌ La colonne 'Date.de.naissance' doit être au format Date.")
+  }
 
 
   # Calculer la moyenne d'âge par commune
 
   moyenne_age_commune <- df |>
     group_by(Libellé.de.la.commune) |>
-    mutate(moyenne_age = mean(as.period(interval(Date.de.naissance, today()),
-                                        unit = "years"
-    )$year, na.rm = TRUE)) |>
-    distinct(Libellé.de.la.commune, moyenne_age) |> # Garde une seule ligne par commune
+    summarise(moyenne_age = mean(time_length(interval(Date.de.naissance, today()), "years"), na.rm = TRUE)) |>
     ungroup()
 
 
-  # Trouver les communes avec la moyenne d'âge la plus faible et la plus élevée
+  # Trouver la commune avec la moyenne d'âge la plus faible et la plus élevée
 
   commune_plus_jeune <- moyenne_age_commune |>
-    slice_min(moyenne_age, n = 1) |>
+    slice_min(moyenne_age, n = 1, with_ties = FALSE) |>
     pull(Libellé.de.la.commune)
 
   commune_plus_agee <- moyenne_age_commune |>
-    slice_max(moyenne_age, n = 1) |>
+    slice_max(moyenne_age, n = 1, with_ties = FALSE) |>
     pull(Libellé.de.la.commune)
 
 
-  # Calculer la distribution des âges des deux communes
+  # Calculer la distribution des âges pour ces communes
 
   distribution_plus_jeune <- df |>
     filter(Libellé.de.la.commune == commune_plus_jeune) |>
@@ -53,7 +72,7 @@ trouver_communes_extremes_age <- function(df) {
     calcul_distribution_age()
 
 
-  # Retourner une liste contenant les informations des deux communes
+  # Retourner la liste des résultats
 
   return(list(
     commune_plus_jeune = list(

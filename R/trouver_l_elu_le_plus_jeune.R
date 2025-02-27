@@ -1,55 +1,54 @@
 #' Trouver l'élu le plus jeune
 #'
-#' Cette fonction permet d'extraire les informations de l'élu le plus jeune d'un `data.frame`. L'élu le plus jeune est
-#' identifié en fonction de sa date de naissance la plus récente. La fonction retourne un résumé des informations de cet élu,
-#' incluant son nom, prénom et son âge calculé en années.
+#' Cette fonction extrait les informations de l'élu le plus jeune d'un `data.frame`, en identifiant
+#' l'élu ayant la date de naissance la plus récente. Elle retourne un résumé des informations
+#' incluant son nom, prénom et âge en années.
 #'
-#' @param df Un `data.frame` contenant les informations des élus, avec la colonne `Date.de.naissance` utilisée pour
-#' identifier l'élu le plus jeune.
+#' @param df Un `data.frame` contenant les colonnes suivantes :
+#'   - `Nom.de.l.élu` : Nom de l'élu.
+#'   - `Prénom.de.l.élu` : Prénom de l'élu.
+#'   - `Date.de.naissance` : Date de naissance de l'élu (format Date).
+#'
 #' @return Une liste contenant :
-#' - `nom` : Le nom de l'élu le plus jeune,
-#' - `prénom` : Le prénom de l'élu le plus jeune,
-#' - `age` : L'âge de l'élu le plus jeune en années.
-#' @importFrom dplyr arrange slice_tail mutate
-
-#' @importFrom lubridate today interval is.Date
+#'   - `nom` : Le nom de l'élu le plus jeune.
+#'   - `prénom` : Le prénom de l'élu le plus jeune.
+#'   - `age` : L'âge de l'élu le plus jeune en années.
+#'
+#' @importFrom dplyr arrange slice_max mutate
+#' @importFrom lubridate today interval as.period
+#'
+#' @noRd
 
 
 trouver_l_elu_le_plus_jeune <- function(df) {
-  # Vérifier que le DataFrame respecte la structure minimale
+  # Vérifier la présence des colonnes requises
 
-  validate_schema(df)
+  required_cols <- c("Nom.de.l.élu", "Prénom.de.l.élu", "Date.de.naissance")
 
-
-
-  # Vérifier que la colonne Date.de.naissance est bien en type "Date"
-
-  if (!all(lubridate::is.Date(df$Date.de.naissance))) {
-    stop("Le format des dates de naissance n'est pas correct. Veuillez vous assurer que la colonne 'Date.de.naissance' est de type 'Date'.")
+  if (!all(required_cols %in% colnames(df))) {
+    stop("❌ Le data.frame doit contenir les colonnes : ", paste(required_cols, collapse = ", "))
   }
 
+
+  # Vérifier que la colonne Date.de.naissance est au format Date
+
+  if (!inherits(df$Date.de.naissance, "Date")) {
+    stop("❌ La colonne 'Date.de.naissance' doit être au format Date.")
+  }
 
 
   # Extraire l'individu le plus jeune
 
   elu_le_plus_jeune <- df |>
-    arrange(Date.de.naissance) |> # Trie par date de naissance (ascendant)
-    slice_tail(n = 1) |> # Sélectionne la dernière ligne (l'élu le plus jeune)
-    mutate(age = as.period(interval(Date.de.naissance, today()), # Calculer l'âge de l'élu en années
-                           unit = "years"
-    )$year) # Convertit l'intervalle en années
+    slice_max(Date.de.naissance, n = 1) |> # Sélectionne l'élu avec la date de naissance la plus récente
+    mutate(age = floor(as.period(interval(Date.de.naissance, today()), unit = "years")$year)) # Calcule l'âge arrondi
 
 
-  # Créer la liste avec les informations de l'élu le plus jeune
+  # Retourner les informations sous forme de liste
 
-  elu_info <- list(
+  return(list(
     nom = elu_le_plus_jeune$Nom.de.l.élu,
     prénom = elu_le_plus_jeune$Prénom.de.l.élu,
     age = elu_le_plus_jeune$age
-  )
-
-
-  # Retourner les informations
-
-  return(elu_info)
+  ))
 }

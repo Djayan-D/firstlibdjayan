@@ -1,50 +1,65 @@
-#' Trouver l'élu le plus âgé
+#' Trouve l'élu le plus âgé
 #'
-#' Cette fonction permet de trouver l'élu le plus âgé dans un `data.frame`. Elle trie les élus par
-#' date de naissance et sélectionne l'élu ayant la date de naissance la plus ancienne. L'âge de l'élu
-#' est ensuite calculé en années.
+#' Cette fonction identifie l'élu le plus âgé en triant les dates de naissance et en sélectionnant
+#' l'élu ayant la date de naissance la plus ancienne. Elle retourne son nom, prénom et âge en années.
 #'
-#' @param df Un `data.frame` contenant les données des élus, avec les colonnes `Nom.de.l.élu`,
-#' `Prénom.de.l.élu` et `Date.de.naissance` nécessaires pour déterminer l'élu le plus âgé.
-#' @return Une liste contenant les informations suivantes sur l'élu le plus âgé :
-#' - `nom` : Le nom de l'élu
-#' - `prénom` : Le prénom de l'élu
-#' - `age` : L'âge de l'élu en années
-#' @importFrom dplyr arrange slice_head mutate
-
-#' @importFrom lubridate interval today as.period is.Date
+#' @param df Un `data.frame` contenant les informations des élus, avec les colonnes suivantes :
+#'   - `Nom.de.l.élu` : Nom de l'élu.
+#'   - `Prénom.de.l.élu` : Prénom de l'élu.
+#'   - `Date.de.naissance` : Date de naissance de l'élu (au format Date).
+#'
+#' @return Une liste contenant :
+#'   - `nom` : Nom de l'élu le plus âgé.
+#'   - `prénom` : Prénom de l'élu le plus âgé.
+#'   - `age` : Âge en années.
+#'
+#' @importFrom dplyr arrange slice_head
+#' @importFrom lubridate today interval time_length
+#'
+#' @examples
+#' df_exemple <- data.frame(
+#'   Nom.de.l.élu = c("Dupont", "Martin", "Durand"),
+#'   Prénom.de.l.élu = c("Jean", "Sophie", "Paul"),
+#'   Date.de.naissance = as.Date(c("1950-03-25", "1982-07-12", "1945-06-08"))
+#' )
+#'
+#' trouver_l_elu_le_plus_age(df_exemple)
+#' # Résultat attendu : Liste avec l'élu le plus âgé (Durand Paul 79 ans au 27/02/2025)
+#'
+#' @noRd
 
 
 trouver_l_elu_le_plus_age <- function(df) {
-  # Vérifier que le DataFrame respecte la structure minimale
+  # Vérifier la présence des colonnes requises
 
-  validate_schema(df)
+  required_cols <- c("Nom.de.l.élu", "Prénom.de.l.élu", "Date.de.naissance")
 
+  if (!all(required_cols %in% colnames(df))) {
+    stop("❌ Le data.frame doit contenir les colonnes : ", paste(required_cols, collapse = ", "))
+  }
 
-
-  # Vérifier que la colonne Date.de.naissance est bien en type "Date"
-
-  if (!all(lubridate::is.Date(df$Date.de.naissance))) {
-    stop("Le format des dates de naissance n'est pas correct. Veuillez vous assurer que la colonne 'Date.de.naissance' est de type 'Date'.")
+  if (!inherits(df$Date.de.naissance, "Date")) {
+    stop("❌ La colonne 'Date.de.naissance' doit être au format Date.")
   }
 
 
-
-  # Extraire l'individu le plus âgé
+  # Trouver l'élu le plus âgé
 
   elu_le_plus_age <- df |>
     arrange(Date.de.naissance) |> # Trie par date de naissance (ascendant)
-    slice_head(n = 1) |> # Sélectionne la première ligne (l'élu le plus âgé)
-    mutate(age = as.period(interval(Date.de.naissance, today()), # Calculer l'âge de l'élu en années
-                           unit = "years"
-    )$year) # Convertit l'intervalle en années
+    slice_head(n = 1) # Sélectionne la première ligne (l'élu le plus âgé)
 
 
-  # Créer la liste avec les informations de l'élu le plus âgé
+  # Calculer l'âge en années
 
-  elu_info <- list(
+  age <- time_length(interval(elu_le_plus_age$Date.de.naissance, today()), "years")
+
+
+  # Retourner les informations sous forme de liste
+
+  return(list(
     nom = elu_le_plus_age$Nom.de.l.élu,
     prénom = elu_le_plus_age$Prénom.de.l.élu,
-    age = elu_le_plus_age$age
-  )
+    age = floor(age) # Arrondi à l'année complète
+  ))
 }

@@ -1,25 +1,37 @@
-#' Compter le nombre d'adjoints dans un DataFrame
+#' Compte le nombre d'adjoints dans un DataFrame
 #'
-#' Cette fonction permet de compter le nombre de lignes dans un `data.frame` où la fonction
-#' de l'élu contient le mot "adjoint". Elle utilise la fonction `validate_schema` pour vérifier
-#' que le `data.frame` respecte la structure minimale.
+#' Cette fonction compte le nombre de lignes dans un `data.frame` où la fonction
+#' de l'élu contient le mot "adjoint".
 #'
 #' @param df Un `data.frame` contenant les données des élus. Il doit inclure la colonne
-#' `Libellé.de.la.fonction` qui sera utilisée pour rechercher le terme "adjoint".
+#'   `Libellé.de.la.fonction`, qui sera utilisée pour rechercher le terme "adjoint".
+#'
 #' @return Un entier représentant le nombre d'adjoints dans le `data.frame`.
+#'
 #' @importFrom stringr str_detect
+#'
+#' @examples
+#' col_exemple <- data.frame(
+#'   Libellé.de.la.fonction = c("Maire", "Adjoint au maire", "Conseiller", "Adjoint")
+#' )
+#'
+#' compter_nombre_d_adjoints(col_exemple)
+#' # Résultat attendu : 2
+#'
+#' @noRd
+
 
 compter_nombre_d_adjoints <- function(df) {
-  # Vérifier que le DataFrame respecte la structure minimale
+  # Vérifier que la colonne Libellé.de.la.fonction existe
 
-  validate_schema(df)
+  if (!"Libellé.de.la.fonction" %in% colnames(df)) {
+    stop("❌ Le dataframe doit contenir une colonne 'Libellé.de.la.fonction'.")
+  }
 
 
-  # Appliquer les transformations
+  # Compter le nombre de lignes contenant "adjoint" (insensible à la casse)
 
-  nombre_adjoints <- df$Libellé.de.la.fonction |>
-    str_detect("adjoint") |> # Détecte les cellules où la fonction contient le mot "adjoint"
-    sum() # Compte le nombre total d'adjoints
+  nombre_adjoints <- sum(str_detect(tolower(df$Libellé.de.la.fonction), "adjoint"))
 
 
   # Retourner le nombre d'adjoints
