@@ -1,38 +1,62 @@
 #' Générer un graphique du nombre d'élus par code professionnel
 #'
-#' Cette fonction permet de générer un graphique en barres horizontal représentant le nombre d'élus
-#' par code professionnel. Elle compte le nombre d'élus par code professionnel, filtre ceux avec zéro élu
-#' et affiche les résultats sous forme de graphique.
+#' Cette fonction crée un graphique en barres horizontales représentant la répartition des élus par code professionnel.
+#' Elle compte le nombre d'élus par code, filtre ceux ayant zéro élu et affiche les résultats sous forme d'un graphique ggplot.
 #'
 #' @param df Un `data.frame` contenant les données des élus, avec la colonne `Code.de.la.catégorie.socio.professionnelle` utilisée
-#' pour déterminer la répartition des élus par code professionnel.
-#' @return Un objet `ggplot` représentant un graphique en barres horizontal du nombre d'élus par code professionnel.
+#' pour calculer la répartition.
+#' @return Un objet `ggplot` représentant un graphique en barres horizontales du nombre d'élus par code professionnel.
+#'
 #' @importFrom dplyr count filter arrange
-#' @importFrom ggplot2 ggplot aes geom_bar geom_text labs theme_minimal
+#' @importFrom ggplot2 ggplot aes geom_col geom_text labs theme_minimal theme element_text
+#'
+#' @noRd
+
 
 plot_code_professions <- function(df) {
-  # Vérifier que le DataFrame respecte la structure minimale
+  # Vérifier la présence de la colonne requise
 
-  validate_schema(df)
+  if (!"Code.de.la.catégorie.socio.professionnelle" %in% colnames(df)) {
+    stop("❌ Le dataframe doit contenir la colonne 'Code.de.la.catégorie.socio.professionnelle'.")
+  }
+
+
+  # Vérifier qu'il y a bien des valeurs non manquantes dans cette colonne
+
+  if (all(is.na(df$Code.de.la.catégorie.socio.professionnelle))) {
+    stop("❌ La colonne 'Code.de.la.catégorie.socio.professionnelle' ne contient que des valeurs manquantes.")
+  }
 
 
   # Compter le nombre d'élus par code professionnel
 
   count_professions <- df |>
-    count(Code.de.la.catégorie.socio.professionnelle) |> # Compte le nombre d'élus par code professionnel
-    filter(n > 0) |> # Filtre les codes professionnels avec 0 élu
-    arrange(desc(n)) # Trie les résultats par nombre décroissant d'élus
+    count(Code.de.la.catégorie.socio.professionnelle, name = "Nombre") |>
+    filter(Nombre > 0) |> # Exclure les catégories sans élu
+    arrange(desc(Nombre))
 
 
-  # Générer le graphique en barres horizontal
+  # Vérifier qu'il y a bien des données après le filtrage
 
-  ggplot(count_professions, aes(x = n, y = reorder(Code.de.la.catégorie.socio.professionnelle, n))) +
-    geom_bar(stat = "identity", fill = "darkblue") +
-    geom_text(aes(label = n), hjust = -0.2, color = "black", size = 2) +  # Ajoute les étiquettes des valeurs
+  if (nrow(count_professions) == 0) {
+    warning("⚠ Aucune donnée disponible après filtrage. Vérifiez la colonne 'Code.de.la.catégorie.socio.professionnelle'.")
+    return(NULL)
+  }
+
+
+  # Générer le graphique en barres horizontales
+
+  ggplot(count_professions, aes(x = Nombre, y = reorder(Code.de.la.catégorie.socio.professionnelle, Nombre))) +
+    geom_col(fill = "darkblue", width = 0.7) +  # Couleur améliorée
+    geom_text(aes(label = Nombre), hjust = -0.2, color = "black", size = 3) +  # Ajustement des labels
     labs(
-      title = "Nombre d'élus par code professionnel",
+      title = "Répartition des élus par code professionnel",
       x = "Nombre d'élus",
       y = "Code professionnel"
     ) +
-    theme_minimal()
+    theme_minimal() +
+    theme(
+      text = element_text(size = 12), # Meilleure lisibilité des textes
+      axis.text.y = element_text(size = 10) # Éviter les textes trop petits
+    )
 }

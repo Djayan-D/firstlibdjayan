@@ -17,12 +17,12 @@
 #'   \item{\strong{Nom.de.l.élu}}{Nom de l’élu.}
 #'   \item{\strong{Prénom.de.l.élu}}{Prénom de l’élu.}
 #'   \item{\strong{Code.sexe}}{Sexe de l’élu (\emph{M = masculin, F = féminin}).}
-#'   \item{\strong{Date.de.naissance}}{Date de naissance (\code{au format "Caractère, à mettre en "Date"}).}
+#'   \item{\strong{Date.de.naissance}}{Date de naissance (\code{au format "Caractère", à mettre en "Date"}).}
 #'   \item{\strong{Code.de.la.catégorie.socio.professionnelle}}{Code socio-professionnel.}
 #'   \item{\strong{Libellé.de.la.catégorie.socio.professionnelle}}{Libellé de la catégorie socio-professionnelle.}
-#'   \item{\strong{Date.de.début.du.mandat}}{Début du mandat (\code{au format "Caractère, à mettre en "Date"}).}
+#'   \item{\strong{Date.de.début.du.mandat}}{Début du mandat (\code{au format "Caractère", à mettre en "Date"}).}
 #'   \item{\strong{Libellé.de.la.fonction}}{Fonction exercée (\emph{ex : maire, conseiller municipal...}).}
-#'   \item{\strong{Date.de.début.de.la.fonction}}{Début de la fonction (\code{au format "Caractère, à mettre en "Date"}).}
+#'   \item{\strong{Date.de.début.de.la.fonction}}{Début de la fonction (\code{au format "Caractère", à mettre en "Date"}).}
 #'   \item{\strong{Code.nationalité}}{Code nationalité de l’élu.}
 #' }
 #'
