@@ -14,7 +14,6 @@ body {
 h1, h2, h3 {
     color: #66ABCC;
     font-family: 'Arial', sans-serif;
-    text-align: center;
 }
 
 /* Styles pour les blocs de code */
@@ -80,19 +79,13 @@ pre code span[class*="va"] {
     font-weight: bold;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+.pkgdown-footer-left p,
+.pkgdown-footer-right p,
+small.roles {
+    color: white !important;  /* Gris foncé pour plus de lisibilité */
+    font-size: 14px;         /* Ajuste la taille si nécessaire */
+    font-weight: normal;      /* Garde un style classique */
+}
 
 
 
@@ -100,8 +93,8 @@ pre code span[class*="va"] {
    Barre de Navigation
 --------------------- */
 .navbar {
-    background-color: rgba(20, 42, 68, 0.9);
-    padding: 15px;
+    background-color: rgba(20, 42, 68, 0.95);
+    padding: 12px 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     position: sticky;
     top: 0;
@@ -109,29 +102,78 @@ pre code span[class*="va"] {
     transition: background-color 0.3s ease-in-out;
 }
 
-.navbar a {
-    color: black !important;  /* Change la couleur du texte en noir */
-    font-weight: bold;
-    text-decoration: none;
-    padding: 10px 15px;
+/* Uniformisation de la police et couleur */
+.navbar * {
+    font-family: sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: #66ABCC !important;
 }
 
-.navbar a:hover {
-    color: blue !important;  /* Change la couleur au survol */
+/* Titre firstlibdjayan */
+.navbar-brand {
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar-brand:hover {
+    color: #3E6D91 !important;
+}
+
+/* Version (0.1.0) */
+.nav-text {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+}
+
+/* Liens principaux */
+.navbar-nav .nav-link {
+    padding: 8px 12px;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #3E6D91 !important;
+}
+
+/* Bouton Articles */
+#dropdown-articles {
+    background: none;
+    border: none;
+    padding: 8px 12px;
+    transition: color 0.3s ease-in-out;
+}
+
+#dropdown-articles:hover {
+    color: #3E6D91 !important;
+}
+
+/* Menu déroulant */
+.dropdown-menu {
+    background-color: #010F22 !important;
+    border-radius: 5px !important;
+    border: 1px solid #66ABCC !important;
+}
+
+.dropdown-menu a {
+    padding: 8px 12px;
+    transition: color 0.3s ease-in-out;
+}
+
+.dropdown-menu a:hover {
+    color: #3E6D91 !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 
-.navbar-default .navbar-nav > li > a {
-    color: black !important;  /* Change la couleur du texte en noir */
-}
 
-.navbar-default .navbar-nav > li > a:hover {
-    color: blue !important;  /* Change la couleur au survol */
-}
 
-a.anchor {
-    display: none !important;
-}
+
+
+
+
+
 
 
 /* ---------------------

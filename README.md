@@ -137,7 +137,7 @@ Si vous souhaitez contribuer à ce package, n’hésitez pas à ouvrir une *issu
 
 ## 📄 Licence
 
-Ce projet est sous licence **MIT** - voir le fichier [LICENSE](LICENSE) pour plus de détails.
+Ce projet est sous licence **MIT** - voir le fichier [LICENSE](LICENSE-text.html) pour plus de détails.
 
 ---
 
