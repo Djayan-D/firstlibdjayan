@@ -1,4 +1,5 @@
 # ----- Test 1 : Une seule commune -----
+
 test_that("creer_commune ajoute la classe 'commune' pour une seule commune", {
 
   df_test <- data.frame(
@@ -23,7 +24,11 @@ test_that("creer_commune ajoute la classe 'commune' pour une seule commune", {
 })
 
 
+
+
+
 # ----- Test 2 : Plusieurs communes -----
+
 test_that("creer_commune renvoie une erreur si plusieurs communes sont présentes", {
 
   df_test <- data.frame(
@@ -46,7 +51,11 @@ test_that("creer_commune renvoie une erreur si plusieurs communes sont présente
 })
 
 
+
+
+
 # ----- Test 3 : Ne pas ajouter la classe plusieurs fois -----
+
 test_that("creer_commune ne duplique pas la classe 'commune' si elle est déjà présente", {
 
   df_test <- data.frame(

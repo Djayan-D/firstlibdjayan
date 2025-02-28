@@ -43,8 +43,7 @@ validate_schema <- function(df) {
   if (length(missing_cols) > 0) {
     warning(
       paste0(
-        "⚠️ Attention : Certaines colonnes essentielles sont absentes :\n",
-        "   → ", paste(missing_cols, collapse = ", "), "\n",
+        "⚠️ Attention : Certaines colonnes essentielles sont absentes : ", paste(missing_cols, collapse = ", "), "\n",
         "Cela peut entraîner des erreurs dans certaines fonctions du package."
       )
     )

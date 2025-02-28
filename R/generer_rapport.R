@@ -45,9 +45,7 @@
 generer_rapport <- function(commune, departement, output, df = elus_sample) {
   # Vérifier si df est un dataframe
 
-  if (!is.data.frame(df)) {
-    stop("Le paramètre 'df' doit être un dataframe.")
-  }
+  validate_schema(df)
 
 
   # Enregistrer le données et récupérer leur nom et le chemin d'accès

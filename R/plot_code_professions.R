@@ -37,14 +37,6 @@ plot_code_professions <- function(df) {
     arrange(desc(Nombre))
 
 
-  # Vérifier qu'il y a bien des données après le filtrage
-
-  if (nrow(count_professions) == 0) {
-    warning("⚠ Aucune donnée disponible après filtrage. Vérifiez la colonne 'Code.de.la.catégorie.socio.professionnelle'.")
-    return(NULL)
-  }
-
-
   # Générer le graphique en barres horizontales
 
   ggplot(count_professions, aes(x = Nombre, y = reorder(Code.de.la.catégorie.socio.professionnelle, Nombre))) +

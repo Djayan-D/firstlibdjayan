@@ -1,4 +1,5 @@
 # ----- Test 1 : Un seul département -----
+
 test_that("creer_departement ajoute la classe 'departement' pour un seul département", {
 
   df_test <- data.frame(
@@ -23,7 +24,11 @@ test_that("creer_departement ajoute la classe 'departement' pour un seul départ
 })
 
 
+
+
+
 # ----- Test 2 : Plusieurs départements -----
+
 test_that("creer_departement renvoie une erreur si plusieurs départements sont présents", {
 
   df_test <- data.frame(
@@ -46,7 +51,11 @@ test_that("creer_departement renvoie une erreur si plusieurs départements sont 
 })
 
 
+
+
+
 # ----- Test 3 : Ne pas ajouter la classe plusieurs fois -----
+
 test_that("creer_departement ne duplique pas la classe 'departement' si elle est déjà présente", {
 
   df_test <- data.frame(

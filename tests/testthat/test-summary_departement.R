@@ -42,7 +42,6 @@ test_that("summary.departement génère un résumé correct pour un département
 
 
 
-
 # ----- Test 2 : Erreur si l'objet n'est pas un département -----
 
 test_that("summary.departement renvoie une erreur si l'objet n'est pas un département", {
@@ -63,6 +62,7 @@ test_that("summary.departement renvoie une erreur si l'objet n'est pas un dépar
 
 
   # Vérifier que la fonction génère une erreur si l'objet n'est pas un département
+
   expect_error(
     summary.departement(df_test),
     "L'objet doit être de classe 'departement'"
