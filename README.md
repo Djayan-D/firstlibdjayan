@@ -97,7 +97,7 @@ Le package **FirstLibDjayan** a pour objectif de faciliter lâ€™analyse des donnÃ
 
 Pour installer **FirstLibDjayan**, utilisez la commande suivante dans R :
 
-```{r}
+```r
 devtools::install_github("djayan-d/firstlibdjayan")
 ```
 
@@ -107,7 +107,7 @@ devtools::install_github("djayan-d/firstlibdjayan")
 
 Voici un exemple pour illustrer comment utiliser **FirstLibDjayan** dans votre analyse :
 
-```{r}
+```r
 library(firstlibdjayan)
 
 summary.commune(data)  

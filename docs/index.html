@@ -13,6 +13,7 @@
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Analyse et Visualisation des Données Communales et Départementales">
 <meta name="description" content="Ce package permet l'analyse et la visualisation des données relatives aux élus des communes et départements français. Il inclut des outils pour calculer des statistiques, générer des graphiques et structurer les données en classes `commune` et `departement`.">
 <meta property="og:description" content="Ce package permet l'analyse et la visualisation des données relatives aux élus des communes et départements français. Il inclut des outils pour calculer des statistiques, générer des graphiques et structurer les données en classes `commune` et `departement`.">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -98,16 +99,18 @@ Génération de rapports automatisés
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <p>Pour installer <strong>FirstLibDjayan</strong>, utilisez la commande suivante dans R :</p>
-<p><code>{r} devtools::install_github("djayan-d/firstlibdjayan")</code></p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"djayan-d/firstlibdjayan"</span><span class="op">)</span></span></code></pre></div>
 <hr>
 </div>
 <div class="section level2">
 <h2 id="id_-exemple-dutilisation">📖 Exemple d’utilisation<a class="anchor" aria-label="anchor" href="#id_-exemple-dutilisation"></a>
 </h2>
 <p>Voici un exemple pour illustrer comment utiliser <strong>FirstLibDjayan</strong> dans votre analyse :</p>
-<p>```{r} library(firstlibdjayan)</p>
-<p>summary.commune(data)<br>
-```</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/Djayan-D/firstlibdjayan" class="external-link">firstlibdjayan</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/summary.commune.html">summary.commune</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>  </span></code></pre></div>
 <hr>
 </div>
 <div class="section level2">
