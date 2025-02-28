@@ -6,8 +6,7 @@ Authors@R: c(
     person(
       "Djayan", "Daëron",
       email = "daeron.djayan@gmail.com",
-      role = c("aut", "cre"),
-      comment = c(ORCID = "0000-0000-0000-0000")  # Si tu as un ORCID
+      role = c("aut", "cre")
     )
   )
 Description: Ce package permet l'analyse et la visualisation des données relatives aux élus des communes 
@@ -32,5 +31,5 @@ Suggests:
 Config/testthat/edition: 3
 RoxygenNote: 7.3.2
 VignetteBuilder: quarto
-URL: https://github.com/Djayan-D/firstlibdjayan, https://djayan-d.github.io/firstlibdjayan/
+URL: https://github.com/Djayan-D/firstlibdjayan
 BugReports: https://github.com/Djayan-D/firstlibdjayan/issues
