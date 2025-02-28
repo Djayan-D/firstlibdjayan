@@ -18,9 +18,12 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r include = FALSE}
+library(dplyr)
+```
+
 ```{r message=FALSE, warning=FALSE}
 library(firstlibdjayan)
-library(dplyr)
 ```
 
 # Introduction

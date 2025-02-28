@@ -1,0 +1,118 @@
+---
+title: "Structure des DataFrames pour l'analyse des élus"
+author: "DAËRON Djayan"
+format: html
+editor: visual
+vignette: >
+  %\VignetteIndexEntry{Structure des DataFrames pour l'analyse des élus}
+  %\VignetteEngine{quarto::html}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,     # Permet de regrouper plusieurs lignes de code
+  comment = "#>",      # Utilisation du symbole "#>" pour commenter le code dans les chunks
+  warning = FALSE,     # Empêche l'affichage des warnings
+  message = FALSE      # Empêche l'affichage des messages
+)
+```
+
+```{r include = FALSE}
+library(dplyr)
+```
+
+```{r message=FALSE, warning=FALSE}
+library(firstlibdjayan)
+```
+
+# Introduction
+
+Cette vignette décrit la structure requise des **DataFrames** utilisés dans les fonctions d'analyse des élus. Elle détaille les colonnes obligatoires, les formats attendus et présente `elus_sample`, un exemple de données inclus dans le package.
+
+## Structure minimale requise
+
+Pour fonctionner correctement, certaines fonctions du package nécessitent un **DataFrame** contenant au minimum les colonnes suivantes :
+
+```r
+schema <- c(
+  "Code.du.département",
+  "Libellé.du.département",
+  "Code.de.la.commune",
+  "Libellé.de.la.commune",
+  "Nom.de.l.élu",
+  "Prénom.de.l.élu",
+  "Date.de.naissance",
+  "Code.de.la.catégorie.socio.professionnelle",
+  "Libellé.de.la.fonction"
+)
+```
+
+Si ces colonnes sont absentes, certaines fonctions renverront une erreur explicative. D'autres pourront s'exécuter partiellement, mais avec des limitations.
+
+## Format des colonnes
+
+- **Code.du.département** (*integer* ou *character*) : Code numérique du département.
+- **Libellé.du.département** (*character*) : Nom complet du département.
+- **Code.de.la.commune** (*integer* ou *character*) : Code INSEE de la commune.
+- **Libellé.de.la.commune** (*character*) : Nom complet de la commune.
+- **Nom.de.l.élu** (*character*) : Nom de famille de l'élu.
+- **Prénom.de.l.élu** (*character*) : Prénom de l'élu.
+- **Date.de.naissance** (*Date*) : Date de naissance de l'élu (au format `YYYY-MM-DD`).
+- **Code.de.la.catégorie.socio.professionnelle** (*integer*) : Code représentant la catégorie socio-professionnelle.
+- **Libellé.de.la.fonction** (*character*) : Fonction de l'élu dans la commune.
+
+Si une colonne date est en format `character`, il est recommandé de la convertir avec :
+
+```r
+df$Date.de.naissance <- as.Date(df$Date.de.naissance, format = "%Y-%m-%d")
+```
+
+## Exemple de création d'un DataFrame minimal
+
+Voici un exemple de **DataFrame** respectant le schéma minimal :
+
+```{r}
+elus_test <- data.frame(
+  Code.du.département = c(1, 2, 3),
+  Libellé.du.département = c("Département A", "Département B", "Département C"),
+  Code.de.la.commune = c(101, 202, 303),
+  Libellé.de.la.commune = c("Commune A", "Commune B", "Commune C"),
+  Nom.de.l.élu = c("DUPONT", "MARTIN", "BERTRAND"),
+  Prénom.de.l.élu = c("Jean", "Marie", "Luc"),
+  Date.de.naissance = as.Date(c("1980-05-14", "1975-09-23", "1990-11-30")),
+  Code.de.la.catégorie.socio.professionnelle = c(321, 654, 987),
+  Libellé.de.la.fonction = c("Maire", "Adjoint", "Conseiller")
+)
+```
+
+## `elus_sample` : Exemple de données du package
+
+Le package inclut un **jeu de données réel**, `elus_sample`, contenant des informations plus détaillées. Voici sa structure :
+
+```r
+names(elus_sample)
+```
+
+Sortie :
+
+```r
+[1] "Code.du.département"                             "Libellé.du.département"                          
+[3] "Code.de.la.collectivité.à.statut.particulier"    "Libellé.de.la.collectivité.à.statut.particulier"
+[5] "Code.de.la.commune"                              "Libellé.de.la.commune"                          
+[7] "Nom.de.l.élu"                                    "Prénom.de.l.élu"                                
+[9] "Code.sexe"                                       "Date.de.naissance"                              
+[11] "Code.de.la.catégorie.socio.professionnelle"      "Libellé.de.la.catégorie.socio.professionnelle"  
+[13] "Date.de.début.du.mandat"                         "Libellé.de.la.fonction"                         
+[15] "Date.de.début.de.la.fonction"                    "Code.nationalité"                               
+```
+
+Comme on peut le voir, `elus_sample` contient **toutes les colonnes requises** ainsi que d'autres informations supplémentaires.
+
+## Conclusion
+
+- Pour utiliser pleinement les fonctions du package, il est recommandé d'utiliser **au minimum** la structure définie dans `schema`.
+- `elus_sample` est un exemple de **jeu de données plus complet**, intégrant d'autres variables qui peuvent enrichir les analyses.
+- Certaines fonctions peuvent fonctionner sans la structure minimale, mais d'autres exigeront impérativement certaines colonnes.
+
+En cas d'erreur, un message explicite vous aidera à ajuster vos données pour garantir une exécution correcte des analyses.
