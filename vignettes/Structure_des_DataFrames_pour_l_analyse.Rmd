@@ -34,7 +34,7 @@ Cette vignette décrit la structure requise des **DataFrames** utilisés dans le
 
 Pour fonctionner correctement, certaines fonctions du package nécessitent un **DataFrame** contenant au minimum les colonnes suivantes :
 
-```r
+```{r}
 schema <- c(
   "Code.du.département",
   "Libellé.du.département",
@@ -64,7 +64,7 @@ Si ces colonnes sont absentes, certaines fonctions renverront une erreur explica
 
 Si une colonne date est en format `character`, il est recommandé de la convertir avec :
 
-```r
+```{r, eval=FALSE}
 df$Date.de.naissance <- as.Date(df$Date.de.naissance, format = "%Y-%m-%d")
 ```
 
@@ -82,7 +82,7 @@ elus_test <- data.frame(
   Prénom.de.l.élu = c("Jean", "Marie", "Luc"),
   Date.de.naissance = as.Date(c("1980-05-14", "1975-09-23", "1990-11-30")),
   Code.de.la.catégorie.socio.professionnelle = c(321, 654, 987),
-  Libellé.de.la.fonction = c("Maire", "Adjoint", "Conseiller")
+  Libellé.de.la.fonction = c("Maire", "1er adjoint au Maire", "")
 )
 ```
 
@@ -90,21 +90,8 @@ elus_test <- data.frame(
 
 Le package inclut un **jeu de données réel**, `elus_sample`, contenant des informations plus détaillées. Voici sa structure :
 
-```r
+```{r}
 names(elus_sample)
-```
-
-Sortie :
-
-```r
-[1] "Code.du.département"                             "Libellé.du.département"                          
-[3] "Code.de.la.collectivité.à.statut.particulier"    "Libellé.de.la.collectivité.à.statut.particulier"
-[5] "Code.de.la.commune"                              "Libellé.de.la.commune"                          
-[7] "Nom.de.l.élu"                                    "Prénom.de.l.élu"                                
-[9] "Code.sexe"                                       "Date.de.naissance"                              
-[11] "Code.de.la.catégorie.socio.professionnelle"      "Libellé.de.la.catégorie.socio.professionnelle"  
-[13] "Date.de.début.du.mandat"                         "Libellé.de.la.fonction"                         
-[15] "Date.de.début.de.la.fonction"                    "Code.nationalité"                               
 ```
 
 Comme on peut le voir, `elus_sample` contient **toutes les colonnes requises** ainsi que d'autres informations supplémentaires.

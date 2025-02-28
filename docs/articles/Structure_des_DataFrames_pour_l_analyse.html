@@ -152,7 +152,7 @@ minimal :</p>
 <span>  Prénom.de.l.élu <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Jean"</span>, <span class="st">"Marie"</span>, <span class="st">"Luc"</span><span class="op">)</span>,</span>
 <span>  Date.de.naissance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"1980-05-14"</span>, <span class="st">"1975-09-23"</span>, <span class="st">"1990-11-30"</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  Code.de.la.catégorie.socio.professionnelle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">321</span>, <span class="fl">654</span>, <span class="fl">987</span><span class="op">)</span>,</span>
-<span>  Libellé.de.la.fonction <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Maire"</span>, <span class="st">"Adjoint"</span>, <span class="st">"Conseiller"</span><span class="op">)</span></span>
+<span>  Libellé.de.la.fonction <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Maire"</span>, <span class="st">"1er adjoint au Maire"</span>, <span class="st">""</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
@@ -163,16 +163,23 @@ minimal :</p>
 <code>elus_sample</code>, contenant des informations plus détaillées.
 Voici sa structure :</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">elus_sample</span><span class="op">)</span></span></code></pre></div>
-<p>Sortie :</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"Code.du.département"</span>                             <span class="st">"Libellé.du.département"</span>                          </span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>[<span class="dv">3</span>] <span class="st">"Code.de.la.collectivité.à.statut.particulier"</span>    <span class="st">"Libellé.de.la.collectivité.à.statut.particulier"</span></span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>[<span class="dv">5</span>] <span class="st">"Code.de.la.commune"</span>                              <span class="st">"Libellé.de.la.commune"</span>                          </span>
-<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>[<span class="dv">7</span>] <span class="st">"Nom.de.l.élu"</span>                                    <span class="st">"Prénom.de.l.élu"</span>                                </span>
-<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>[<span class="dv">9</span>] <span class="st">"Code.sexe"</span>                                       <span class="st">"Date.de.naissance"</span>                              </span>
-<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>[<span class="dv">11</span>] <span class="st">"Code.de.la.catégorie.socio.professionnelle"</span>      <span class="st">"Libellé.de.la.catégorie.socio.professionnelle"</span>  </span>
-<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>[<span class="dv">13</span>] <span class="st">"Date.de.début.du.mandat"</span>                         <span class="st">"Libellé.de.la.fonction"</span>                         </span>
-<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>[<span class="dv">15</span>] <span class="st">"Date.de.début.de.la.fonction"</span>                    <span class="st">"Code.nationalité"</span>                               </span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">elus_sample</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1] "Code.du.département"                            </span></span>
+<span><span class="co">#&gt;  [2] "Libellé.du.département"                         </span></span>
+<span><span class="co">#&gt;  [3] "Code.de.la.collectivité.à.statut.particulier"   </span></span>
+<span><span class="co">#&gt;  [4] "Libellé.de.la.collectivité.à.statut.particulier"</span></span>
+<span><span class="co">#&gt;  [5] "Code.de.la.commune"                             </span></span>
+<span><span class="co">#&gt;  [6] "Libellé.de.la.commune"                          </span></span>
+<span><span class="co">#&gt;  [7] "Nom.de.l.élu"                                   </span></span>
+<span><span class="co">#&gt;  [8] "Prénom.de.l.élu"                                </span></span>
+<span><span class="co">#&gt;  [9] "Code.sexe"                                      </span></span>
+<span><span class="co">#&gt; [10] "Date.de.naissance"                              </span></span>
+<span><span class="co">#&gt; [11] "Code.de.la.catégorie.socio.professionnelle"     </span></span>
+<span><span class="co">#&gt; [12] "Libellé.de.la.catégorie.socio.professionnelle"  </span></span>
+<span><span class="co">#&gt; [13] "Date.de.début.du.mandat"                        </span></span>
+<span><span class="co">#&gt; [14] "Libellé.de.la.fonction"                         </span></span>
+<span><span class="co">#&gt; [15] "Date.de.début.de.la.fonction"                   </span></span>
+<span><span class="co">#&gt; [16] "Code.nationalité"</span></span></code></pre></div>
 <p>Comme on peut le voir, <code>elus_sample</code> contient
 <strong>toutes les colonnes requises</strong> ainsi que d’autres
 informations supplémentaires.</p>
