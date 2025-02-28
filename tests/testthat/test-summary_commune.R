@@ -1,12 +1,3 @@
-#----- Packages nécessaires -----
-
-library(dplyr)
-library(lubridate)
-
-
-
-
-
 # ----- Test 1 : Résumé des informations d'une commune -----
 
 test_that("summary.commune génère un résumé correct pour une commune", {

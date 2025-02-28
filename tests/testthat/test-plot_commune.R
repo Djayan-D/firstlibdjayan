@@ -1,13 +1,3 @@
-# ----- Packages nécessaires -----
-library(testthat)  # Framework de test
-library(ggplot2)   # Vérification du type ggplot
-library(dplyr)     # Manipulation des données
-library(lubridate) # Gestion des dates
-
-
-
-
-
 # ----- Test 1 : Génération correcte du graphique -----
 
 test_that("plot.commune génère un objet ggplot valide", {

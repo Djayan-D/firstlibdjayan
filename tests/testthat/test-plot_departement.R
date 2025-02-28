@@ -1,12 +1,3 @@
-# ----- Packages nécessaires -----
-
-library(testthat)  # Framework de test
-library(ggplot2)   # Vérification du type ggplot
-library(dplyr)     # Manipulation des données
-library(lubridate) # Gestion des dates
-
-
-
 # ----- Test 1 : Génération correcte du graphique -----
 
 test_that("plot.departement génère un objet ggplot valide", {
@@ -100,7 +91,7 @@ test_that("plot.departement ne montre que les 10 catégories les plus représent
 
   # Extraire les données du graphique
 
-  data_plot <- ggplot_build(res)$data[[1]]
+  data_plot <- ggplot2::ggplot_build(res)$data[[1]]
 
 
   # Vérifier qu'on a bien 10 catégories affichées au maximum

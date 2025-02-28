@@ -13,7 +13,7 @@
 #'
 #' @return Une liste avec les communes ayant les âges extrêmes et leur distribution d'âges.
 #'
-#' @importFrom dplyr group_by summarise slice_min slice_max ungroup filter
+#' @importFrom dplyr group_by summarise slice_min slice_max ungroup filter pull
 #' @importFrom lubridate today interval time_length
 #'
 #' @examples

@@ -1,13 +1,3 @@
-# ----- Packages nécessaires -----
-
-library(testthat)  # Charger testthat une seule fois
-library(dplyr)     # Pour manipuler les données (si nécessaire pour ton code)
-library(lubridate) # Pour la gestion des dates (si nécessaire pour ton code)
-
-
-
-
-
 # ----- Test 1 : Résumé des informations d'un département -----
 
 test_that("summary.departement génère un résumé correct pour un département", {

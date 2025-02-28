@@ -10,12 +10,17 @@
 
 creer_departement <- function(df) {
   # Vérifier la structure du DataFrame
+
   validate_schema(df)
 
+
   # Vérifier la présence de la colonne "Code.du.département"
+
   stopifnot("Code.du.département" %in% colnames(df))
 
+
   # Vérifier le nombre unique de départements
+
   unique_departments <- df$Code.du.département |>
     unique() |>
     length()
@@ -24,7 +29,9 @@ creer_departement <- function(df) {
     stop("⚠️ Erreur : Le DataFrame contient plusieurs départements.")
   }
 
+
   # Ajouter la classe "departement" si elle n'est pas déjà présente
+
   if (!inherits(df, "departement")) {
     class(df) <- c("departement", class(df))
     message("✅ Classe 'departement' ajoutée au DataFrame.")

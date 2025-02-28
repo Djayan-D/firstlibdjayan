@@ -55,16 +55,31 @@
 <div class="page-header"><h1 id="bienvenue-sur-firstlibdjayan">Bienvenue sur <strong>FirstLibDjayan</strong>
 <a class="anchor" aria-label="anchor" href="#bienvenue-sur-firstlibdjayan"></a>
 </h1></div>
-<p>Bienvenue sur la documentation de <strong>FirstLibDjayan</strong>, un package R conçu pour l’analyse des données des élus au niveau des communes et départements.</p>
+<p>Bienvenue dans la documentation de <strong>FirstLibDjayan</strong>, un package R qui facilite l’analyse des données des élus au niveau des communes et départements.</p>
 <div class="section level2">
 <h2 id="logo">
-<img src="assets/logo.png" width="200" alt="Logo"><a class="anchor" aria-label="anchor" href="#logo"></a>
+<img src="assets/logo.png" class="logo" width="200" alt="Logo"><a class="anchor" aria-label="anchor" href="#logo"></a>
 </h2>
 </div>
 <div class="section level2">
 <h2 id="objectifs-du-package">Objectifs du package<a class="anchor" aria-label="anchor" href="#objectifs-du-package"></a>
 </h2>
-<p>Le package <strong>FirstLibDjayan</strong> a pour objectif de faciliter l’analyse des données des élus au niveau local. Voici les principales fonctionnalités du package :</p>
+<p>Le package <strong>FirstLibDjayan</strong> a pour objectif de faciliter l’analyse des données des élus au niveau local. Voici les principales fonctionnalités :</p>
+<div class="bubble">
+Analyse des élus
+</div>
+<div class="bubble">
+Synthèse des communes et départements
+</div>
+<div class="bubble">
+Visualisation des tendances
+</div>
+<div class="bubble">
+Génération de rapports automatisés
+</div>
+<div class="section level3">
+<h3 id="fonctionnalités-clés-">Fonctionnalités clés :<a class="anchor" aria-label="anchor" href="#fonctionnalit%C3%A9s-cl%C3%A9s-"></a>
+</h3>
 <ul>
 <li>
 <strong>Analyse des élus</strong> : Extraction et comptage des élus uniques, identification des adjoints, analyse de la distribution des âges pour mieux comprendre la composition des collectivités.</li>
@@ -75,25 +90,23 @@
 <li>
 <strong>Génération de rapports automatisés</strong> : Production de rapports personnalisés en <strong>Quarto</strong>, permettant d’obtenir rapidement une synthèse claire des données pour chaque territoire.</li>
 </ul>
+<hr>
+</div>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <p>Pour installer <strong>FirstLibDjayan</strong>, utilisez la commande suivante dans R :</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"djayan-d/firstlibdjayan"</span><span class="op">)</span></span></code></pre></div>
+<p><code>{r} devtools::install_github("djayan-d/firstlibdjayan")</code></p>
 <hr>
 </div>
 <div class="section level2">
 <h2 id="id_-exemple-dutilisation">📖 Exemple d’utilisation<a class="anchor" aria-label="anchor" href="#id_-exemple-dutilisation"></a>
 </h2>
 <p>Voici un exemple pour illustrer comment utiliser <strong>FirstLibDjayan</strong> dans votre analyse :</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/Djayan-D/firstlibdjayan" class="external-link">firstlibdjayan</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Exemple d'utilisation d'une fonction du package</span></span>
-<span><span class="co"># Remplacez ceci par une fonction du package, comme summary.commune()</span></span>
-<span><span class="fu"><a href="reference/summary.commune.html">summary.commune</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>  </span></code></pre></div>
+<p>```{r} library(firstlibdjayan)</p>
+<p>summary.commune(data)<br>
+```</p>
 <hr>
 </div>
 <div class="section level2">
@@ -107,6 +120,7 @@
 <li>
 <strong><code><a href="reference/generer_rapport.html">generer_rapport()</a></code></strong> : Génère des rapports au format <strong>PDF</strong> ou <strong>HTML</strong> avec des analyses complètes basées sur les communes et départements.</li>
 </ul>
+<hr>
 </div>
 <div class="section level2">
 <h2 id="id_-contribuer">👥 Contribuer<a class="anchor" aria-label="anchor" href="#id_-contribuer"></a>
@@ -119,7 +133,7 @@
 </h2>
 <ul>
 <li>
-<strong>DAËRON Djayan</strong> (<a href="mailto:ton.email@example.com" class="email">ton.email@example.com</a>)</li>
+<strong>DAËRON Djayan</strong> (<a href="mailto:daeron.djayan@gmail.com" class="email">daeron.djayan@gmail.com</a>)</li>
 </ul>
 <hr>
 </div>
@@ -128,11 +142,8 @@
 </h2>
 <p>Ce projet est sous licence <strong>MIT</strong> - voir le fichier <a href="LICENSE">LICENSE</a> pour plus de détails.</p>
 <hr>
-</div>
-<div class="section level2">
-<h2 id="note--si-vous-avez-des-questions-ou-rencontrez-des-problèmes-nhésitez-pas-à-ouvrir-une-issue-sur-github">
-<strong>Note</strong> : Si vous avez des questions ou rencontrez des problèmes, n’hésitez pas à ouvrir une issue sur <a href="https://github.com/djayan-d/firstlibdjayan" class="external-link">GitHub</a>.<a class="anchor" aria-label="anchor" href="#note--si-vous-avez-des-questions-ou-rencontrez-des-probl%C3%A8mes-nh%C3%A9sitez-pas-%C3%A0-ouvrir-une-issue-sur-github"></a>
-</h2>
+<p><strong>Note</strong> : Si vous avez des questions ou rencontrez des problèmes, n’hésitez pas à ouvrir une issue sur <a href="https://github.com/djayan-d/firstlibdjayan" class="external-link">GitHub</a>.</p>
+<hr>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">

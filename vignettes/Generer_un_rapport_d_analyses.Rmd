@@ -25,28 +25,26 @@ library(dplyr)
 
 # Introduction
 
-
 Dans cette vignette, nous allons explorer l'utilisation de plusieurs fonctions utiles qui permettent d'analyser et de générer des rapports à partir de données relatives aux communes et aux départements. Nous allons démontrer ces fonctions avec des exemples pratiques et des données fictives pour vous montrer leur efficacité et leur facilité d'utilisation.
 
 Les fonctions que nous allons aborder sont :
 
-- **`summary.commune()`** : Cette fonction génère un résumé détaillé des informations relatives à une commune donnée. Elle permet de connaître des statistiques sur les élus de la commune, telles que leur âge moyen, la distribution des âges et l'élu le plus âgé, entre autres informations utiles pour une analyse locale.
+-   **`summary.commune()`** : Cette fonction génère un résumé détaillé des informations relatives à une commune donnée. Elle permet de connaître des statistiques sur les élus de la commune, telles que leur âge moyen, la distribution des âges et l'élu le plus âgé, entre autres informations utiles pour une analyse locale.
 
-- **`summary.departement()`** : De manière similaire à `summary.commune()`, cette fonction génère un résumé pour un département entier. Elle permet d'obtenir une vue d'ensemble des statistiques relatives à toutes les communes du département, y compris la répartition des âges des élus, le nombre de communes et le nombre total d'élus.
+-   **`summary.departement()`** : De manière similaire à `summary.commune()`, cette fonction génère un résumé pour un département entier. Elle permet d'obtenir une vue d'ensemble des statistiques relatives à toutes les communes du département, y compris la répartition des âges des élus, le nombre de communes et le nombre total d'élus.
 
-- **`generer_rapport()`** : Cette fonction plus avancée permet de générer un rapport au format PDF en utilisant un fichier Quarto. Elle prend en entrée les informations sur la commune et le département, et génère un rapport structuré contenant les analyses réalisées avec les deux premières fonctions.
+-   **`generer_rapport()`** : Cette fonction plus avancée permet de générer un rapport au format PDF en utilisant un fichier Quarto. Elle prend en entrée les informations sur la commune et le département, et génère un rapport structuré contenant les analyses réalisées avec les deux premières fonctions.
 
 Nous allons démontrer l'utilisation de ces fonctions à travers des exemples concrets, en travaillant avec des données fictives et en générant un rapport complet pour une commune et un département spécifiques.
-
 
 # 1. Résumé des informations d'une commune
 
 La fonction `summary.commune()` permet de générer un résumé des informations pour une commune donnée. Elle prend en entrée un objet de type `commune` (un `data.frame` contenant les informations des élus d'une commune) et génère un résumé incluant :
 
-- Le nom de la commune
-- Le nombre d'élus
-- La distribution des âges des élus
-- L'élu le plus âgé
+-   Le nom de la commune
+-   Le nombre d'élus
+-   La distribution des âges des élus
+-   L'élu le plus âgé
 
 ### Exemple d'utilisation de `summary.commune`
 
@@ -85,36 +83,33 @@ commune_data <- creer_commune(commune_data)
 summary(commune_data)
 ```
 
+### Résumé pour la commune de Gotham City
 
-### Résumé pour la commune de Gotham City  
+Le résumé des informations pour la commune de **Gotham City** est généré dynamiquement et peut évoluer en fonction de la date d'exécution. Voici les principaux résultats :
 
-Le résumé des informations pour la commune de **Gotham City** est généré dynamiquement et peut évoluer en fonction de la date d'exécution. Voici les principaux résultats :  
-
-- **Nom de la commune :** Gotham City  
-- **Nombre d'élus :** 10  
-- **Distribution des âges des élus :**  
-    - **Âge minimum (Q0) :** 43 ans  
-    - **Premier quartile (Q25) :** 46,25 ans  
-    - **Médiane (Q50) :** 106 ans  
-    - **Troisième quartile (Q75) :** 138 ans  
-    - **Âge maximum (Q100) :** 255 ans  
-- **L'élu le plus âgé :** Napoléon Bonaparte, **255 ans** (au moment de l'exécution)  
+-   **Nom de la commune :** Gotham City\
+-   **Nombre d'élus :** 10\
+-   **Distribution des âges des élus :**
+    -   **Âge minimum (Q0) :** 43 ans\
+    -   **Premier quartile (Q25) :** 46,25 ans\
+    -   **Médiane (Q50) :** 106 ans\
+    -   **Troisième quartile (Q75) :** 138 ans\
+    -   **Âge maximum (Q100) :** 255 ans\
+-   **L'élu le plus âgé :** Napoléon Bonaparte, **255 ans** (au moment de l'exécution)
 
 L'âge des élus est calculé en fonction de la date d'exécution du programme, ce qui signifie que les valeurs évolueront naturellement avec le temps. Cependant, la liste des élus et leurs fonctions restent fixes (à moins qu'un coup d'État ne survienne à Gotham...).
-
 
 # 2. Résumé des informations d'un département
 
 La fonction `summary.departement()` permet de générer un résumé des informations pour un département donné. Elle prend en entrée un objet de type `departement` (un `data.frame` contenant les informations des communes et des élus d'un département) et génère un résumé incluant :
 
-- Le nom du département
-- Le nombre de communes
-- Le nombre total d'élus
-- La distribution des âges des élus
-- L'élu le plus âgé
-- La commune avec la moyenne d'âge la plus basse
-- La commune avec la moyenne d'âge la plus élevée
-
+-   Le nom du département
+-   Le nombre de communes
+-   Le nombre total d'élus
+-   La distribution des âges des élus
+-   L'élu le plus âgé
+-   La commune avec la moyenne d'âge la plus basse
+-   La commune avec la moyenne d'âge la plus élevée
 
 ### Exemple d'utilisation de `summary.departement()`
 
@@ -150,36 +145,35 @@ departement_data <- creer_departement(departement_data)
 summary(departement_data)
 ```
 
-### Résumé pour le département de Mordor  
+### Résumé pour le département de Mordor
 
-Le résumé des informations pour le département de **Mordor** est généré dynamiquement et peut évoluer en fonction de la date d'exécution. Voici les principaux résultats :  
+Le résumé des informations pour le département de **Mordor** est généré dynamiquement et peut évoluer en fonction de la date d'exécution. Voici les principaux résultats :
 
-- **Nom du département :** Mordor  
-- **Nombre de communes :** 3  
-- **Nombre d'élus :** 10  
-- **Distribution des âges des élus :**  
-    - **Âge minimum (Q0) :** 34 ans  
-    - **Premier quartile (Q25) :** 53 ans  
-    - **Médiane (Q50) :** 90,5 ans  
-    - **Troisième quartile (Q75) :** 139,25 ans  
-    - **Âge maximum (Q100) :** 1025 ans  
-- **L'élu le plus âgé :** LE GRIS, **1025 ans**
-- **L'élu le plus jeune :** PAN, **34 ans**
-- **La commune avec la moyenne d'âge la plus basse :** Wakanda  
-  - **Distribution des âges des élus :**  
-      - **Âge minimum (Q0) :** 34 ans  
-      - **Premier quartile (Q25) :** 37 ans  
-      - **Médiane (Q50) :** 62 ans  
-      - **Troisième quartile (Q75) :** 134 ans  
-      - **Âge maximum (Q100) :** 141 ans  
-
-- **La commune avec la moyenne d'âge la plus élevée :** Hogwarts  
-  - **Distribution des âges des élus :**  
-      - **Âge minimum (Q0) :** 62 ans  
-      - **Premier quartile (Q25) :** 90,5 ans  
-      - **Médiane (Q50) :** 119 ans  
-      - **Troisième quartile (Q75) :** 572 ans  
-      - **Âge maximum (Q100) :** 1025 ans
+-   **Nom du département :** Mordor\
+-   **Nombre de communes :** 3\
+-   **Nombre d'élus :** 10\
+-   **Distribution des âges des élus :**
+    -   **Âge minimum (Q0) :** 34 ans\
+    -   **Premier quartile (Q25) :** 53 ans\
+    -   **Médiane (Q50) :** 90,5 ans\
+    -   **Troisième quartile (Q75) :** 139,25 ans\
+    -   **Âge maximum (Q100) :** 1025 ans\
+-   **L'élu le plus âgé :** LE GRIS, **1025 ans**
+-   **L'élu le plus jeune :** PAN, **34 ans**
+-   **La commune avec la moyenne d'âge la plus basse :** Wakanda
+    -   **Distribution des âges des élus :**
+        -   **Âge minimum (Q0) :** 34 ans\
+        -   **Premier quartile (Q25) :** 37 ans\
+        -   **Médiane (Q50) :** 62 ans\
+        -   **Troisième quartile (Q75) :** 134 ans\
+        -   **Âge maximum (Q100) :** 141 ans
+-   **La commune avec la moyenne d'âge la plus élevée :** Hogwarts
+    -   **Distribution des âges des élus :**
+        -   **Âge minimum (Q0) :** 62 ans\
+        -   **Premier quartile (Q25) :** 90,5 ans\
+        -   **Médiane (Q50) :** 119 ans\
+        -   **Troisième quartile (Q75) :** 572 ans\
+        -   **Âge maximum (Q100) :** 1025 ans
 
 Les âges des élus sont calculés en fonction de la date d'exécution du programme, ce qui signifie que les valeurs évolueront naturellement avec le temps. Cependant, la liste des élus et leurs fonctions restent fixes (à moins qu'un incident ne survienne dans le Mordor...).
 
@@ -224,7 +218,6 @@ generer_rapport(commune = 99901,
 ```
 
 Cette fonction crée un fichier html appelé `rapport_nantes_et_loire_atlantique.html` qui inclut des analyses sur la commune de Nantes et le département de Loire-Atlantique. Les données peuvent être ajustées pour correspondre à des valeurs réelles provenant de vos jeux de données.
-
 
 # Conclusion
 

@@ -1,7 +1,5 @@
 # ----- Test 1 : Un seul département -----
-
 test_that("creer_departement ajoute la classe 'departement' pour un seul département", {
-  # Création d'un DataFrame contenant un seul département
 
   df_test <- data.frame(
     Code.du.département = c(44,44),
@@ -16,23 +14,17 @@ test_that("creer_departement ajoute la classe 'departement' pour un seul départ
     stringsAsFactors = FALSE
   )
 
-
-  # Vérification que la classe "departement" est bien ajoutée
-
-  expect_s3_class(
-    creer_departement(df_test),
-    "departement"
+  expect_message(
+    res <- creer_departement(df_test),
+    "✅ Classe 'departement' ajoutée au DataFrame."
   )
+
+  expect_s3_class(res, "departement")
 })
 
 
-
-
-
 # ----- Test 2 : Plusieurs départements -----
-
 test_that("creer_departement renvoie une erreur si plusieurs départements sont présents", {
-  # Création d'un DataFrame contenant plusieurs départements
 
   df_test <- data.frame(
     Code.du.département = c(44, 32),
@@ -47,23 +39,15 @@ test_that("creer_departement renvoie une erreur si plusieurs départements sont 
     stringsAsFactors = FALSE
   )
 
-
-  # Vérification que la fonction génère une erreur avec plusieurs départements
-
   expect_error(
     creer_departement(df_test),
-    "Le DataFrame est composé de plusieurs départements."
+    "⚠️ Erreur : Le DataFrame contient plusieurs départements."
   )
 })
 
 
-
-
-
 # ----- Test 3 : Ne pas ajouter la classe plusieurs fois -----
-
 test_that("creer_departement ne duplique pas la classe 'departement' si elle est déjà présente", {
-  # Création d'un DataFrame contenant un seul département
 
   df_test <- data.frame(
     Code.du.département = c(44, 44),
@@ -78,16 +62,8 @@ test_that("creer_departement ne duplique pas la classe 'departement' si elle est
     stringsAsFactors = FALSE
   )
 
-
-  # Ajouter manuellement la classe "departement"
-
   class(df_test) <- c("departement", class(df_test))
 
-
-  # Vérification que la classe "departement" n'est pas dupliquée
-
-  expect_equal(
-    class(creer_departement(df_test)),
-    class(df_test)  # La classe ne doit pas changer
-  )
+  expect_silent(res <- creer_departement(df_test))  # Ne doit pas afficher de message
+  expect_equal(class(res), class(df_test))  # La classe ne doit pas changer
 })
