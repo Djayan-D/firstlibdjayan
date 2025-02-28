@@ -8,12 +8,15 @@
 #' - L'élu le plus âgé.
 #'
 #' @param x Un objet de classe `commune`, qui est un `data.frame` contenant les données des élus d'une commune.
+#'
 #' @return Une liste contenant :
 #' - `nom_commune` : Le nom de la commune,
 #' - `nombre_elus` : Le nombre d'élus dans la commune,
 #' - `distribution_ages_elus` : Les quantiles de la distribution des âges des élus,
 #' - `elu_plus_age` : Les informations de l'élu le plus âgé.
+#'
 #' @export
+
 
 summary.commune <- function(x) {
   # Vérifier que le DataFrame respecte la structure minimale

@@ -5,6 +5,7 @@
 #' sur les élus les plus âgés et les plus jeunes, ainsi que les communes les plus jeunes et les plus âgées.
 #'
 #' @param x Un objet de classe `departement` (un `data.frame` contenant les informations des élus et des communes).
+#'
 #' @return Une liste contenant plusieurs éléments :
 #' - `nom_departement` : Le nom du département,
 #' - `nombre_communes` : Le nombre de communes dans le département,
@@ -14,8 +15,11 @@
 #' - `elu_plus_jeune` : Le nom et l'âge de l'élu le plus jeune,
 #' - `commune_plus_jeune` : La commune avec la moyenne d'âge la plus faible,
 #' - `commune_plus_agee` : La commune avec la moyenne d'âge la plus élevée.
+#'
 #' @importFrom lubridate today
+#'
 #' @export
+
 
 summary.departement <- function(x) {
   # Vérifier que le DataFrame respecte la structure minimale

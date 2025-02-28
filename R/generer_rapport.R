@@ -41,6 +41,7 @@
 #' # Voir la documentation pour la structure attendue du dataframe
 #' # https://djayan-d.github.io/firstlibdjayan/
 
+
 generer_rapport <- function(commune, departement, output, df = elus_sample) {
   # Vérifier si df est un dataframe
 
@@ -83,5 +84,6 @@ generer_rapport <- function(commune, departement, output, df = elus_sample) {
 
   # Renvoyer un message après la génération
 
-  message(paste0(output, " a été généré avec succès."))
+  message(paste0("✅ ", output, " a été généré avec succès."))
+
 }
