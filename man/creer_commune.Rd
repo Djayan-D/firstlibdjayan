@@ -8,13 +8,12 @@ creer_commune(df)
 }
 \arguments{
 \item{df}{Un `data.frame` contenant les données des communes, avec la colonne `Code.de.la.commune` utilisée
-pour vérifier si plusieurs communes sont présentes dans le `data.frame`.}
+pour vérifier si plusieurs communes sont présentes.}
 }
 \value{
 Un `data.frame` auquel la classe "commune" est ajoutée s'il contient une seule commune.
 }
 \description{
-Cette fonction permet de vérifier si le `data.frame` contient les données d'une seule commune. Si le `data.frame`
-contient plusieurs communes, la fonction arrête l'exécution avec un message d'erreur. Si une seule commune est présente,
-elle ajoute la classe "commune" au `data.frame`.
+Cette fonction vérifie si le `data.frame` contient les données d'une seule commune. Si plusieurs communes sont détectées,
+elle arrête l'exécution avec un message d'erreur. Sinon, elle ajoute la classe "commune" au `data.frame`.
 }

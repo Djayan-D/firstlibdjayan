@@ -23,7 +23,8 @@ Imports:
     ggplot2,
     lubridate,
     stringr,
-    quarto
+    quarto,
+    tinytex
 Suggests: 
     testthat (>= 3.0.0),
     knitr,

@@ -8,13 +8,12 @@ creer_departement(df)
 }
 \arguments{
 \item{df}{Un `data.frame` contenant les données des départements, avec la colonne `Code.du.département` utilisée
-pour vérifier si plusieurs départements sont présents dans le `data.frame`.}
+pour vérifier si plusieurs départements sont présents.}
 }
 \value{
 Un `data.frame` auquel la classe "departement" est ajoutée s'il contient un seul département.
 }
 \description{
-Cette fonction permet de vérifier si le `data.frame` contient les données d'un seul département. Si le `data.frame`
-contient plusieurs départements, la fonction arrête l'exécution avec un message d'erreur. Si un seul département est présent,
-elle ajoute la classe "departement" au `data.frame`.
+Cette fonction vérifie si le `data.frame` contient les données d'un seul département. Si plusieurs départements sont détectés,
+elle arrête l'exécution avec un message d'erreur. Sinon, elle ajoute la classe "departement" au `data.frame`.
 }

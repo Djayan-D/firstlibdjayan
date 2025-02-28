@@ -26,7 +26,9 @@
 #'
 #' - La fonction utilise \code{quarto::quarto_render()} pour générer le rapport au format spécifié.
 #'
-#' @import quarto tinytex
+#' @import quarto
+#' @import tinytex
+#'
 #' @export
 #'
 #' @examples
