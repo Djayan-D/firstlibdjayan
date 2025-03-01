@@ -58,7 +58,7 @@ commune_data <- data.frame(
   Code.du.département = rep(23, 10),
   Libellé.du.département = rep("Creuse", 10),
   Code.de.la.commune = rep(23666, 10),
-  Libellé.de.la.commune = rep("Gotham City", 10),
+  Libellé.de.la.commune = rep("Metropolis", 10),
   Nom.de.l.élu = c("EINSTEIN", "POTTER", "MUSK", "MONROE", "HOLMES", 
                    "BONAPARTE", "MACRON", "ZINEDINE", "WAYNE", "WILLIAMS"),
   Prénom.de.l.élu = c("Albert", "Harry", "Elon", "Marilyn", "Sherlock", 
@@ -86,11 +86,11 @@ commune_data <- creer_commune(commune_data)
 summary(commune_data)
 ```
 
-### Résumé pour la commune de Gotham City
+### Résumé pour la commune de Metropolis
 
-Le résumé des informations pour la commune de **Gotham City** est généré dynamiquement et peut évoluer en fonction de la date d'exécution. Voici les principaux résultats :
+Le résumé des informations pour la commune de **Metropolis** est généré dynamiquement et peut évoluer en fonction de la date d'exécution. Voici les principaux résultats :
 
--   **Nom de la commune :** Gotham City\
+-   **Nom de la commune :** Metropolis\
 -   **Nombre d'élus :** 10\
 -   **Distribution des âges des élus :**
     -   **Âge minimum (Q0) :** 43 ans\
@@ -186,20 +186,50 @@ La fonction `generer_rapport()` permet de générer un rapport au format **HTML*
 
 ### Exemple d'utilisation de `generer_rapport`
 
-```{r eval = FALSE}
-# Exemple d'utilisation de generer_rapport 
-# Supposons que nous voulons générer un rapport pour Gotham City (commune) et Mordor (département)
+La fonction **`generer_rapport()`** permet de générer des rapports détaillés sur une commune et un département. Par défaut, elle crée un fichier sans extension, mais il est possible de générer des fichiers **PDF** ou **HTML** en ajustant le format de sortie. Le format **PDF** est conseillé car le rapport inclut des analyses complètes sur les élus de la commune et du département ainsi que des visualisations graphiques, qui, elles, ressortent mal en **HTML**.
 
-# Utilisation du df de base
+#### Exemple 1 : Rapport sur la commune et le département de Loire-Atlantique
+
+Par défaut, il est donc préférable de générer le rapport en **PDF** :
+
+```{r eval=FALSE}
+generer_rapport(commune = 44109, 
+                departement = 44, 
+                output = "rapport_Nantes_Loire_Atlantique.pdf")
+```
+
+Ce rapport généré inclura :
+
+-   Un résumé détaillé des informations relatives à la **commune de Nantes** et au **département de Loire-Atlantique**. \
+
+-   Des visualisations graphiques comme des diagrammes représentant la répartition des élus par catégorie socio-professionnelle, la distribution des âges, et bien plus encore. \
+
+-   Des statistiques globales sur la commune et le département. \
+
+#### Exemple 2 : Rapport en format HTML
+
+Si vous préférez générer un rapport au format **HTML**, vous pouvez simplement changer l'extension du fichier dans le paramètre `output` :
+
+```{r eval=FALSE}
 generer_rapport(commune = 44109, 
                 departement = 44, 
                 output = "rapport_Nantes_Loire_Atlantique.html")
+```
+
+Ce rapport aura la même structure et le même contenu, mais sera généré au format **HTML**, ce qui permet de l'afficher directement dans un navigateur web.
+
+#### Exemple 3 : Rapport avec un **data.frame** spécifique
+
+Si vous souhaitez utiliser des données spécifiques pour le département ou la commune (par exemple, provenant d'un fichier externe ou d'un calcul préalable), vous pouvez le spécifier avec le paramètre `df`, :
+
+```{r eval=FALSE}
+# Définition d'un data.frame spécifique pour le département
 
 departement_data <- data.frame(
   Code.du.département = rep(99, 10),
   Libellé.du.département = rep("Mordor", 10),
   Code.de.la.commune = c(rep(99901,2), rep(99902,3), rep(99903,5)),
-  Libellé.de.la.commune = c(rep("Metropolis",2), rep("Hogwarts",3), rep("Wakanda",5)),
+  Libellé.de.la.commune = c(rep("Gotham City",2), rep("Hogwarts",3), rep("Wakanda",5)),
   Nom.de.l.élu = c("DICAPRIO", "CHURCHILL", "LE GRIS", "JORDAN", "SARTRE",
                    "MESSI", "PAN", "BOND", "DE GAULLE", "CHANEL"),
   Prénom.de.l.élu = c("Leonardo", "Winston", "Gandalf", "Michael", "Jean-Paul",
@@ -213,14 +243,36 @@ departement_data <- data.frame(
                              "", "", "", "3e adjoint au Maire", "", "")
 )
 
-# Si un data.frame spécifique est souhaité, on peut le préciser
+
+# Générer le rapport en précisant le data.frame
+
 generer_rapport(commune = 99901,
                 departement = 99,
                 df = departement_data,
-                output = "rapport_gotham_city_mordor_df_specifie.html")
+                output = "rapport_gotham_city_mordor.pdf")
 ```
 
-Cette fonction crée un fichier html appelé `rapport_nantes_et_loire_atlantique.html` qui inclut des analyses sur la commune de Nantes et le département de Loire-Atlantique. Les données peuvent être ajustées pour correspondre à des valeurs réelles provenant de vos jeux de données.
+
+Dans cet exemple, le rapport sera généré en utilisant les données personnalisées fournies dans `departement_data`. Vous pouvez ainsi personnaliser totalement les données de départ pour chaque commune ou département. Toutefois, il est important de veiller à la bonne structure du **dataframe** pour que cela fonctionne correctement. Pour plus d'informations sur la structure requise, consultez la page [Structure des DataFrames pour l'analyse](https://djayan-d.github.io/firstlibdjayan/articles/Structure_des_DataFrames_pour_l_analyse.html). De la même façon, il est possible de créer un rapport personnalisé en **HTML**, il suffit de le préciser dans la partie `output`, comme vu précédemment.
+
+
+---
+
+### Résumé des formats et rapports générés
+
+- **Par défaut** : Il vous sera préférable de choisir l'extension **PDF** afin d'obtenir un rapport complet et exportable contenant des analyses sur la commune et le département spécifiés, incluant des statistiques sur les élus et des graphiques.
+  
+- **Format HTML** : Vous pouvez obtenir un rapport en **HTML** en changeant simplement l'extension du fichier de sortie.
+
+- **Données personnalisées** : Si vous disposez de données spécifiques sous forme de **data.frame**, vous pouvez les intégrer dans le rapport en utilisant le paramètre `df`, ce qui permet une personnalisation complète du contenu.
+
+Chaque rapport comprend :
+- Une analyse complète des élus d'une commune et d'un département.
+- Des visualisations graphiques comme des diagrammes de répartition des âges, des graphiques de densité, etc.
+- Des informations détaillées sur les catégories socio-professionnelles et d'autres statistiques pertinentes.
+
+--- 
+
 
 # Conclusion
 

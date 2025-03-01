@@ -93,7 +93,7 @@ plot(df_commune)
 Pour le département, nous générons également un résumé statistique similaire à celui de la commune mais un peu plus complet, afin de fournir des informations sur les élus à l'échelle départementale. Cela comprend des données démographiques détaillées et un aperçu des caractéristiques des élus dans le département.
 
 ```{r}
-summary(df_commune)
+summary(df_departement)
 ```
 
 ### Répartition des élus par profession
@@ -101,7 +101,7 @@ summary(df_commune)
 Enfin, un graphique est produit pour le département, illustrant la répartition des élus par profession. Cette analyse permet de comparer la diversité professionnelle des élus à l'échelle départementale et d'examiner les tendances possibles entre la commune et le département.
 
 ```{r}
-plot(df_commune)
+plot(df_departement)
 ```
 
 # Conclusion

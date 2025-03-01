@@ -92,10 +92,12 @@ plus jeunes, ainsi que les communes les plus jeunes et les plus âgées.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Créer un exemple de jeu de données pour le département de Loire-Atlantique (code 44)</span></span></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">df_loire_atlantique</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  Code.de.la.commune <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">44109</span>, <span class="fl">5</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  Libellé.de.la.commune <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"Nantes"</span>, <span class="fl">5</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  Code.du.département <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">44</span>, <span class="fl">5</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  Libellé.du.département <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"Loire-Atlantique"</span>, <span class="fl">5</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  Code.de.la.commune <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">44109</span>, <span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">44026</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  Libellé.de.la.commune <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"Nantes"</span>, <span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"Carquefou"</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  Nom.de.l.élu <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Dupont"</span>, <span class="st">"Dupuis"</span>, <span class="st">"Martin"</span>, <span class="st">"Lemoine"</span>, <span class="st">"Durand"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  Prénom.de.l.élu <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Jean"</span>, <span class="st">"Marie"</span>, <span class="st">"Paul"</span>, <span class="st">"Anne"</span>, <span class="st">"Pierre"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  Date.de.naissance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"1970-01-01"</span>, <span class="st">"1980-05-12"</span>, <span class="st">"1965-08-22"</span>, <span class="st">"1992-10-30"</span>, <span class="st">"1950-12-05"</span><span class="op">)</span><span class="op">)</span>,</span></span>
@@ -103,13 +105,100 @@ plus jeunes, ainsi que les communes les plus jeunes et les plus âgées.</p>
 <span class="r-in"><span>  stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">df_loire_atlantique</span> <span class="op">&lt;-</span> <span class="fu"><a href="creer_departement.html">creer_departement</a></span><span class="op">(</span><span class="va">df_loire_atlantique</span><span class="op">)</span>  <span class="co"># Ajouter la classe "departement"</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>⚠️ Attention : Certaines colonnes essentielles sont absentes : Code.du.département, Libellé.de.la.fonction</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>⚠️ Attention : Certaines colonnes essentielles sont absentes : Libellé.de.la.fonction</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> Cela peut entraîner des erreurs dans certaines fonctions du package.</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in creer_departement(df_loire_atlantique):</span> "Code.du.département" %in% colnames(df) is not TRUE</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ✅ Classe 'departement' ajoutée au DataFrame.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Appeler la fonction pour obtenir un résumé des informations du département de Loire-Atlantique</span></span></span>
-<span class="r-in"><span><span class="fu">summary.departement</span><span class="op">(</span><span class="va">df_loire_atlantique</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in summary.departement(df_loire_atlantique):</span> could not find function "summary.departement"</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">df_loire_atlantique</span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>⚠️ Attention : Certaines colonnes essentielles sont absentes : Libellé.de.la.fonction</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> Cela peut entraîner des erreurs dans certaines fonctions du package.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $nom_departement</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Loire-Atlantique"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $nombre_communes</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $nombre_elus</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $distribution_age_elus</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $distribution_age_elus$Q0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 32.33425</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $distribution_age_elus$Q25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 44.80274</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $distribution_age_elus$Q50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 55.16164</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $distribution_age_elus$Q75</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 59.52329</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $distribution_age_elus$Q100</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 74.23562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $elu_plus_age</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $elu_plus_age$nom</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Durand"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $elu_plus_age$age</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 74</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $elu_plus_jeune</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $elu_plus_jeune$nom</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Lemoine"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $elu_plus_jeune$age</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 32</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $commune_plus_jeune</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $commune_plus_jeune$nom</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Nantes"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $commune_plus_jeune$distribution_ages</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $commune_plus_jeune$distribution_ages$Q0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 44.80274</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $commune_plus_jeune$distribution_ages$Q25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 49.98219</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $commune_plus_jeune$distribution_ages$Q50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 55.16164</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $commune_plus_jeune$distribution_ages$Q75</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 57.34247</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $commune_plus_jeune$distribution_ages$Q100</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 59.52329</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $commune_plus_agee</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $commune_plus_agee$nom</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Carquefou"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $commune_plus_agee$distribution_ages</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $commune_plus_agee$distribution_ages$Q0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 32.33425</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $commune_plus_agee$distribution_ages$Q25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 42.80959</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $commune_plus_agee$distribution_ages$Q50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 53.28493</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $commune_plus_agee$distribution_ages$Q75</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 63.76027</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $commune_plus_agee$distribution_ages$Q100</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 74.23562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

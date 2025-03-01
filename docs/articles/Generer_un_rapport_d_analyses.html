@@ -135,7 +135,7 @@ les informations des élus d’une commune) et génère un résumé incluant
 <span>  Code.du.département <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">23</span>, <span class="fl">10</span><span class="op">)</span>,</span>
 <span>  Libellé.du.département <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"Creuse"</span>, <span class="fl">10</span><span class="op">)</span>,</span>
 <span>  Code.de.la.commune <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">23666</span>, <span class="fl">10</span><span class="op">)</span>,</span>
-<span>  Libellé.de.la.commune <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"Gotham City"</span>, <span class="fl">10</span><span class="op">)</span>,</span>
+<span>  Libellé.de.la.commune <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"Metropolis"</span>, <span class="fl">10</span><span class="op">)</span>,</span>
 <span>  Nom.de.l.élu <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"EINSTEIN"</span>, <span class="st">"POTTER"</span>, <span class="st">"MUSK"</span>, <span class="st">"MONROE"</span>, <span class="st">"HOLMES"</span>, </span>
 <span>                   <span class="st">"BONAPARTE"</span>, <span class="st">"MACRON"</span>, <span class="st">"ZINEDINE"</span>, <span class="st">"WAYNE"</span>, <span class="st">"WILLIAMS"</span><span class="op">)</span>,</span>
 <span>  Prénom.de.l.élu <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Albert"</span>, <span class="st">"Harry"</span>, <span class="st">"Elon"</span>, <span class="st">"Marilyn"</span>, <span class="st">"Sherlock"</span>, </span>
@@ -162,7 +162,7 @@ les informations des élus d’une commune) et génère un résumé incluant
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">commune_data</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $nom_commune</span></span>
-<span><span class="co">#&gt; [1] "Gotham City"</span></span>
+<span><span class="co">#&gt; [1] "Metropolis"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $nombre_elus</span></span>
 <span><span class="co">#&gt; [1] 10</span></span>
@@ -195,14 +195,14 @@ les informations des élus d’une commune) et génère un résumé incluant
 <span><span class="co">#&gt; [1] 255</span></span></code></pre></div>
 </div>
 <div class="section level4">
-<h4 id="résumé-pour-la-commune-de-gotham-city">Résumé pour la commune de Gotham City<a class="anchor" aria-label="anchor" href="#r%C3%A9sum%C3%A9-pour-la-commune-de-gotham-city"></a>
+<h4 id="résumé-pour-la-commune-de-metropolis">Résumé pour la commune de Metropolis<a class="anchor" aria-label="anchor" href="#r%C3%A9sum%C3%A9-pour-la-commune-de-metropolis"></a>
 </h4>
-<p>Le résumé des informations pour la commune de <strong>Gotham
-City</strong> est généré dynamiquement et peut évoluer en fonction de la
-date d’exécution. Voici les principaux résultats :</p>
+<p>Le résumé des informations pour la commune de
+<strong>Metropolis</strong> est généré dynamiquement et peut évoluer en
+fonction de la date d’exécution. Voici les principaux résultats :</p>
 <ul>
 <li>
-<strong>Nom de la commune :</strong> Gotham City<br>
+<strong>Nom de la commune :</strong> Metropolis<br>
 </li>
 <li>
 <strong>Nombre d’élus :</strong> 10<br>
@@ -484,20 +484,65 @@ défaut sera utilisé.</p>
 <div class="section level4">
 <h4 id="exemple-dutilisation-de-generer_rapport">Exemple d’utilisation de <code>generer_rapport</code><a class="anchor" aria-label="anchor" href="#exemple-dutilisation-de-generer_rapport"></a>
 </h4>
+<p>La fonction <strong><code><a href="../reference/generer_rapport.html">generer_rapport()</a></code></strong> permet de
+générer des rapports détaillés sur une commune et un département. Par
+défaut, elle crée un fichier sans extension, mais il est possible de
+générer des fichiers <strong>PDF</strong> ou <strong>HTML</strong> en
+ajustant le format de sortie. Le format <strong>PDF</strong> est
+conseillé car le rapport inclut des analyses complètes sur les élus de
+la commune et du département ainsi que des visualisations graphiques,
+qui, elles, ressortent mal en <strong>HTML</strong>.</p>
+<div class="section level5">
+<h5 id="exemple-1-rapport-sur-la-commune-et-le-département-de-loire-atlantique">Exemple 1 : Rapport sur la commune et le département de
+Loire-Atlantique<a class="anchor" aria-label="anchor" href="#exemple-1-rapport-sur-la-commune-et-le-d%C3%A9partement-de-loire-atlantique"></a>
+</h5>
+<p>Par défaut, il est donc préférable de générer le rapport en
+<strong>PDF</strong> :</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Exemple d'utilisation de generer_rapport </span></span>
-<span><span class="co"># Supposons que nous voulons générer un rapport pour Gotham City (commune) et Mordor (département)</span></span>
-<span></span>
-<span><span class="co"># Utilisation du df de base</span></span>
-<span><span class="fu"><a href="../reference/generer_rapport.html">generer_rapport</a></span><span class="op">(</span>commune <span class="op">=</span> <span class="fl">44109</span>, </span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/generer_rapport.html">generer_rapport</a></span><span class="op">(</span>commune <span class="op">=</span> <span class="fl">44109</span>, </span>
 <span>                departement <span class="op">=</span> <span class="fl">44</span>, </span>
-<span>                output <span class="op">=</span> <span class="st">"rapport_Nantes_Loire_Atlantique.html"</span><span class="op">)</span></span>
+<span>                output <span class="op">=</span> <span class="st">"rapport_Nantes_Loire_Atlantique.pdf"</span><span class="op">)</span></span></code></pre></div>
+<p>Ce rapport généré inclura :</p>
+<ul>
+<li><p>Un résumé détaillé des informations relatives à la
+<strong>commune de Nantes</strong> et au <strong>département de
+Loire-Atlantique</strong>.<br></p></li>
+<li><p>Des visualisations graphiques comme des diagrammes représentant
+la répartition des élus par catégorie socio-professionnelle, la
+distribution des âges, et bien plus encore.<br></p></li>
+<li><p>Des statistiques globales sur la commune et le département.<br></p></li>
+</ul>
+</div>
+<div class="section level5">
+<h5 id="exemple-2-rapport-en-format-html">Exemple 2 : Rapport en format HTML<a class="anchor" aria-label="anchor" href="#exemple-2-rapport-en-format-html"></a>
+</h5>
+<p>Si vous préférez générer un rapport au format <strong>HTML</strong>,
+vous pouvez simplement changer l’extension du fichier dans le paramètre
+<code>output</code> :</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/generer_rapport.html">generer_rapport</a></span><span class="op">(</span>commune <span class="op">=</span> <span class="fl">44109</span>, </span>
+<span>                departement <span class="op">=</span> <span class="fl">44</span>, </span>
+<span>                output <span class="op">=</span> <span class="st">"rapport_Nantes_Loire_Atlantique.html"</span><span class="op">)</span></span></code></pre></div>
+<p>Ce rapport aura la même structure et le même contenu, mais sera
+généré au format <strong>HTML</strong>, ce qui permet de l’afficher
+directement dans un navigateur web.</p>
+</div>
+<div class="section level5">
+<h5 id="exemple-3-rapport-avec-un-data-frame-spécifique">Exemple 3 : Rapport avec un <strong>data.frame</strong>
+spécifique<a class="anchor" aria-label="anchor" href="#exemple-3-rapport-avec-un-data-frame-sp%C3%A9cifique"></a>
+</h5>
+<p>Si vous souhaitez utiliser des données spécifiques pour le
+département ou la commune (par exemple, provenant d’un fichier externe
+ou d’un calcul préalable), vous pouvez le spécifier avec le paramètre
+<code>df</code>, :</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Définition d'un data.frame spécifique pour le département</span></span>
 <span></span>
 <span><span class="va">departement_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  Code.du.département <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">99</span>, <span class="fl">10</span><span class="op">)</span>,</span>
 <span>  Libellé.du.département <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"Mordor"</span>, <span class="fl">10</span><span class="op">)</span>,</span>
 <span>  Code.de.la.commune <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">99901</span>,<span class="fl">2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">99902</span>,<span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">99903</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>  Libellé.de.la.commune <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"Metropolis"</span>,<span class="fl">2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"Hogwarts"</span>,<span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"Wakanda"</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  Libellé.de.la.commune <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"Gotham City"</span>,<span class="fl">2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"Hogwarts"</span>,<span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"Wakanda"</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  Nom.de.l.élu <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"DICAPRIO"</span>, <span class="st">"CHURCHILL"</span>, <span class="st">"LE GRIS"</span>, <span class="st">"JORDAN"</span>, <span class="st">"SARTRE"</span>,</span>
 <span>                   <span class="st">"MESSI"</span>, <span class="st">"PAN"</span>, <span class="st">"BOND"</span>, <span class="st">"DE GAULLE"</span>, <span class="st">"CHANEL"</span><span class="op">)</span>,</span>
 <span>  Prénom.de.l.élu <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Leonardo"</span>, <span class="st">"Winston"</span>, <span class="st">"Gandalf"</span>, <span class="st">"Michael"</span>, <span class="st">"Jean-Paul"</span>,</span>
@@ -511,16 +556,50 @@ défaut sera utilisé.</p>
 <span>                             <span class="st">""</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="st">"3e adjoint au Maire"</span>, <span class="st">""</span>, <span class="st">""</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Si un data.frame spécifique est souhaité, on peut le préciser</span></span>
+<span></span>
+<span><span class="co"># Générer le rapport en précisant le data.frame</span></span>
+<span></span>
 <span><span class="fu"><a href="../reference/generer_rapport.html">generer_rapport</a></span><span class="op">(</span>commune <span class="op">=</span> <span class="fl">99901</span>,</span>
 <span>                departement <span class="op">=</span> <span class="fl">99</span>,</span>
 <span>                df <span class="op">=</span> <span class="va">departement_data</span>,</span>
-<span>                output <span class="op">=</span> <span class="st">"rapport_gotham_city_mordor_df_specifie.html"</span><span class="op">)</span></span></code></pre></div>
-<p>Cette fonction crée un fichier html appelé
-<code>rapport_nantes_et_loire_atlantique.html</code> qui inclut des
-analyses sur la commune de Nantes et le département de Loire-Atlantique.
-Les données peuvent être ajustées pour correspondre à des valeurs
-réelles provenant de vos jeux de données.</p>
+<span>                output <span class="op">=</span> <span class="st">"rapport_gotham_city_mordor.pdf"</span><span class="op">)</span></span></code></pre></div>
+<p>Dans cet exemple, le rapport sera généré en utilisant les données
+personnalisées fournies dans <code>departement_data</code>. Vous pouvez
+ainsi personnaliser totalement les données de départ pour chaque commune
+ou département. Toutefois, il est important de veiller à la bonne
+structure du <strong>dataframe</strong> pour que cela fonctionne
+correctement. Pour plus d’informations sur la structure requise,
+consultez la page <a href="https://djayan-d.github.io/firstlibdjayan/articles/Structure_des_DataFrames_pour_l_analyse.html">Structure
+des DataFrames pour l’analyse</a>. De la même façon, il est possible de
+créer un rapport personnalisé en <strong>HTML</strong>, il suffit de le
+préciser dans la partie <code>output</code>, comme vu précédemment.</p>
+<hr>
+</div>
+</div>
+<div class="section level4">
+<h4 id="résumé-des-formats-et-rapports-générés">Résumé des formats et rapports générés<a class="anchor" aria-label="anchor" href="#r%C3%A9sum%C3%A9-des-formats-et-rapports-g%C3%A9n%C3%A9r%C3%A9s"></a>
+</h4>
+<ul>
+<li><p><strong>Par défaut</strong> : Il vous sera préférable de choisir
+l’extension <strong>PDF</strong> afin d’obtenir un rapport complet et
+exportable contenant des analyses sur la commune et le département
+spécifiés, incluant des statistiques sur les élus et des
+graphiques.</p></li>
+<li><p><strong>Format HTML</strong> : Vous pouvez obtenir un rapport en
+<strong>HTML</strong> en changeant simplement l’extension du fichier de
+sortie.</p></li>
+<li><p><strong>Données personnalisées</strong> : Si vous disposez de
+données spécifiques sous forme de <strong>data.frame</strong>, vous
+pouvez les intégrer dans le rapport en utilisant le paramètre
+<code>df</code>, ce qui permet une personnalisation complète du
+contenu.</p></li>
+</ul>
+<p>Chaque rapport comprend : - Une analyse complète des élus d’une
+commune et d’un département. - Des visualisations graphiques comme des
+diagrammes de répartition des âges, des graphiques de densité, etc. -
+Des informations détaillées sur les catégories socio-professionnelles et
+d’autres statistiques pertinentes.</p>
+<hr>
 </div>
 </div>
 <div class="section level2">

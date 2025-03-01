@@ -37,7 +37,15 @@ Le package **FirstLibDjayan** a pour objectif de faciliter l’analyse des donn�
 Pour installer **FirstLibDjayan**, utilisez la commande suivante dans R :
 
 ```r
-devtools::install_github("djayan-d/firstlibdjayan")
+library(devtools)
+devtools::install_github("Djayan-D/firstlibdjayan")
+```
+
+ou
+
+```r
+library(remotes)
+remotes::install_github("Djayan-D/firstlibdjayan")
 ```
 
 ---
@@ -56,9 +64,24 @@ summary.commune(data)
 
 ## 💡 Fonctionnalités principales
 
-- **`summary.commune()`** : Résumé détaillé des informations relatives à une commune donnée (âge moyen, répartition des âges, etc.).
-- **`summary.departement()`** : Résumé des informations relatives à un département entier, incluant les communes, la répartition des âges des élus et d'autres statistiques.
-- **`generer_rapport()`** : Génère des rapports au format **PDF** ou **HTML** avec des analyses complètes basées sur les communes et départements.
+- **`summary()`**  
+  Résumé détaillé des informations relatives à un objet de classe donnée. Cette fonction permet d'afficher un ensemble de statistiques et d'analyses liées à la commune ou au département. Les éléments inclus peuvent être l'âge moyen des élus, la répartition des âges, et d'autres données démographiques ou statistiques liées.  
+  **Fonctionnement :**
+  - **commune** : Lorsque l'objet est de type **commune**, `summary()` fournit un résumé détaillé des informations sur cette commune spécifique, telles que l'âge moyen des élus, la répartition des âges par tranche, et d'autres statistiques locales.
+  - **departement** : Lorsque l'objet est de type **departement**, `summary()` affiche un résumé des informations pour l'ensemble du département, incluant les données de toutes les communes qui le composent. Il inclut également la répartition des âges des élus à l'échelle du département et d'autres statistiques globales.
+
+- **`plot()`**  
+  Génère un graphique en barres horizontales représentant le nombre d'élus par code professionnel dans une commune ou un département. Le graphique affiche les codes professionnels ayant au moins un élu, triés par nombre décroissant d'élus. Un titre et des étiquettes sont ajoutés pour la lisibilité.  
+  **Fonctionnement :**
+  - **commune** : Lorsque l'objet est de type **commune**, `plot()` génère un graphique en barres horizontales qui montre le nombre d'élus pour chaque code professionnel dans cette commune spécifique. Le graphique affiche les codes professionnels ayant au moins un élu, triés par nombre décroissant. Le titre du graphique comprend le nom de la commune ainsi que le nom du département. En bas, le nombre total d'élus dans cette commune est indiqué.
+  - **departement** : Lorsque l'objet est de type **departement**, `plot()` génère un graphique similaire, mais il affiche les 10 codes professionnels les plus représentés dans le département. Le titre du graphique comprend le nom du département et le nombre total de communes dans le département. En bas, le nombre total d'élus dans l'ensemble du département est affiché.
+
+- **`generer_rapport()`**  
+  Génère des rapports complets au format **PDF** ou **HTML**, contenant des analyses détaillées sur les communes et départements. Ce rapport inclut des statistiques, des graphiques et des résumés complets des informations relatives aux objets de type commune et/ou département. Il permet de générer un document structuré et lisible pour une présentation ou une analyse approfondie.  
+  **Fonctionnement :**
+  - **commune** : Si l'objet est de type **commune**, le rapport généré se concentrera uniquement sur les données de cette commune, incluant des résumés statistiques, des graphiques et une analyse détaillée de ses élus.
+  - **departement** : Si l'objet est de type **departement**, le rapport inclura des données sur toutes les communes du département et donnera une analyse plus large, comprenant des informations sur la répartition des âges des élus à l'échelle du département.
+
 
 ---
 

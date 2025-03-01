@@ -106,14 +106,19 @@ Génération de rapports automatisés
 </h2>
 <p>Pour installer <strong>FirstLibDjayan</strong>, utilisez la commande suivante dans R :</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"djayan-d/firstlibdjayan"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/" class="external-link">devtools</a></span><span class="op">)</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"Djayan-D/firstlibdjayan"</span><span class="op">)</span></span></code></pre></div>
+<p>ou</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org" class="external-link">remotes</a></span><span class="op">)</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"Djayan-D/firstlibdjayan"</span><span class="op">)</span></span></code></pre></div>
 <hr>
 </div>
 <div class="section level2">
 <h2 id="id_-exemple-dutilisation">📖 Exemple d’utilisation<a class="anchor" aria-label="anchor" href="#id_-exemple-dutilisation"></a>
 </h2>
 <p>Voici un exemple pour illustrer comment utiliser <strong>FirstLibDjayan</strong> dans votre analyse :</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://djayan-d.github.io/firstlibdjayan">firstlibdjayan</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="reference/summary.commune.html">summary.commune</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>  </span></code></pre></div>
@@ -124,11 +129,35 @@ Génération de rapports automatisés
 </h2>
 <ul>
 <li>
-<strong><code><a href="reference/summary.commune.html">summary.commune()</a></code></strong> : Résumé détaillé des informations relatives à une commune donnée (âge moyen, répartition des âges, etc.).</li>
+<strong><code><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary()</a></code></strong><br>
+Résumé détaillé des informations relatives à un objet de classe donnée. Cette fonction permet d’afficher un ensemble de statistiques et d’analyses liées à la commune ou au département. Les éléments inclus peuvent être l’âge moyen des élus, la répartition des âges, et d’autres données démographiques ou statistiques liées.<br><strong>Fonctionnement :</strong>
+<ul>
 <li>
-<strong><code><a href="reference/summary.departement.html">summary.departement()</a></code></strong> : Résumé des informations relatives à un département entier, incluant les communes, la répartition des âges des élus et d’autres statistiques.</li>
+<strong>commune</strong> : Lorsque l’objet est de type <strong>commune</strong>, <code><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary()</a></code> fournit un résumé détaillé des informations sur cette commune spécifique, telles que l’âge moyen des élus, la répartition des âges par tranche, et d’autres statistiques locales.</li>
 <li>
-<strong><code><a href="reference/generer_rapport.html">generer_rapport()</a></code></strong> : Génère des rapports au format <strong>PDF</strong> ou <strong>HTML</strong> avec des analyses complètes basées sur les communes et départements.</li>
+<strong>departement</strong> : Lorsque l’objet est de type <strong>departement</strong>, <code><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary()</a></code> affiche un résumé des informations pour l’ensemble du département, incluant les données de toutes les communes qui le composent. Il inclut également la répartition des âges des élus à l’échelle du département et d’autres statistiques globales.</li>
+</ul>
+</li>
+<li>
+<strong><code><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot()</a></code></strong><br>
+Génère un graphique en barres horizontales représentant le nombre d’élus par code professionnel dans une commune ou un département. Le graphique affiche les codes professionnels ayant au moins un élu, triés par nombre décroissant d’élus. Un titre et des étiquettes sont ajoutés pour la lisibilité.<br><strong>Fonctionnement :</strong>
+<ul>
+<li>
+<strong>commune</strong> : Lorsque l’objet est de type <strong>commune</strong>, <code><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot()</a></code> génère un graphique en barres horizontales qui montre le nombre d’élus pour chaque code professionnel dans cette commune spécifique. Le graphique affiche les codes professionnels ayant au moins un élu, triés par nombre décroissant. Le titre du graphique comprend le nom de la commune ainsi que le nom du département. En bas, le nombre total d’élus dans cette commune est indiqué.</li>
+<li>
+<strong>departement</strong> : Lorsque l’objet est de type <strong>departement</strong>, <code><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot()</a></code> génère un graphique similaire, mais il affiche les 10 codes professionnels les plus représentés dans le département. Le titre du graphique comprend le nom du département et le nombre total de communes dans le département. En bas, le nombre total d’élus dans l’ensemble du département est affiché.</li>
+</ul>
+</li>
+<li>
+<strong><code><a href="reference/generer_rapport.html">generer_rapport()</a></code></strong><br>
+Génère des rapports complets au format <strong>PDF</strong> ou <strong>HTML</strong>, contenant des analyses détaillées sur les communes et départements. Ce rapport inclut des statistiques, des graphiques et des résumés complets des informations relatives aux objets de type commune et/ou département. Il permet de générer un document structuré et lisible pour une présentation ou une analyse approfondie.<br><strong>Fonctionnement :</strong>
+<ul>
+<li>
+<strong>commune</strong> : Si l’objet est de type <strong>commune</strong>, le rapport généré se concentrera uniquement sur les données de cette commune, incluant des résumés statistiques, des graphiques et une analyse détaillée de ses élus.</li>
+<li>
+<strong>departement</strong> : Si l’objet est de type <strong>departement</strong>, le rapport inclura des données sur toutes les communes du département et donnera une analyse plus large, comprenant des informations sur la répartition des âges des élus à l’échelle du département.</li>
+</ul>
+</li>
 </ul>
 <hr>
 </div>

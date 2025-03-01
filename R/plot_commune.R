@@ -69,7 +69,7 @@ plot.commune <- function(df) {
   # Construire le titre et l'axe des abscisses
 
   titre_graphique <- paste(nom_commune, "-", nom_departement)
-  axe_x <- paste("Libellés des codes professionnels pour les", sum(count_professions$n), "élus")
+  axe_x <- paste("Numéro des codes professionnels pour les", sum(count_professions$n), "élus")
 
 
   # Générer le graphique en barres horizontal

@@ -73,7 +73,7 @@ plot.departement <- function(df) {
   # Construire le titre et l'axe des abscisses
 
   titre_graphique <- paste(nom_departement, "-", nb_communes, "communes")
-  axe_x <- paste("Libellés des 10 codes professionnels les plus représentés pour", nom_departement)
+  axe_x <- paste("Codes des 10 codes professionnels les plus représentés pour", nom_departement)
 
 
   # Générer le bar chart horizontal
