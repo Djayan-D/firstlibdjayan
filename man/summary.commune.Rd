@@ -7,18 +7,18 @@
 \method{summary}{commune}(x)
 }
 \arguments{
-\item{x}{Un objet de classe `commune`, qui est un `data.frame` contenant les données des élus d'une commune.}
+\item{x}{Un objet de classe \code{commune}, qui est un \code{data.frame} contenant les données des élus d'une commune.}
 }
 \value{
 Une liste contenant :
-- `nom_commune` : Le nom de la commune,
-- `nombre_elus` : Le nombre d'élus dans la commune,
-- `distribution_ages_elus` : Les quantiles de la distribution des âges des élus,
-- `elu_plus_age` : Les informations de l'élu le plus âgé.
+- \code{nom_commune} : Le nom de la commune,
+- \code{nombre_elus} : Le nombre d'élus dans la commune,
+- \code{distribution_ages_elus} : Les quantiles de la distribution des âges des élus,
+- \code{elu_plus_age} : Les informations de l'élu le plus âgé.
 }
 \description{
 Cette fonction génère un résumé des informations pour une commune donnée. Elle vérifie que l'objet passé en argument est bien
-de la classe "commune", puis retourne une liste contenant :
+de la classe \code{commune}, puis retourne une liste contenant :
 - Le nom de la commune,
 - Le nombre d'élus,
 - La distribution des âges des élus,

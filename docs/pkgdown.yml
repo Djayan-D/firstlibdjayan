@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   Generer_un_rapport_d_analyses: Generer_un_rapport_d_analyses.html
   Structure_des_DataFrames_pour_l_analyse: Structure_des_DataFrames_pour_l_analyse.html
-last_built: 2025-03-01T10:25Z
+last_built: 2025-03-01T10:39Z
 urls:
   reference: https://djayan-d.github.io/firstlibdjayan/reference
   article: https://djayan-d.github.io/firstlibdjayan/articles

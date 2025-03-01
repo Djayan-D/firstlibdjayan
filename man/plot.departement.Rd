@@ -7,10 +7,10 @@
 \method{plot}{departement}(df)
 }
 \arguments{
-\item{df}{Un objet de classe `departement` (un `data.frame` contenant les informations des élus du département).}
+\item{df}{Un objet de classe \code{departement} (un \code{dataframe} contenant les informations des élus du département).}
 }
 \value{
-Un objet de type `ggplot` représentant un graphique en barres horizontales, où l'axe des ordonnées correspond aux codes professionnels
+Un objet de type \code{ggplot} représentant un graphique en barres horizontales, où l'axe des ordonnées correspond aux codes professionnels
   et l'axe des abscisses au nombre d'élus. Le graphique inclut également des étiquettes des valeurs et un titre personnalisé.
 }
 \description{

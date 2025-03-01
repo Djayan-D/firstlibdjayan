@@ -1,12 +1,15 @@
-#' Créer un objet de classe "departement"
+#' Créer un objet de classe \code{departement}
 #'
-#' Cette fonction vérifie si le `data.frame` contient les données d'un seul département. Si plusieurs départements sont détectés,
-#' elle arrête l'exécution avec un message d'erreur. Sinon, elle ajoute la classe "departement" au `data.frame`.
+#' Cette fonction vérifie si le \code{data.frame} contient les données d'un seul département. Si plusieurs départements sont détectés,
+#' elle arrête l'exécution avec un message d'erreur. Sinon, elle ajoute la classe \code{departement} au \code{data.frame}.
 #'
-#' @param df Un `data.frame` contenant les données des départements, avec la colonne `Code.du.département` utilisée
+#' @param df Un \code{data.frame} contenant les données des départements, avec la colonne \code{Code.du.département} utilisée
 #' pour vérifier si plusieurs départements sont présents.
-#' @return Un `data.frame` auquel la classe "departement" est ajoutée s'il contient un seul département.
+#'
+#' @return Un \code{data.frame} auquel la classe \code{departement} est ajoutée s'il contient un seul département.
+#'
 #' @export
+
 
 creer_departement <- function(df) {
   # Vérifier la structure du DataFrame

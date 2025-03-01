@@ -4,13 +4,17 @@
 #' Le graphique affiche les codes professionnels ayant au moins un élu, triés par nombre décroissant d'élus. Un titre et des étiquettes
 #' sont ajoutés pour la lisibilité.
 #'
-#' @param df Un objet de classe `commune` (un `data.frame` contenant les informations des élus de la commune).
-#' @return Un objet de type `ggplot` représentant un graphique en barres horizontales, où l'axe des ordonnées correspond aux codes professionnels
+#' @param df Un objet de classe \code{commune} (un \code{data.frame} contenant les informations des élus de la commune).
+#'
+#' @return Un objet de type \code{ggplot} représentant un graphique en barres horizontales, où l'axe des ordonnées correspond aux codes professionnels
 #'   et l'axe des abscisses au nombre d'élus. Le graphique inclut également des étiquettes des valeurs et un titre personnalisé.
+#'
 #' @importFrom ggplot2 ggplot geom_bar geom_text labs theme_minimal
 #' @importFrom dplyr count filter arrange
 #' @importFrom stringr str_detect
+
 #' @export
+
 
 plot.commune <- function(df) {
   # Vérifier que le DataFrame respecte le schéma attendu

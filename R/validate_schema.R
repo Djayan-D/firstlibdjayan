@@ -1,9 +1,9 @@
 #' Vérifier le schéma des données
 #'
-#' Cette fonction vérifie si un `data.frame` contient toutes les colonnes nécessaires au bon fonctionnement des fonctions du package.
+#' Cette fonction vérifie si un \code{data.frame} contient toutes les colonnes nécessaires au bon fonctionnement des fonctions du package.
 #' Si certaines colonnes sont manquantes, elle émet un avertissement, mais ne bloque pas l'exécution du programme.
 #'
-#' @param df Un `data.frame` contenant les données à vérifier.
+#' @param df Un \code{data.frame} contenant les données à vérifier.
 #'
 #' @return NULL si le schéma est valide, sinon un avertissement indiquant les colonnes manquantes.
 #'

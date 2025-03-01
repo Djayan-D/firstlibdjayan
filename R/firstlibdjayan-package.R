@@ -11,10 +11,12 @@
 #'
 #' @name firstlibdjayan
 #' @author
-#' Daëron Djayan [aut, cre] (<daeron.djayan@gmail.com>)
+#' Daëron Djayan [aut, cre] \email{daeron.djayan@gmail.com}
 #'
 #' @seealso
-#' \url{https://github.com/Djayan-D/firstlibdjayan/} pour accéder au code source du package.
-#' \url{https://djayan-d.github.io/firstlibdjayan/} pour consulter la documentation en ligne.
-#' \url{https://sites.google.com/view/master-ecap/accueil} pour plus d'informations sur le Master ECAP.
+#' \itemize{
+#'   \item \href{https://github.com/Djayan-D/firstlibdjayan/}{Code source sur GitHub}
+#'   \item \href{https://djayan-d.github.io/firstlibdjayan/}{Documentation en ligne}
+#'   \item \href{https://sites.google.com/view/master-ecap/accueil}{Master ECAP}
+#' }
 "_PACKAGE"

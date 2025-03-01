@@ -1,12 +1,12 @@
-#' Créer un objet de classe "commune"
+#' Créer un objet de classe \code{commune}
 #'
-#' Cette fonction vérifie si le `data.frame` contient les données d'une seule commune. Si plusieurs communes sont détectées,
-#' elle arrête l'exécution avec un message d'erreur. Sinon, elle ajoute la classe "commune" au `data.frame`.
+#' Cette fonction vérifie si le \code{data.frame} contient les données d'une seule commune. Si plusieurs communes sont détectées,
+#' elle arrête l'exécution avec un message d'erreur. Sinon, elle ajoute la classe \code{commune} au \code{data.frame}.
 #'
-#' @param df Un `data.frame` contenant les données des communes, avec la colonne `Code.de.la.commune` utilisée
+#' @param df Un \code{data.frame} contenant les données des communes, avec la colonne \code{Code.de.la.commune} utilisée
 #' pour vérifier si plusieurs communes sont présentes.
 #'
-#' @return Un `data.frame` auquel la classe "commune" est ajoutée s'il contient une seule commune.
+#' @return Un \code{data.frame} auquel la classe \code{commune} est ajoutée s'il contient une seule commune.
 #'
 #' @export
 

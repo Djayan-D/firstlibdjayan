@@ -16,7 +16,7 @@ Le format du fichier doit être précisé en ajoutant ".html" ou ".pdf" à la fi
 (par exemple, "rapport_nantes.html" ou "rapport_nantes.pdf").}
 
 \item{df}{(optionnel) Un dataframe contenant les données nécessaires pour générer le rapport.
-Par défaut, la fonction utilise `elus_sample`, qui est inclus dans le package.}
+Par défaut, la fonction utilise \code{elus_sample}, qui est inclus dans le package.}
 }
 \value{
 Aucun. La fonction génère un fichier de rapport au format HTML ou PDF
@@ -34,7 +34,7 @@ fournis en paramètres, ainsi qu'un dataframe optionnel contenant des données p
 - Si un autre dataframe est utilisé, il doit respecter une structure minimale
   pour garantir le bon fonctionnement de la fonction. Voir les warnings en cas
   d'incompatibilité ou consulter la documentation
-  sur \href{https://djayan-d.github.io/firstlibdjayan/}{le site du package}.
+  sur \href{https://djayan-d.github.io/firstlibdjayan/articles/Structure_des_DataFrames_pour_l_analyse}{la page d'aide de création de DataFrame}.
 
 - La fonction utilise \code{quarto::quarto_render()} pour générer le rapport au format spécifié.
 }
