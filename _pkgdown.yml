@@ -3,6 +3,11 @@ url: https://djayan-d.github.io/firstlibdjayan/
 template:
   bootstrap: 5
   includes:
-    in_header: '<link rel="stylesheet" href="style.css">'
+    in_header: >
+      <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="../style.css">
+      <link rel="stylesheet" href="../../style.css">
+
+
 
 
