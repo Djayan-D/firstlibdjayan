@@ -103,34 +103,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="chargement-des-packages" class="level1">
-<h1>Chargement des packages</h1>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>Ce rapport présente l’analyse des données des élus au niveau d’une commune et d’un département. L’objectif est d’explorer et de visualiser les données liées aux élus afin de mieux comprendre leur répartition géographique et démographique. En fonction des paramètres fournis, ce rapport génère des résumés statistiques ainsi que des graphiques pour chaque entité (commune et département).</p>
 </section>
-<section id="installation-et-chargement-de-la-bibliothèque" class="level1">
-<h1>Installation et chargement de la bibliothèque</h1>
+<section id="installation-et-chargement-de-la-bibliothèque-firstlibdjayan" class="level1">
+<h1>Installation et chargement de la bibliothèque <code>firstlibdjayan</code></h1>
+<p>Avant de commencer l’analyse, il est nécessaire de charger le package nécessaire à la manipulation des données, il se nomme <code>firstlibdjayan</code>. Cette bibliothèque est développée spécifiquement pour faciliter l’analyse des données des élus, qu’il s’agisse de communes ou de départements. En l’installant depuis GitHub, nous nous assurons d’utiliser la dernière version disponible, et elle nous permet d’accéder à des fonctions dédiées à cette analyse.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"Djayan-D/firstlibdjayan"</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(firstlibdjayan)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"Djayan-D/firstlibdjayan"</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(firstlibdjayan)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="chargement-des-données" class="level1">
 <h1>Chargement des données</h1>
+<p>Dans cette section, les données sont chargées en fonction du paramètre <code>dataframe_name</code>. Si le paramètre spécifie le nom du fichier de données, il sera directement utilisé. Si le nom du fichier est différent, le fichier est chargé à partir du chemin spécifié par <code>dataframe_path</code>. Une fois chargées, les données sont prêtes à être manipulées et analysées selon les critères de la commune et du département définis.</p>
+</section>
+<section id="chargement-des-données-1" class="level1">
+<h1>Chargement des données</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Charger le fichier temporaire si ce n'est pas "elus_sample"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (params<span class="sc">$</span>dataframe_name <span class="sc">==</span> <span class="st">"elus_sample"</span>) {</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> elus_sample  <span class="co"># Utilise directement elus_sample</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  data<span class="sc">$</span>Date.de.naissance <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(data<span class="sc">$</span>Date.de.naissance, <span class="at">format =</span> <span class="st">"%d/%m/%Y"</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Charge le fichier sauvegardé en utilisant le chemin passé en paramètre</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">normalizePath</span>(params<span class="sc">$</span>dataframe_path, <span class="at">mustWork =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="filtrage-des-données-par-commune-et-département" class="level1">
 <h1>Filtrage des données par commune et département</h1>
+<p>Avant d’analyser les données, il est important de filtrer les informations en fonction de la commune et du département spécifiés. Cela nous permet de focaliser l’analyse sur les élus de la commune et du département de notre choix, en utilisant les codes des entités. Ce filtrage assure que l’analyse se concentre uniquement sur les données pertinentes pour l’entité géographique choisie.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_commune <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Code.de.la.commune <span class="sc">==</span> params<span class="sc">$</span>code_commune)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Code.de.la.commune <span class="sc">==</span> params<span class="sc">$</span>code_commune)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>df_departement <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Code.du.département <span class="sc">==</span> params<span class="sc">$</span>code_departement)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Code.du.département <span class="sc">==</span> params<span class="sc">$</span>code_departement)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="création-des-jeux-de-données-pour-la-commune-et-le-département" class="level1">
 <h1>Création des jeux de données pour la commune et le département</h1>
+<p>Une fois les données filtrées, nous utilisons les fonctions <code>creer_commune</code> et <code>creer_departement</code> pour structurer les jeux de données. Ces fonctions permettent de créer des objets spécifiques à chaque entité géographique, ce qui facilite leur manipulation et analyse. Ce processus garantit que les données sont au bon format pour les analyses suivantes.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df_commune <span class="ot">&lt;-</span> <span class="fu">creer_commune</span>(df_commune)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -144,6 +161,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="analyse-des-données" class="level1">
 <h1>Analyse des données</h1>
+<p>L’étape finale de ce rapport consiste à analyser les données des élus. Des résumés statistiques sont générés pour la commune et le département, afin de fournir une vue d’ensemble des caractéristiques démographiques des élus. En outre, des graphiques sont produits pour visualiser ces données, ce qui permet une compréhension plus intuitive des informations clés sur les élus dans la commune et le département.</p>
+<section id="commune" class="level2">
+<h2 class="anchored" data-anchor-id="commune">Commune</h2>
+<section id="statistiques" class="level3">
+<h3 class="anchored" data-anchor-id="statistiques">Statistiques</h3>
+<p>La première étape consiste à obtenir un résumé des données pour la commune. Ce résumé nous fournit des informations sur le nombre total d’élus, la distribution des âges, les caractéristiques démographiques, ainsi que des détails supplémentaires concernant les élus de cette commune spécifique.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df_commune)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -180,109 +203,87 @@ $elu_plus_age$prénom
 $elu_plus_age$age
 [1] 73</code></pre>
 </div>
+</div>
+</section>
+<section id="répartition-des-élus-par-profession" class="level3">
+<h3 class="anchored" data-anchor-id="répartition-des-élus-par-profession">Répartition des élus par profession</h3>
+<p>Ensuite, nous produisons un graphique montrant la répartition des élus par profession. Cela permet de visualiser les différentes catégories professionnelles des élus dans la commune et d’analyser la diversité professionnelle au sein de la municipalité.</p>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df_commune)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="rapport_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="rapport_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df_departement)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="département" class="level2">
+<h2 class="anchored" data-anchor-id="département">Département</h2>
+<section id="statistiques-1" class="level3">
+<h3 class="anchored" data-anchor-id="statistiques-1">Statistiques</h3>
+<p>Pour le département, nous générons également un résumé statistique similaire à celui de la commune mais un peu plus complet, afin de fournir des informations sur les élus à l’échelle départementale. Cela comprend des données démographiques détaillées et un aperçu des caractéristiques des élus dans le département.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df_commune)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>$nom_departement
-[1] "Loire-Atlantique"
-
-$nombre_communes
-[1] 207
+<pre><code>$nom_commune
+[1] "Nantes"
 
 $nombre_elus
-[1] 4781
+[1] 66
 
-$distribution_age_elus
-$distribution_age_elus$Q0
-[1] 22.98904
+$distribution_ages_elus
+$distribution_ages_elus$Q0
+[1] 28.18904
 
-$distribution_age_elus$Q25
-[1] 46.67808
+$distribution_ages_elus$Q25
+[1] 43.10205
 
-$distribution_age_elus$Q50
-[1] 54.07397
+$distribution_ages_elus$Q50
+[1] 51.03425
 
-$distribution_age_elus$Q75
-[1] 63.88082
+$distribution_ages_elus$Q75
+[1] 58.61849
 
-$distribution_age_elus$Q100
-[1] 84.6137
+$distribution_ages_elus$Q100
+[1] 73.00274
 
 
 $elu_plus_age
 $elu_plus_age$nom
-[1] "GERARD"
+[1] "PROCHASSON"
+
+$elu_plus_age$prénom
+[1] "François"
 
 $elu_plus_age$age
-[1] 84
-
-
-$elu_plus_jeune
-$elu_plus_jeune$nom
-[1] "MERCERON"
-
-$elu_plus_jeune$age
-[1] 22
-
-
-$commune_plus_jeune
-$commune_plus_jeune$nom
-[1] "Ruffigné"
-
-$commune_plus_jeune$distribution_ages
-$commune_plus_jeune$distribution_ages$Q0
-[1] 28.14795
-
-$commune_plus_jeune$distribution_ages$Q25
-[1] 38.4274
-
-$commune_plus_jeune$distribution_ages$Q50
-[1] 44.39726
-
-$commune_plus_jeune$distribution_ages$Q75
-[1] 49.55205
-
-$commune_plus_jeune$distribution_ages$Q100
-[1] 70.80822
-
-
-
-$commune_plus_agee
-$commune_plus_agee$nom
-[1] "Les Moutiers-En-Retz"
-
-$commune_plus_agee$distribution_ages
-$commune_plus_agee$distribution_ages$Q0
-[1] 50.8137
-
-$commune_plus_agee$distribution_ages$Q25
-[1] 63.93151
-
-$commune_plus_agee$distribution_ages$Q50
-[1] 70.53973
-
-$commune_plus_agee$distribution_ages$Q75
-[1] 74.72055
-
-$commune_plus_agee$distribution_ages$Q100
-[1] 81.76164</code></pre>
+[1] 73</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df_departement)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="répartition-des-élus-par-profession-1" class="level3">
+<h3 class="anchored" data-anchor-id="répartition-des-élus-par-profession-1">Répartition des élus par profession</h3>
+<p>Enfin, un graphique est produit pour le département, illustrant la répartition des élus par profession. Cette analyse permet de comparer la diversité professionnelle des élus à l’échelle départementale et d’examiner les tendances possibles entre la commune et le département.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df_commune)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="rapport_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="rapport_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
+</section>
+</section>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>En conclusion, ce rapport offre une analyse détaillée des données des élus au niveau de la commune et du département. Grâce aux résumés statistiques et aux graphiques générés, il est possible d’obtenir une vue d’ensemble des caractéristiques démographiques des élus, comme l’âge, la profession et d’autres facteurs clés.</p>
+<p>Ce rapport peut être facilement généré de manière comparable pour toutes les communes et tous les départements, ce qui permet une comparaison efficace entre différentes entités locales. De plus, il est possible d’ajouter des éléments personnalisés dans les analyses, selon les besoins spécifiques. Cela ouvre la voie à des comparaisons encore plus fines et adaptées à des critères particuliers, offrant ainsi une flexibilité maximale pour explorer diverses dimensions des données des élus.</p>
+<p>Cette approche permet non seulement d’identifier des tendances à l’échelle locale, mais aussi de comparer des collectivités aux caractéristiques différentes, contribuant ainsi à une meilleure prise de décision politique et à l’amélioration de la gestion publique.</p>
 </section>
 
 </main>

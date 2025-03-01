@@ -20,7 +20,7 @@ Par défaut, la fonction utilise \code{elus_sample}, qui est inclus dans le pack
 }
 \value{
 Aucun. La fonction génère un fichier de rapport au format HTML ou PDF
-dans le chemin spécifié par `output`.
+dans le chemin spécifié par \code{output}.
 }
 \description{
 Cette fonction permet de générer un rapport au format HTML ou PDF
@@ -28,15 +28,19 @@ Cette fonction permet de générer un rapport au format HTML ou PDF
 fournis en paramètres, ainsi qu'un dataframe optionnel contenant des données pour enrichir le rapport.
 }
 \details{
-- Si le dataframe utilisé est \code{elus_sample} ou qu'aucun n'est précisé,
+\itemize{
+ \item Si le dataframe utilisé est \code{elus_sample} ou qu'aucun n'est précisé,
   les codes commune et département doivent correspondre à ceux présents dans \code{elus_sample}.
 
-- Si un autre dataframe est utilisé, il doit respecter une structure minimale
+ \item Si un autre dataframe est utilisé, il doit respecter une structure minimale
   pour garantir le bon fonctionnement de la fonction. Voir les warnings en cas
   d'incompatibilité ou consulter la documentation
   sur \href{https://djayan-d.github.io/firstlibdjayan/articles/Structure_des_DataFrames_pour_l_analyse}{la page d'aide de création de DataFrame}.
 
-- La fonction utilise \code{quarto::quarto_render()} pour générer le rapport au format spécifié.
+ \item La fonction utilise \code{quarto::quarto_render()} pour générer le rapport au format spécifié.
+
+ \item Le format conseillé est le format PDF du fait des images.
+ }
 }
 \examples{
 # Générer un rapport pour Nantes (44109) et la Loire-Atlantique (44) en HTML
