@@ -31,5 +31,5 @@ Suggests:
 Config/testthat/edition: 3
 RoxygenNote: 7.3.2
 VignetteBuilder: quarto
-URL: https://github.com/Djayan-D/firstlibdjayan
-BugReports: https://github.com/Djayan-D/firstlibdjayan/issues
+URL: https://djayan-d.github.io/firstlibdjayan
+BugReports: https://github.com/djayan-d/firstlibdjayan/issues
