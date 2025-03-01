@@ -91,7 +91,7 @@ Si vous souhaitez contribuer à ce package, n’hésitez pas à ouvrir une *issu
 
 ---
 
-## ✍️ Auteurs
+## ✍️ Auteur
 
 - **DAËRON Djayan** (daeron.djayan@gmail.com)
 
