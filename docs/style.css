@@ -41,14 +41,14 @@ pre code {
 /* Corriger la couleur des fonctions */
 pre code span[class*="function"],
 pre code span[class*="nf"] {
-    color: #569CD6 !important; /* Bleu RStudio */
+    color: #007ACC !important; /* Bleu vif RStudio clair */
     font-weight: bold;
 }
 
 /* Corriger la couleur des mots-clés (if, else, function, library...) */
 pre code span[class*="keyword"],
 pre code span[class*="k"] {
-    color: #C586C0 !important; /* Violet RStudio */
+    color: #AF00DB !important; /* Violet vif */
     font-weight: bold;
 }
 
@@ -56,35 +56,36 @@ pre code span[class*="k"] {
 pre code span[class*="name"],
 pre code span[class*="nn"],
 pre code span[class*="title"] {
-    color: #DCDCAA !important; /* Jaune RStudio */
+    color: #795E26 !important; /* Marron doré */
     font-weight: bold;
 }
 
 /* Corriger la couleur des chaînes de caractères */
 pre code span[class*="string"],
 pre code span[class*="s"] {
-    color: #CE9178 !important; /* Rouge-orangé RStudio */
+    color: #A31515 !important; /* Rouge sombre */
 }
 
 /* Corriger la couleur des commentaires */
 pre code span[class*="comment"],
 pre code span[class*="c"] {
-    color: #6A9955 !important; /* Vert RStudio */
+    color: #008000 !important; /* Vert classique */
     font-style: italic;
 }
 
 /* Corriger la couleur des dataframes et variables (ex: data) */
 pre code span[class*="va"] {
-    color: #B5CEA8 !important; /* Vert olive RStudio */
+    color: #267F99 !important; /* Bleu-vert */
     font-weight: bold;
 }
+
 
 .pkgdown-footer-left p,
 .pkgdown-footer-right p,
 small.roles {
-    color: white !important;  /* Gris foncé pour plus de lisibilité */
-    font-size: 14px;         /* Ajuste la taille si nécessaire */
-    font-weight: normal;      /* Garde un style classique */
+    color: white !important;
+    font-size: 14px;
+    font-weight: normal;
 }
 
 
