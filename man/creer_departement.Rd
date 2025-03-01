@@ -22,7 +22,7 @@ Cette fonction vérifie si le \code{data.frame} contient les données d'un seul 
 elle arrête l'exécution avec un message d'erreur. Sinon, elle ajoute la classe \code{departement} au \code{data.frame}.
 }
 \examples{
-Exemple de données pour un département
+#Exemple de données pour un département
 
 df_departement <- data.frame(Code.du.département = c(44,44))
 df_departement <- creer_departement(df_departement)

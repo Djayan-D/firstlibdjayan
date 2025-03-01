@@ -22,7 +22,7 @@ Cette fonction vérifie si le \code{data.frame} contient les données d'une seul
 elle arrête l'exécution avec un message d'erreur. Sinon, elle ajoute la classe \code{commune} au \code{data.frame}.
 }
 \examples{
-Exemple de données pour une commune
+# Exemple de données pour une commune
 
 df_commune <- data.frame(Code.de.la.commune = c(44109,44109))
 df_commune <- creer_commune(df_commune)

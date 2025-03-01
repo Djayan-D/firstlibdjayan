@@ -2,12 +2,12 @@
 #'
 #' Ce package permet l'analyse et la visualisation des données relatives aux élus des communes
 #' et départements français. Il inclut des outils pour calculer des statistiques, générer des graphiques
-#' et structurer les données en classes `commune` et `departement`.
+#' et structurer les données en classes \code{commune} et \code{departement}.
 #'
 #' @description
 #' Ce package fournit des fonctions pour manipuler les données relatives aux élus des communes
 #' et départements français. Il inclut des outils pour calculer des statistiques, générer des graphiques
-#' et structurer les données en classes `commune` et `departement`.
+#' et structurer les données en classes \code{commune} et \code{departement}.
 #'
 #' @name firstlibdjayan
 #' @author

@@ -17,6 +17,7 @@
 #'
 #' @examples
 #' # Créer un exemple de jeu de données pour Nantes (code 44109)
+#'
 #' df_commune <- data.frame(
 #'   Code.de.la.commune = rep(44109, 10),
 #'   Libellé.de.la.commune = rep("Nantes", 10),

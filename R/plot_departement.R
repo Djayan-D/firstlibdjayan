@@ -26,7 +26,7 @@
 #' df_departement <- creer_departement(df_departement)  # Ajouter la classe "departement"
 #'
 #' # Appeler la fonction pour générer le graphique
-#' plot.departement(df_departement)
+#' plot(df_departement)
 #'
 #' @seealso
 #' \itemize{

@@ -27,10 +27,12 @@
 #'
 #' @examples
 #' # Créer un exemple de jeu de données pour le département de Loire-Atlantique (code 44)
+#'
 #' df_loire_atlantique <- data.frame(
-#'   Code.de.la.commune = rep(44109, 5),
-#'   Libellé.de.la.commune = rep("Nantes", 5),
+#'   Code.du.département = rep(44, 5),
 #'   Libellé.du.département = rep("Loire-Atlantique", 5),
+#'   Code.de.la.commune = c(rep(44109, 3), rep(44026, 2)),
+#'   Libellé.de.la.commune = c(rep("Nantes", 3), rep("Carquefou", 2)),
 #'   Nom.de.l.élu = c("Dupont", "Dupuis", "Martin", "Lemoine", "Durand"),
 #'   Prénom.de.l.élu = c("Jean", "Marie", "Paul", "Anne", "Pierre"),
 #'   Date.de.naissance = as.Date(c("1970-01-01", "1980-05-12", "1965-08-22", "1992-10-30", "1950-12-05")),
@@ -40,7 +42,7 @@
 #' df_loire_atlantique <- creer_departement(df_loire_atlantique)  # Ajouter la classe "departement"
 #'
 #' # Appeler la fonction pour obtenir un résumé des informations du département de Loire-Atlantique
-#' summary.departement(df_loire_atlantique)
+#' summary(df_loire_atlantique)
 #'
 #' @seealso
 #' \itemize{

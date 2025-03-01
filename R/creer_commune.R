@@ -11,7 +11,7 @@
 #' @export
 #'
 #' @examples
-#' Exemple de données pour une commune
+#' # Exemple de données pour une commune
 #'
 #' df_commune <- data.frame(Code.de.la.commune = c(44109,44109))
 #' df_commune <- creer_commune(df_commune)
