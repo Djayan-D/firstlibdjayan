@@ -9,6 +9,21 @@
 #' @return Un \code{data.frame} auquel la classe \code{departement} est ajoutée s'il contient un seul département.
 #'
 #' @export
+#'
+#' @examples
+#' Exemple de données pour un département
+#'
+#' df_departement <- data.frame(Code.du.département = c(44,44))
+#' df_departement <- creer_departement(df_departement)
+#' class(df_departement)  # Doit afficher "departement" comme classe ajoutée
+#'
+#' @seealso
+#' \itemize{
+#'   \item \href{https://djayan-d.github.io/firstlibdjayan/}{Documentation sur la création de DataFrame}
+#'   \item \href{https://github.com/Djayan-D/firstlibdjayan/}{Code source sur GitHub}
+#'   \item \href{https://djayan-d.github.io/firstlibdjayan/}{Documentation en ligne}
+#'   }
+"creer_departement"
 
 
 creer_departement <- function(df) {
@@ -29,7 +44,7 @@ creer_departement <- function(df) {
     length()
 
   if (unique_departments > 1) {
-    stop("⚠️ Erreur : Le DataFrame contient plusieurs départements.")
+    stop("❌ Erreur : Le DataFrame contient plusieurs départements.")
   }
 
 

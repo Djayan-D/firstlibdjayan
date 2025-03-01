@@ -9,6 +9,22 @@
 #' @return Un \code{data.frame} auquel la classe \code{commune} est ajoutée s'il contient une seule commune.
 #'
 #' @export
+#'
+#' @examples
+#' Exemple de données pour une commune
+#'
+#' df_commune <- data.frame(Code.de.la.commune = c(44109,44109))
+#' df_commune <- creer_commune(df_commune)
+#' class(df_commune)  # Doit afficher "commune" comme classe ajoutée
+#'
+#' @seealso
+#' \itemize{
+#'   \item \href{https://djayan-d.github.io/firstlibdjayan/}{Documentation sur la création de DataFrame}
+#'   \item \href{https://github.com/Djayan-D/firstlibdjayan/}{Code source sur GitHub}
+#'   \item \href{https://djayan-d.github.io/firstlibdjayan/}{Documentation en ligne}
+#'   }
+"creer_commune"
+
 
 
 creer_commune <- function(df) {
@@ -29,7 +45,7 @@ creer_commune <- function(df) {
     length()
 
   if (unique_communes_code > 1) {
-    stop("⚠️ Erreur : Le DataFrame contient plusieurs communes.")
+    stop("❌ Erreur : Le DataFrame contient plusieurs communes.")
   }
 
 

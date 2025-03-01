@@ -18,3 +18,25 @@ Cette fonction génère un graphique en barres horizontales représentant les 10
 d'un département. Le graphique affiche les codes professionnels ayant au moins un élu, triés par nombre décroissant d'élus.
 Le titre du graphique et l'axe des abscisses sont personnalisés en fonction du nom du département et du nombre de communes.
 }
+\examples{
+# Créer un exemple de jeu de données pour le département de Loire-Atlantique (code 44)
+df_departement <- data.frame(
+  Code.du.département = rep(44, 10),
+  Libellé.du.département = rep("Loire-Atlantique", 10),
+  Libellé.de.la.commune = c("Nantes", "Saint-Nazaire", "La Baule", "Guérande", "Rezé", "Sautron", "Châteaubriant", "Clisson", "Pornic", "Ancenis"),
+  Code.de.la.catégorie.socio.professionnelle = c(1, 2, 3, 4, 1, 3, 2, 4, 1, 2),
+  stringsAsFactors = FALSE
+)
+df_departement <- creer_departement(df_departement)  # Ajouter la classe "departement"
+
+# Appeler la fonction pour générer le graphique
+plot.departement(df_departement)
+
+}
+\seealso{
+\itemize{
+  \item \href{https://djayan-d.github.io/firstlibdjayan/}{Documentation sur la création de DataFrame}
+  \item \href{https://github.com/Djayan-D/firstlibdjayan/}{Code source sur GitHub}
+  \item \href{https://djayan-d.github.io/firstlibdjayan/}{Documentation en ligne}
+  }
+}

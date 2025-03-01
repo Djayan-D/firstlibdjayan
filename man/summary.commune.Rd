@@ -11,16 +11,39 @@
 }
 \value{
 Une liste contenant :
-- \code{nom_commune} : Le nom de la commune,
-- \code{nombre_elus} : Le nombre d'élus dans la commune,
-- \code{distribution_ages_elus} : Les quantiles de la distribution des âges des élus,
-- \code{elu_plus_age} : Les informations de l'élu le plus âgé.
+\itemize{
+ \item \code{nom_commune} : Le nom de la commune
+ \item \code{nombre_elus} : Le nombre d'élus dans la commune
+ \item \code{distribution_ages_elus} : Les quantiles de la distribution des âges des élus
+ \item \code{elu_plus_age} : Les informations de l'élu le plus âgé
+ }
 }
 \description{
-Cette fonction génère un résumé des informations pour une commune donnée. Elle vérifie que l'objet passé en argument est bien
-de la classe \code{commune}, puis retourne une liste contenant :
-- Le nom de la commune,
-- Le nombre d'élus,
-- La distribution des âges des élus,
-- L'élu le plus âgé.
+Cette fonction génère un résumé des informations pour une commune donnée. Elle
+vérifie que l'objet passé en argument est bien de la classe \code{commune},
+puis retourne une liste contenant le nom de la commune et des statistiques sur
+celle-ci, notamment le nombre d'élus, la distribution des âges des élus, ainsi que des informations sur l'élu le plus âgés.
+}
+\examples{
+# Créer un exemple de jeu de données pour Nantes (code 44109)
+df_nantes <- data.frame(
+  Code.de.la.commune = rep(44109, 5),
+  Libellé.de.la.commune = rep("Nantes", 5),
+  Nom.de.l.élu = c("Dupont", "Dupuis", "Martin", "Lemoine", "Durand"),
+  Prénom.de.l.élu = c("Jean", "Marie", "Paul", "Anne", "Pierre"),
+  Date.de.naissance = as.Date(c("1970-01-01", "1980-05-12", "1965-08-22", "1992-10-30", "1950-12-05")),
+  stringsAsFactors = FALSE
+)
+df_nantes <- creer_commune(df_nantes)  # Ajouter la classe "commune"
+
+# Appeler la fonction pour obtenir un résumé des informations de la commune de Nantes
+summary(df_nantes)
+
+}
+\seealso{
+\itemize{
+  \item \href{https://djayan-d.github.io/firstlibdjayan/}{Documentation sur la création de DataFrame}
+  \item \href{https://github.com/Djayan-D/firstlibdjayan/}{Code source sur GitHub}
+  \item \href{https://djayan-d.github.io/firstlibdjayan/}{Documentation en ligne}
+  }
 }

@@ -12,7 +12,7 @@ output:
 
 Bienvenue dans la documentation de **FirstLibDjayan**, un package R qui facilite l’analyse des données des élus au niveau des communes et départements.
 
-## ![Logo](assets/logo.png){.logo width="200px"}
+
 
 ## Objectifs du package
 

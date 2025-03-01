@@ -46,7 +46,7 @@ test_that("creer_commune renvoie une erreur si plusieurs communes sont présente
 
   expect_error(
     creer_commune(df_test),
-    "⚠️ Erreur : Le DataFrame contient plusieurs communes."
+    "❌ Erreur : Le DataFrame contient plusieurs communes."
   )
 })
 

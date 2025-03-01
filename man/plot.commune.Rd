@@ -18,3 +18,25 @@ Cette fonction génère un graphique en barres horizontales représentant le nom
 Le graphique affiche les codes professionnels ayant au moins un élu, triés par nombre décroissant d'élus. Un titre et des étiquettes
 sont ajoutés pour la lisibilité.
 }
+\examples{
+# Créer un exemple de jeu de données pour Nantes (code 44109)
+df_commune <- data.frame(
+  Code.de.la.commune = rep(44109, 10),
+  Libellé.de.la.commune = rep("Nantes", 10),
+  Libellé.du.département = rep("Loire-Atlantique", 10),
+  Code.de.la.catégorie.socio.professionnelle = c(1, 2, 2, 3, 1, 3, 4, 1, 2, 3),
+  stringsAsFactors = FALSE
+)
+df_commune <- creer_commune(df_commune)  # Ajouter la classe "commune"
+
+# Appeler la fonction pour générer le graphique
+plot(df_commune)
+
+}
+\seealso{
+\itemize{
+  \item \href{https://djayan-d.github.io/firstlibdjayan/}{Documentation sur la création de DataFrame}
+  \item \href{https://github.com/Djayan-D/firstlibdjayan/}{Code source sur GitHub}
+  \item \href{https://djayan-d.github.io/firstlibdjayan/}{Documentation en ligne}
+  }
+}

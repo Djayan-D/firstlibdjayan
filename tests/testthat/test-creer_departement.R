@@ -46,7 +46,7 @@ test_that("creer_departement renvoie une erreur si plusieurs départements sont 
 
   expect_error(
     creer_departement(df_test),
-    "⚠️ Erreur : Le DataFrame contient plusieurs départements."
+    "❌ Erreur : Le DataFrame contient plusieurs départements."
   )
 })
 
